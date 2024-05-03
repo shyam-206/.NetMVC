@@ -60,6 +60,7 @@ namespace MVCCrud.Controllers
                     SessionHelper.UserName = loginUserModel.UserName;
                     ModelState.Clear();
                     TempData["SuccessLogin"] = "Login SuccessFully";
+                    TempData["username"] = Session["UserName"];
                     return RedirectToAction("Index", "Home");
                 }
                 else
