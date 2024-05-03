@@ -1,0 +1,31 @@
+﻿@model List<MVCCrud_Model.CustomModel.RegisterModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="container-fluid mt-3">
+    <table class="table bg-white mt-4">
+        <thead>
+            <tr>
+                <td>UserName</td>
+                <td>Full Name</td>
+                <td>Email Address</td>
+                <td>Password</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                   <td>@item.UserName</td>
+                    <td>@item.FullName</td>
+                    <td>@item.UserEmail</td>
+                    <td>@item.Password</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

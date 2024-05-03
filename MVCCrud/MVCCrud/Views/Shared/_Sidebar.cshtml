@@ -1,0 +1,43 @@
+﻿<div class="nk-sidebar">
+    <div class="nk-nav-scroll">
+        <ul class="metismenu" id="menu">
+
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-speedometer menu-icon"></i>
+                    <span class="nav-text">Dashboard</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li><a href="#">Home</a></li>
+
+                </ul>
+            </li>
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="nav-text">Product</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li>
+                        @Html.ActionLink("Product", "Index", new { Controller = "Product" })
+                    </li>
+
+                </ul>
+            </li>
+
+            <li>
+                <a class="has-arrow" href="javascript:void()" aria-expanded="false">
+                    <i class="icon-grid menu-icon"></i>
+                    <span class="nav-text">Register User</span>
+                </a>
+                <ul aria-expanded="false">
+                    <li>
+                        @Html.ActionLink("Register Users", "Index", new { Controller = "Login" })
+                    </li>
+
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+</div>

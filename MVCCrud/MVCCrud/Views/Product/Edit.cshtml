@@ -1,0 +1,45 @@
+﻿@model MVCCrud_Model.CustomModel.ProductModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+
+<div class="container-fluid mt-3">
+    <h2>Edit</h2>
+
+    @using (Html.BeginForm("Edit", "Product", FormMethod.Post))
+    {
+        @Html.HiddenFor(m => m.Product_Id)
+        <div class="row mt-2">
+            <div class="col-lg-12">
+                @Html.LabelFor(m => m.PName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.PName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PName)
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-12">
+                @Html.LabelFor(m => m.Price, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-lg-12">
+                @Html.LabelFor(m => m.Quantity, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Quantity)
+            </div>
+        </div>
+
+        <div class="row mt-2">
+            <div class="col-lg-12">
+                <input type="submit" name="submit" value="Edit" class="btn btn-success" />
+            </div>
+        </div>
+        
+    }
+
+
+</div>

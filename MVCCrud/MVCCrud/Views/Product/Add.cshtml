@@ -1,0 +1,44 @@
+﻿@model MVCCrud_Model.CustomModel.ProductModel
+
+@{
+    ViewBag.Title = "Add";
+}
+
+
+<div class="container-fluid mt-3">
+
+    <form action="Add" method="post">
+        <div class="row">
+            <div class="col-lg-12">
+                @Html.LabelFor(m => m.PName, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.PName, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PName)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12" ">
+                @Html.LabelFor(m => m.Price, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Price, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Price)
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                @Html.LabelFor(m => m.Quantity, new { @class = "form-label" })
+                @Html.TextBoxFor(m => m.Quantity, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Quantity)
+            </div>
+        </div>
+
+        <div class="mt-3">
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+
+        <div class="mt-3">
+            <a href="Index">Back to List</a>
+        </div>
+
+    </form>
+
+</div>

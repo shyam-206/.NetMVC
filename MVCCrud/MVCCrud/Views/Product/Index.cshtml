@@ -1,0 +1,67 @@
+﻿@model List<MVCCrud_Model.CustomModel.ProductModel>
+
+@{ ViewBag.Title = "Index"; }
+
+@if (@TempData["AddProdcut"] != null)
+{
+<script>
+       toastr.success('@TempData["AddProdcut"]')
+</script>
+}
+
+
+@if (@TempData["delete"] != null)
+{
+<script>
+       toastr.success('@TempData["delete"]')
+</script>
+}
+
+
+@if (@TempData["delete1"] != null)
+{
+<script>
+       toastr.error('@TempData["delete"]')
+</script>}
+
+
+@if (@TempData["edit"] != null)
+{
+    <script>
+       toastr.success('@TempData["edit"]')
+    </script>
+}
+
+
+
+<div class="container-fluid mt-3">
+
+
+    @Html.ActionLink("Add Product", "Add", new { Controller = "Product" }, new { @class = "btn btn-primary" })
+
+    <table class="table bg-white mt-4">
+        <thead>
+            <tr>
+                <td>Product Id</td>
+                <td>Product Name</td>
+                <td>Price</td>
+                <td>Quantity</td>
+                <td>Edit</td>
+                <td>Delete</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+<tr>
+    <td>@item.Product_Id</td>
+    <td>@item.PName</td>
+    <td>@item.Price</td>
+    <td>@item.Quantity</td>
+    <td>@Html.ActionLink("Edit", "Edit", new { productId = item.Product_Id, Controller = "Product" }, new { @class = "btn btn-success" })</td>
+    <td>@Html.ActionLink("Delete", "Delete", new { productId = item.Product_Id, Controller = "Product" }, new { @class = "btn btn-danger" })</td>
+</tr>}
+        </tbody>
+    </table>
+</div>
