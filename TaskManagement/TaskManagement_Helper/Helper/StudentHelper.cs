@@ -10,6 +10,7 @@ namespace TaskManagement_Helper.Helper
 {
     public class StudentHelper
     {
+        /*CONVERT THE REGISTER MODEL TO STUDENT*/
         public static Student ConvertRegisterModelToStudent(RegisterModel registerModel)
         {
             try
@@ -32,6 +33,7 @@ namespace TaskManagement_Helper.Helper
             }
         }
 
+        /*FOR THE CONVERT THE STRING TO INT OF THE REGISTER MODEL CITY AND STATE ID*/
         public static int StringToIntConversion(string _CityId)
         {
             int _City_Id = Convert.ToInt32(_CityId);

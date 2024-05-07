@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TaskManagement_Helper.Helper;
 using TaskManagement_Model.DBContext;
 using TaskManagement_Model.ViewModel;
 using Taskmanagement_Repository.Interface;
@@ -22,7 +23,25 @@ namespace Taskmanagement_Repository.Service
         {
             try
             {
-                return true;
+                int isCheckingSaveOrNot = 0;
+                Student student = new Student();
+                student = StudentHelper.ConvertRegisterModelToStudent(registerModel);
+
+                if(_context.Student.Any(m => m.Email == student.Email))
+                {
+                    _context.Student.Add(student);
+                    isCheckingSaveOrNot =_context.SaveChanges();
+                }
+
+                if(isCheckingSaveOrNot > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+
             }
             catch (Exception ex)
             {
