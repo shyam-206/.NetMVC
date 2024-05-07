@@ -31,7 +31,7 @@ namespace Taskmanagement_Repository.Service
             catch (Exception ex)
             {
 
-                throw ex;
+                throw ex; 
             }
         }
     }
