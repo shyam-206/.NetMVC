@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TaskManagement_557Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Assignment">
+    <Key>
+      <PropertyRef Name="AssignmentID" />
+    </Key>
+    <Property Name="AssignmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__Assignmen__Stude__5AEE82B9" FromRole="Assignment" ToRole="Student" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__Assignmen__TaskI__59FA5E80" FromRole="Assignment" ToRole="Task" />
+  </EntityType>
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityID" />
+    </Key>
+    <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StateID" Type="Int32" />
+    <NavigationProperty Name="State" Relationship="Self.FK__City__StateID__4E88ABD4" FromRole="City" ToRole="State" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__Student__CityID__5441852A" FromRole="City" ToRole="Student" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK__Teacher__CityID__5165187F" FromRole="City" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateID" />
+    </Key>
+    <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="City" Relationship="Self.FK__City__StateID__4E88ABD4" FromRole="State" ToRole="City" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <NavigationProperty Name="Assignment" Relationship="Self.FK__Assignmen__Stude__5AEE82B9" FromRole="Student" ToRole="Assignment" />
+    <NavigationProperty Name="City" Relationship="Self.FK__Student__CityID__5441852A" FromRole="Student" ToRole="City" />
+  </EntityType>
+  <EntityType Name="Task">
+    <Key>
+      <PropertyRef Name="TaskID" />
+    </Key>
+    <Property Name="TaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TaskName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Deadline" Type="DateTime" Precision="0" />
+    <Property Name="CreatorID" Type="Int32" />
+    <NavigationProperty Name="Assignment" Relationship="Self.FK__Assignmen__TaskI__59FA5E80" FromRole="Task" ToRole="Assignment" />
+    <NavigationProperty Name="Teacher" Relationship="Self.FK__Task__CreatorID__571DF1D5" FromRole="Task" ToRole="Teacher" />
+  </EntityType>
+  <EntityType Name="Teacher">
+    <Key>
+      <PropertyRef Name="TeacherID" />
+    </Key>
+    <Property Name="TeacherID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Address" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="StateID" Type="Int32" />
+    <Property Name="CityID" Type="Int32" />
+    <NavigationProperty Name="City" Relationship="Self.FK__Teacher__CityID__5165187F" FromRole="Teacher" ToRole="City" />
+    <NavigationProperty Name="Task" Relationship="Self.FK__Task__CreatorID__571DF1D5" FromRole="Teacher" ToRole="Task" />
+  </EntityType>
+  <Association Name="FK__Assignmen__Stude__5AEE82B9">
+    <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
+    <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="Assignment">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Assignmen__TaskI__59FA5E80">
+    <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
+    <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Task">
+        <PropertyRef Name="TaskID" />
+      </Principal>
+      <Dependent Role="Assignment">
+        <PropertyRef Name="TaskID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__City__StateID__4E88ABD4">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateID" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__CityID__5441852A">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Teacher__CityID__5165187F">
+    <End Role="City" Type="Self.City" Multiplicity="0..1" />
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityID" />
+      </Principal>
+      <Dependent Role="Teacher">
+        <PropertyRef Name="CityID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Task__CreatorID__571DF1D5">
+    <End Role="Teacher" Type="Self.Teacher" Multiplicity="0..1" />
+    <End Role="Task" Type="Self.Task" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Teacher">
+        <PropertyRef Name="TeacherID" />
+      </Principal>
+      <Dependent Role="Task">
+        <PropertyRef Name="CreatorID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TaskManagement_557Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Assignment" EntityType="Self.Assignment" />
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="State" EntityType="Self.State" />
+    <EntitySet Name="Student" EntityType="Self.Student" />
+    <EntitySet Name="Task" EntityType="Self.Task" />
+    <EntitySet Name="Teacher" EntityType="Self.Teacher" />
+    <AssociationSet Name="FK__Assignmen__Stude__5AEE82B9" Association="Self.FK__Assignmen__Stude__5AEE82B9">
+      <End Role="Student" EntitySet="Student" />
+      <End Role="Assignment" EntitySet="Assignment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Assignmen__TaskI__59FA5E80" Association="Self.FK__Assignmen__TaskI__59FA5E80">
+      <End Role="Task" EntitySet="Task" />
+      <End Role="Assignment" EntitySet="Assignment" />
+    </AssociationSet>
+    <AssociationSet Name="FK__City__StateID__4E88ABD4" Association="Self.FK__City__StateID__4E88ABD4">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__CityID__5441852A" Association="Self.FK__Student__CityID__5441852A">
+      <End Role="City" EntitySet="City" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Teacher__CityID__5165187F" Association="Self.FK__Teacher__CityID__5165187F">
+      <End Role="City" EntitySet="City" />
+      <End Role="Teacher" EntitySet="Teacher" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Task__CreatorID__571DF1D5" Association="Self.FK__Task__CreatorID__571DF1D5">
+      <End Role="Teacher" EntitySet="Teacher" />
+      <End Role="Task" EntitySet="Task" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

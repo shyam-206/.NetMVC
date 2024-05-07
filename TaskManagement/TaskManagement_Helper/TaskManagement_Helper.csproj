@@ -41,11 +41,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\CityHelper.cs" />
+    <Compile Include="Helper\StateHelper.cs" />
+    <Compile Include="Helper\StudentHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="StudentHelper\" />
-    <Folder Include="TeacherHelper\" />
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\TaskManagement_Model\TaskManagement_Model.csproj">
+      <Project>{CDFD5CEF-5C8A-4379-A9C8-A025B6B80ADB}</Project>
+      <Name>TaskManagement_Model</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Enum\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
