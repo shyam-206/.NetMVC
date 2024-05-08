@@ -26,8 +26,12 @@ namespace Taskmanagement_Repository.Service
                 int isCheckingSaveOrNot = 0;
                 Teacher teacher = new Teacher();
                 teacher = TeacherHelper.ConvertRegisterModelToTeacher(registerModel);
-                _context.Teacher.Add(teacher);
-                isCheckingSaveOrNot = _context.SaveChanges();
+                
+                if(!_context.Teacher.Any(m => m.Email == teacher.Email))
+                {
+                    _context.Teacher.Add(teacher);
+                    isCheckingSaveOrNot = _context.SaveChanges();
+                }
 
                 if (isCheckingSaveOrNot > 0)
                 {

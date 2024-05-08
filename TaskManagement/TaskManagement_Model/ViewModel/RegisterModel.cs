@@ -35,6 +35,7 @@ namespace TaskManagement_Model.ViewModel
         public string StateId { get; set; }
         [Required(ErrorMessage = "Please select City")]
         public string CityId { get; set; }
+
         [Required(ErrorMessage = "Please select your role")]
         public UserRole Role { get; set; }
     }

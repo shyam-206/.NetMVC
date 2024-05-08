@@ -1,0 +1,29 @@
+﻿
+<div class="container">
+    <h2>Assign task</h2>
+    <form class="mt-5" action="Assigntask" method="post">
+        <div class="form-group">
+            <select class="form-control" multiple="multiple" name="StudentID">
+                @foreach (var item in ViewBag.AllStudentList)
+                {
+                    <option value="@item.StudentID">@item.Username</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <select class="form-control"name="TaskID">
+                @foreach (var item in ViewBag.TaskList)
+                {
+                    <option value="@item.TaskID">@item.TaskName</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <input class="btn btn-primary" value="submit" type="submit" />
+        </div>
+
+    </form>
+</div>
+

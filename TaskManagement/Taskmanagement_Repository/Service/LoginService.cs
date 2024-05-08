@@ -18,11 +18,35 @@ namespace Taskmanagement_Repository.Service
         {
             _context = new TaskManagement_557Entities();
         }
-        public bool CheckingStudentExist(RegisterModel _loginUserModel)
+
+        public Student CheckingStudent(LoginModel loginModel)
         {
             try
             {
-                Student student = StudentHelper.ConvertRegisterModelToStudent(_loginUserModel);
+                Student student = StudentHelper.ConvertLoginModelToStudent(loginModel);
+                Student isStudent = _context.Student.FirstOrDefault(m => m.Username == student.Username && m.Password == student.Password);
+                
+                if(isStudent != null)
+                {
+                    return isStudent;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool CheckingStudentExist(LoginModel _loginUserModel)
+        {
+            try
+            {
+                Student student = StudentHelper.ConvertLoginModelToStudent(_loginUserModel);
 
                 Student isUserExist = _context.Student.FirstOrDefault(m => m.Username == student.Username && m.Password == student.Password);
 
@@ -38,11 +62,36 @@ namespace Taskmanagement_Repository.Service
             }
         }
 
-        public bool CheckingTeacherExist(RegisterModel _loginUserModel)
+        public Teacher CheckingTeacher(LoginModel loginModel)
         {
             try
             {
-                Teacher teacher = TeacherHelper.ConvertRegisterModelToTeacher(_loginUserModel);
+                Teacher teacher = TeacherHelper.ConvertLoginModelToTeacher(loginModel);
+                Teacher isTeacher = _context.Teacher.FirstOrDefault(m => m.Username == teacher.Username && m.Password == teacher.Password);
+                
+                if(isTeacher != null)
+                {
+                    return isTeacher;
+                }
+                else
+                {
+                    return null;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool CheckingTeacherExist(LoginModel _loginUserModel)
+        {
+            try
+            {
+                Teacher teacher = TeacherHelper.ConvertLoginModelToTeacher(_loginUserModel);
                 Teacher isUserExist = _context.Teacher.FirstOrDefault(m => m.Username == teacher.Username && m.Password == teacher.Password);
 
                 if (isUserExist != null)

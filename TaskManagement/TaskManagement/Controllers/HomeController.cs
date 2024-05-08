@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using TaskManagement.Session;
+using TaskManagement_Model.DBContext;
 using TaskManagement_Model.ViewModel;
 using Taskmanagement_Repository.Interface;
 using Taskmanagement_Repository.Service;
@@ -33,43 +34,47 @@ namespace TaskManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(RegisterModel _loginUserModel)
+        public ActionResult Login(LoginModel _loginUserModel)
         {
             try
             {
-                if (_loginUserModel.Role == UserRole.Student)
-                {
-                    bool isStudentUserExist = loginRepository.CheckingStudentExist(_loginUserModel);
 
-                    if (isStudentUserExist)
+                if(ModelState.IsValid)
+                {
+                    if (_loginUserModel.Role == UserRole.Student)
                     {
-                        SessionHelper.UserId = 1;
-                        SessionHelper.Username = _loginUserModel.Username;
-                        SessionHelper.UserRole = "Student";
-                        return RedirectToAction("Index", "Student");
+                        bool isStudentUserExist = loginRepository.CheckingStudentExist(_loginUserModel);
+                        Student student = loginRepository.CheckingStudent(_loginUserModel);
+                        if (isStudentUserExist && student != null)
+                        {
+                            SessionHelper.UserId = student.StudentID;
+                            SessionHelper.Username = _loginUserModel.Username;
+                            SessionHelper.UserRole = "Student";
+                            return RedirectToAction("Index", "Student");
+                        }
                     }
 
-                    return Redirect("/");
-                }
-
-                if (_loginUserModel.Role == UserRole.Teacher)
-                {
-
-                    bool isTeacherUserExist = loginRepository.CheckingTeacherExist(_loginUserModel);
-
-                    if (isTeacherUserExist)
+                    if (_loginUserModel.Role == UserRole.Teacher)
                     {
-                        SessionHelper.UserId = 1;
-                        SessionHelper.Username = _loginUserModel.Username;
-                        SessionHelper.UserRole = "Teacher";
-                        return RedirectToAction("Index","Teacher");
+
+                        bool isTeacherUserExist = loginRepository.CheckingTeacherExist(_loginUserModel);
+                        Teacher teacher = loginRepository.CheckingTeacher(_loginUserModel);
+                        if (isTeacherUserExist)
+                        {
+                            SessionHelper.UserId = teacher.TeacherID;
+                            SessionHelper.Username = teacher.Username;
+                            SessionHelper.UserRole = "Teacher";
+                            return RedirectToAction("Index", "Teacher");
+                        }
                     }
 
-                    return Redirect("/");
+                    return View(_loginUserModel);
                 }
-
-                return Redirect("/");
-
+                else
+                {
+                    return View(_loginUserModel);
+                }
+                
             }
             catch (Exception ex)
             {
@@ -97,7 +102,7 @@ namespace TaskManagement.Controllers
                         if (isCheckingSaveOrNot)
                         {
                             ModelState.Clear();
-                            return View("Login");
+                            return RedirectToAction("Login");
                         }
                     }
                     if (registerModel.Role == UserRole.Teacher)
@@ -106,14 +111,18 @@ namespace TaskManagement.Controllers
                         if (isCheckingSaveOrNot)
                         {
                             ModelState.Clear();
-                            return View("Login");
+                            return RedirectToAction("Login");
                         }
-                    }
-                    return View();
+                     }
+
+                    ModelState.AddModelError("Email", "Email is already exist");
+                    ViewBag.States = stateRepository.stateModelList();
+                    return View(registerModel);
                 }
                 else
                 {
-                    return View();
+                    ViewBag.States = stateRepository.stateModelList();
+                    return View(registerModel);
                 }
             }
             catch (Exception ex)

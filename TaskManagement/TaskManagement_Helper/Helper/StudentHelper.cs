@@ -39,5 +39,50 @@ namespace TaskManagement_Helper.Helper
             int _City_Id = Convert.ToInt32(_CityId);
             return _City_Id;
         }
+
+        public static Student ConvertLoginModelToStudent(LoginModel loginModel)
+        {
+            try
+            {
+                Student student = new Student();
+                student.Username = loginModel.Username;
+                student.Password = loginModel.Password;
+                return student;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public static List<StudentModel> ConvertStudentToStudentModel(List<Student> studentList)
+        {
+            try
+            {
+                List<StudentModel> studentModelList = new List<StudentModel>();
+                if(studentList != null)
+                {
+                    foreach(var item in studentList)
+                    {
+                        StudentModel studentModel = new StudentModel();
+                        studentModel.StudentID = item.StudentID;
+                        studentModel.Username = item.Username;
+                        studentModel.Password = item.Password;
+                        studentModel.Email = item.Email;
+                        studentModel.Address = item.Address;
+                        studentModel.CityID = item.CityID;
+                        studentModel.StateID = item.StateID;
+                        studentModelList.Add(studentModel);
+                    }
+                }
+                return studentModelList;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

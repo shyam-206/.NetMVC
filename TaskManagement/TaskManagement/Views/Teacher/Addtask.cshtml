@@ -1,0 +1,31 @@
+﻿@model TaskManagement_Model.ViewModel.TaskModel
+
+
+
+<div class="container">
+    <h2>Add Task</h2>
+    <div class="mt-5">
+        <form action="Addtask" method="post">
+           <input type="text" name="CreatorID" value="@Session["UserId"]" hidden/>
+            <div class="form-group">
+                <label for="TaskName">Task Name</label>
+                <input type="text" class="form-control" placeholder="Task Name" name="TaskName" />
+
+            </div>
+
+            <div class="form-group">
+                <label for="Description"></label>
+                <input type="text" class="form-control" placeholder="Task Description" name="Description" />
+            </div>
+
+            <div class="form-group">
+                <label for="Deadline">Deadline</label>
+                <input type="date" class="form-control" name="Deadline" />
+            </div>
+
+            <div class="form-group form-button">
+                <input type="submit" class="form-submit btn btn-secondary" value="Submit" id="signin" />
+            </div>
+        </form>
+    </div>
+</div>

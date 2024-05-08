@@ -8,10 +8,13 @@ using TaskManagement_Model.ViewModel;
 
 namespace Taskmanagement_Repository.Interface
 {
-    public interface IStudentRepository
+    public interface ITaskRepository
     {
-        bool AddStudent(RegisterModel registerModel);
+        bool AddTask(TaskModel taskModel);
+        List<StudentModel> GetAllStudentList();
 
-        List<Assignment> GetAllTaskAssignByTeacher(int StudentId);
+        List<TaskModel> GetAllTaskList();
+
+        bool AssignTask(AssignmentModel assignmentModel);
     }
 }

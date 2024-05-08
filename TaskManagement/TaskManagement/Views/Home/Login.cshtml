@@ -1,4 +1,4 @@
-﻿@model TaskManagement_Model.ViewModel.RegisterModel
+﻿@model TaskManagement_Model.ViewModel.LoginModel
 
 @{
     Layout = null;
@@ -27,6 +27,12 @@
     <!-- Main css -->
     <!--<link rel="stylesheet" href="css/style.css">-->
     <link rel="stylesheet" href="~/Content/Theme/Login/css/style.css">
+
+    <style>
+        .field-validation-error {
+            color: red;
+        }
+    </style>
 </head>
 <body>
     <div class="main">
@@ -54,10 +60,12 @@
                             <div class="form-group">
                                 <label for="Username"><i class="zmdi zmdi-account material-icons-name"></i></label>
                                 <input type="text" name="Username" id="Username" placeholder="Username" />
+                                @Html.ValidationMessageFor(m => m.Username)
                             </div>
                             <div class="form-group">
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="Password" id="your_pass" placeholder="Password" />
+                                @Html.ValidationMessageFor(m => m.Password)
                             </div>
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />

@@ -40,5 +40,21 @@ namespace TaskManagement_Helper.Helper
             int _City_Id = Convert.ToInt32(_CityId);
             return _City_Id;
         }
+
+        public static Teacher ConvertLoginModelToTeacher(LoginModel loginModel)
+        {
+            try
+            {
+                Teacher teacher = new Teacher();
+                teacher.Username = loginModel.Username;
+                teacher.Password = loginModel.Password;
+                return teacher;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

@@ -27,7 +27,7 @@ namespace Taskmanagement_Repository.Service
                 Student student = new Student();
                 student = StudentHelper.ConvertRegisterModelToStudent(registerModel);
 
-                if(_context.Student.Any(m => m.Email == student.Email))
+                if(!_context.Student.Any(m => m.Email == student.Email))
                 {
                     _context.Student.Add(student);
                     isCheckingSaveOrNot =_context.SaveChanges();
@@ -47,6 +47,23 @@ namespace Taskmanagement_Repository.Service
             {
 
                 throw ex;
+            }
+        }
+
+        public List<Assignment> GetAllTaskAssignByTeacher(int StudentId)
+        {
+            try
+            {
+                List<TaskModel> taskModels = new List<TaskModel>();
+                Student student = new Student();
+                student = _context.Student.FirstOrDefault(m => m.StudentID == StudentId);
+                List<Assignment> assignmentList = _context.Assignment.Where(m => m.StudentID == student.StudentID).ToList();
+                return assignmentList;
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

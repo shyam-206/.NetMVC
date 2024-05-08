@@ -1,0 +1,25 @@
+﻿@model List<TaskManagement_Model.DBContext.Assignment>
+
+<div class="container">
+    
+    @Session["UserId"]
+
+    <table class="table">
+        <thead>
+            <td>Task Name</td>
+            <td>Task Description</td>
+            <td>Deadline</td>
+        </thead>
+
+        <tbody>
+            @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Task.TaskName</td>
+                    <td>@item.Task.Description</td>
+                    <td>@item.Task.Deadline</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
