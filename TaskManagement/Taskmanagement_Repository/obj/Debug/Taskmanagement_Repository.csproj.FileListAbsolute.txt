@@ -32,3 +32,20 @@ C:\Shyam\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Re
 C:\Shyam\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.csproj.CopyComplete
 C:\Shyam\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.dll
 C:\Shyam\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.pdb
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\Taskmanagement_Repository.dll.config
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\Taskmanagement_Repository.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\Taskmanagement_Repository.pdb
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Helper.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Model.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Helper.pdb
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Model.pdb
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Model.dll.config
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.csproj.CopyComplete
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.pdb

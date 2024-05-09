@@ -15,5 +15,11 @@ namespace Taskmanagement_Repository.Interface
         List<Assignment> GetAllTaskAssignByTeacher(int StudentId);
 
         bool AssignmentStatusUpdate(int id);
+
+        int GetTaskAssignByTeacherCount(int studentId);
+
+        int GetCompleteTaskCount(int studentId);
+
+        int GetPendingTaskCount(int studentId);
     }
 }

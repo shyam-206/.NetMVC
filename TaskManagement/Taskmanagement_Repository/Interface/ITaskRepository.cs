@@ -18,8 +18,11 @@ namespace Taskmanagement_Repository.Interface
         bool AssignTask(AssignmentModel assignmentModel);
         int GetTotaTaskCount(int teacherId);
 
-        int GetAllAssignTask(int teacherId);
+        int GetAllAssignTaskCount(int teacherId);
 
-        int CompletedTask(int teacherId);
+        int CompletedTaskCount(int teacherId);
+
+        int PendingTaskCount(int teacherId);
+
     }
 }

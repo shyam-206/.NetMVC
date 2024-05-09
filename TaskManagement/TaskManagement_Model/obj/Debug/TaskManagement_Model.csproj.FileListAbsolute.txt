@@ -22,3 +22,15 @@ C:\Shyam\C#\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.c
 C:\Shyam\C#\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.csproj.CopyComplete
 C:\Shyam\C#\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.dll
 C:\Shyam\C#\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.pdb
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\bin\Debug\TaskManagement_Model.dll.config
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\bin\Debug\TaskManagement_Model.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\bin\Debug\TaskManagement_Model.pdb
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.csproj.CopyComplete
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.dll
+C:\Users\admin\Desktop\Task .net\.NetMVC\TaskManagement\TaskManagement_Model\obj\Debug\TaskManagement_Model.pdb

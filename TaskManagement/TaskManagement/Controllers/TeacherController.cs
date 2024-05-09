@@ -27,15 +27,15 @@ namespace TaskManagement.Controllers
             {
                 int teacherId = SessionHelper.UserId;
                 ViewBag.TotalTaskCount = taskRepository.GetTotaTaskCount(teacherId);
-                ViewBag.AssignTaskCount = taskRepository.GetAllAssignTask(teacherId);
-                ViewBag.CompletedTaskCount = taskRepository.CompletedTask(teacherId);
-                ViewBag.PendingTaskCount = taskRepository.GetAllAssignTask(teacherId) - taskRepository.CompletedTask(teacherId);
+                ViewBag.AssignTaskCount = taskRepository.GetAllAssignTaskCount(teacherId);
+                ViewBag.CompletedTaskCount = taskRepository.CompletedTaskCount(teacherId);
+                ViewBag.PendingTaskCount = taskRepository.PendingTaskCount(teacherId);
                 return View();
             }
             catch (Exception ex)
             {
 
-                throw ex;
+                    throw ex;
             }
         }
 

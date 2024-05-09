@@ -26,8 +26,10 @@ namespace TaskManagement.Controllers
             try
             {
                 int studentId = SessionHelper.UserId;
-                List<Assignment> assignments = studentRepository.GetAllTaskAssignByTeacher(studentId);
-                ViewBag.TotalAssignmentCount = assignments.Count();
+
+                ViewBag.TotalAssignmentCount = studentRepository.GetTaskAssignByTeacherCount(studentId);
+                ViewBag.CompleteAssignMentCount = studentRepository.GetCompleteTaskCount(studentId);
+                ViewBag.PendingAssignmentCount = studentRepository.GetPendingTaskCount(studentId);
                 return View();
             }
             catch (Exception ex)

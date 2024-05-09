@@ -99,5 +99,70 @@ namespace Taskmanagement_Repository.Service
                 throw;
             }
         }
+
+        public int GetCompleteTaskCount(int studentId)
+        {
+            try
+            {
+                int completeTaskCount = 0;
+                List<Assignment> CompleteAssignmentList = new List<Assignment>();
+                CompleteAssignmentList = _context.Assignment.Where(m => m.StudentID == studentId && m.Status == true).ToList();
+
+                if(CompleteAssignmentList != null)
+                {
+                    completeTaskCount = CompleteAssignmentList.Count();
+                }
+
+                return completeTaskCount;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex; 
+            }
+        }
+
+        public int GetPendingTaskCount(int studentId)
+        {
+            try
+            {
+                int pendingTaskCount = 0;
+                List<Assignment> pendingAssignmentList = new List<Assignment>();
+                pendingAssignmentList = _context.Assignment.Where(m => m.StudentID == studentId && m.Status == false).ToList();
+
+                if (pendingAssignmentList != null)
+                {
+                    pendingTaskCount = pendingAssignmentList.Count();
+                }
+
+                return pendingTaskCount;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public int GetTaskAssignByTeacherCount(int StudentId)
+        {
+            try
+            {
+                int TotalAssignTaskCount = 0;
+                List<Assignment> assignments = new List<Assignment>();
+                assignments = _context.Assignment.Where(m => m.StudentID == StudentId).ToList();
+
+                if(assignments != null)
+                {
+                    TotalAssignTaskCount = assignments.Count();
+                }
+
+                return TotalAssignTaskCount;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }         
+        }
     }
 }
