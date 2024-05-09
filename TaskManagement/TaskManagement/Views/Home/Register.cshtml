@@ -90,7 +90,7 @@
 
                                 </select>
                                 <span id="StatIdSpanTag"></span>
-                                @Html.ValidationMessageFor(m => m.StateId)
+                                
                             </div>
                             <div class="form-group">
                                 <select name="CityId" id="CityID" class="form-select" aria-label="Default select example" required>
@@ -122,13 +122,13 @@
       
     <script>
         $document.ready(function () {
-            var value = $('#StateId').val();
+            var StateId = document.getElementById('StateId').value;
             var Spantag = document.getElementById('StatIdSpanTag');
-            if (value == "Select") {
-                Spantag.innerHTML = "Please Select Staet";
+            if (StateId == "Select") {
+                Spantag.innerText = "Please Select Staet";
             }
             else {
-                Spantag.innerHTML = "";
+                Spantag.innerText = "";
             }
         })
     </script>
