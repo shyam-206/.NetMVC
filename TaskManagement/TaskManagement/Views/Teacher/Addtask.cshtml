@@ -10,17 +10,19 @@
             <div class="form-group">
                 <label for="TaskName">Task Name</label>
                 <input type="text" class="form-control" placeholder="Task Name" name="TaskName" />
-
+                @Html.ValidationMessageFor(m => m.TaskName)
             </div>
 
             <div class="form-group">
                 <label for="Description"></label>
                 <input type="text" class="form-control" placeholder="Task Description" name="Description" />
+                @Html.ValidationMessageFor(m => m.Description)
             </div>
 
             <div class="form-group">
                 <label for="Deadline">Deadline</label>
                 <input type="date" class="form-control" name="Deadline" />
+                @Html.ValidationMessageFor(m => m.Deadline)
             </div>
 
             <div class="form-group form-button">

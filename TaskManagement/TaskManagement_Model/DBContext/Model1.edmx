@@ -12,6 +12,7 @@
           <Property Name="AssignmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaskID" Type="int" />
           <Property Name="StudentID" Type="int" />
+          <Property Name="Status" Type="bit" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -64,7 +65,7 @@
           <Property Name="StateID" Type="int" />
           <Property Name="CityID" Type="int" />
         </EntityType>
-        <Association Name="FK__Assignmen__Stude__5AEE82B9">
+        <Association Name="FK__Assignmen__Stude__628FA481">
           <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
           <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -76,7 +77,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Assignmen__TaskI__59FA5E80">
+        <Association Name="FK__Assignmen__TaskI__619B8048">
           <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
           <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -143,11 +144,11 @@
           <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__Assignmen__Stude__5AEE82B9" Association="Self.FK__Assignmen__Stude__5AEE82B9">
+          <AssociationSet Name="FK__Assignmen__Stude__628FA481" Association="Self.FK__Assignmen__Stude__628FA481">
             <End Role="Student" EntitySet="Student" />
             <End Role="Assignment" EntitySet="Assignment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Assignmen__TaskI__59FA5E80" Association="Self.FK__Assignmen__TaskI__59FA5E80">
+          <AssociationSet Name="FK__Assignmen__TaskI__619B8048" Association="Self.FK__Assignmen__TaskI__619B8048">
             <End Role="Task" EntitySet="Task" />
             <End Role="Assignment" EntitySet="Assignment" />
           </AssociationSet>
@@ -180,8 +181,9 @@
           <Property Name="AssignmentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="TaskID" Type="Int32" />
           <Property Name="StudentID" Type="Int32" />
-          <NavigationProperty Name="Student" Relationship="Self.FK__Assignmen__Stude__5AEE82B9" FromRole="Assignment" ToRole="Student" />
-          <NavigationProperty Name="Task" Relationship="Self.FK__Assignmen__TaskI__59FA5E80" FromRole="Assignment" ToRole="Task" />
+          <Property Name="Status" Type="Boolean" />
+          <NavigationProperty Name="Student" Relationship="Self.FK__Assignmen__Stude__628FA481" FromRole="Assignment" ToRole="Student" />
+          <NavigationProperty Name="Task" Relationship="Self.FK__Assignmen__TaskI__619B8048" FromRole="Assignment" ToRole="Task" />
         </EntityType>
         <EntityType Name="City">
           <Key>
@@ -214,7 +216,7 @@
           <Property Name="ContactNumber" Type="String" MaxLength="20" FixedLength="false" Unicode="false" Nullable="false" />
           <Property Name="StateID" Type="Int32" />
           <Property Name="CityID" Type="Int32" />
-          <NavigationProperty Name="Assignment" Relationship="Self.FK__Assignmen__Stude__5AEE82B9" FromRole="Student" ToRole="Assignment" />
+          <NavigationProperty Name="Assignment" Relationship="Self.FK__Assignmen__Stude__628FA481" FromRole="Student" ToRole="Assignment" />
           <NavigationProperty Name="City" Relationship="Self.FK__Student__CityID__5441852A" FromRole="Student" ToRole="City" />
         </EntityType>
         <EntityType Name="Task">
@@ -226,7 +228,7 @@
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="Deadline" Type="DateTime" Precision="0" />
           <Property Name="CreatorID" Type="Int32" />
-          <NavigationProperty Name="Assignment" Relationship="Self.FK__Assignmen__TaskI__59FA5E80" FromRole="Task" ToRole="Assignment" />
+          <NavigationProperty Name="Assignment" Relationship="Self.FK__Assignmen__TaskI__619B8048" FromRole="Task" ToRole="Assignment" />
           <NavigationProperty Name="Teacher" Relationship="Self.FK__Task__CreatorID__571DF1D5" FromRole="Task" ToRole="Teacher" />
         </EntityType>
         <EntityType Name="Teacher">
@@ -244,7 +246,7 @@
           <NavigationProperty Name="City" Relationship="Self.FK__Teacher__CityID__5165187F" FromRole="Teacher" ToRole="City" />
           <NavigationProperty Name="Task" Relationship="Self.FK__Task__CreatorID__571DF1D5" FromRole="Teacher" ToRole="Task" />
         </EntityType>
-        <Association Name="FK__Assignmen__Stude__5AEE82B9">
+        <Association Name="FK__Assignmen__Stude__628FA481">
           <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
           <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -256,7 +258,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Assignmen__TaskI__59FA5E80">
+        <Association Name="FK__Assignmen__TaskI__619B8048">
           <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
           <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
           <ReferentialConstraint>
@@ -323,11 +325,11 @@
           <EntitySet Name="Student" EntityType="Self.Student" />
           <EntitySet Name="Task" EntityType="Self.Task" />
           <EntitySet Name="Teacher" EntityType="Self.Teacher" />
-          <AssociationSet Name="FK__Assignmen__Stude__5AEE82B9" Association="Self.FK__Assignmen__Stude__5AEE82B9">
+          <AssociationSet Name="FK__Assignmen__Stude__628FA481" Association="Self.FK__Assignmen__Stude__628FA481">
             <End Role="Student" EntitySet="Student" />
             <End Role="Assignment" EntitySet="Assignment" />
           </AssociationSet>
-          <AssociationSet Name="FK__Assignmen__TaskI__59FA5E80" Association="Self.FK__Assignmen__TaskI__59FA5E80">
+          <AssociationSet Name="FK__Assignmen__TaskI__619B8048" Association="Self.FK__Assignmen__TaskI__619B8048">
             <End Role="Task" EntitySet="Task" />
             <End Role="Assignment" EntitySet="Assignment" />
           </AssociationSet>
@@ -360,6 +362,7 @@
                 <ScalarProperty Name="AssignmentID" ColumnName="AssignmentID" />
                 <ScalarProperty Name="TaskID" ColumnName="TaskID" />
                 <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

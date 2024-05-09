@@ -23,13 +23,25 @@ namespace TaskManagement.Controllers
         // GET: Student
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                int studentId = SessionHelper.UserId;
+                List<Assignment> assignments = studentRepository.GetAllTaskAssignByTeacher(studentId);
+                ViewBag.TotalAssignmentCount = assignments.Count();
+                return View();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public ActionResult Assignment()
         {
             try
             {
+
                 int studentId = SessionHelper.UserId;
                 List<Assignment> assignments = studentRepository.GetAllTaskAssignByTeacher(studentId);
                 return View(assignments);
@@ -41,5 +53,18 @@ namespace TaskManagement.Controllers
             }
         }
 
+        public ActionResult SetAssignmentStatus(int id)
+        {
+
+            bool setStatus = studentRepository.AssignmentStatusUpdate(id);
+
+            if (setStatus)
+            {
+                TempData["CompleteTask"] = "Task is Completed";
+                return RedirectToAction("Assignment", "Student");
+            }
+
+            return RedirectToAction("Assignment");
+        }
     }
 }

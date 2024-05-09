@@ -13,8 +13,13 @@ namespace Taskmanagement_Repository.Interface
         bool AddTask(TaskModel taskModel);
         List<StudentModel> GetAllStudentList();
 
-        List<TaskModel> GetAllTaskList();
+        List<TaskModel> GetAllTaskList(int teacherId);
 
         bool AssignTask(AssignmentModel assignmentModel);
+        int GetTotaTaskCount(int teacherId);
+
+        int GetAllAssignTask(int teacherId);
+
+        int CompletedTask(int teacherId);
     }
 }

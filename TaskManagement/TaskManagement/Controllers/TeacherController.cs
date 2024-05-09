@@ -23,7 +23,20 @@ namespace TaskManagement.Controllers
         // GET: Teacher
         public ActionResult Index()
         {
-            return View();
+            try
+            {
+                int teacherId = SessionHelper.UserId;
+                ViewBag.TotalTaskCount = taskRepository.GetTotaTaskCount(teacherId);
+                ViewBag.AssignTaskCount = taskRepository.GetAllAssignTask(teacherId);
+                ViewBag.CompletedTaskCount = taskRepository.CompletedTask(teacherId);
+                ViewBag.PendingTaskCount = taskRepository.GetAllAssignTask(teacherId) - taskRepository.CompletedTask(teacherId);
+                return View();
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         [HttpGet]
@@ -38,12 +51,15 @@ namespace TaskManagement.Controllers
         {
             try
             {
-                bool isCheckingSaveOrNot = taskRepository.AddTask(taskModel);
-                if (isCheckingSaveOrNot)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index","Teacher");
+                    bool isCheckingSaveOrNot = taskRepository.AddTask(taskModel);
+                    if (isCheckingSaveOrNot)
+                    {
+                        TempData["Addtask"] = "New Task Added";
+                        return RedirectToAction("Index", "Teacher");
+                    }
                 }
-
                 return View(taskModel);
             }
             catch (Exception ex)
@@ -57,10 +73,20 @@ namespace TaskManagement.Controllers
 
         public ActionResult Assigntask()
         {
-            ViewBag.AllStudentList = taskRepository.GetAllStudentList();
-            ViewBag.TaskList = taskRepository.GetAllTaskList();
-
-            return View();
+            try
+            {
+                int teacherId = SessionHelper.UserId;
+                List<TaskModel> taskModelList = new List<TaskModel>();
+                
+                ViewBag.AllStudentList = taskRepository.GetAllStudentList();
+                ViewBag.TaskList = taskRepository.GetAllTaskList(teacherId);
+                return View();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
         }
 
         [HttpPost]
@@ -68,12 +94,17 @@ namespace TaskManagement.Controllers
         {
             try
             {
-                bool isCheckSave = taskRepository.AssignTask(assignmentModel);
-                if (isCheckSave)
+                if (ModelState.IsValid)
                 {
-                    return RedirectToAction("Index");
+                    bool isCheckSave = taskRepository.AssignTask(assignmentModel);
+                    if (isCheckSave)
+                    {
+                        TempData["Assgintask"] = "Task is Assign to Student";
+                        return RedirectToAction("Index");
+                    }
                 }
-                return View();
+                
+                return View(assignmentModel);
             }
             catch (Exception ex)
             {

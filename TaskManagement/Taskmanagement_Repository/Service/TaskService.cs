@@ -55,6 +55,7 @@ namespace Taskmanagement_Repository.Service
                 {
                     int isCheckingSaveOrNot = 0;
                     assignment.StudentID = ConvertStringToInt(item);
+                    assignment.Status = Convert.ToBoolean(0);
                     _context.Assignment.Add(assignment);
                     isCheckingSaveOrNot = _context.SaveChanges();
 
@@ -103,15 +104,77 @@ namespace Taskmanagement_Repository.Service
             }
         }
 
-        public List<TaskModel> GetAllTaskList()
+        public List<TaskModel> GetAllTaskList(int teacherId)
         {
             try
             {
                 List<TaskModel> taskModelList = new List<TaskModel>();
-                List<Task> taskList = _context.Task.ToList();
+                List<Task> taskList = _context.Task.Where(m => m.CreatorID == teacherId).ToList();
 
                 taskModelList = TaskHelper.ConvertTaskToTaskModel(taskList);
                 return taskModelList;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public int GetTotaTaskCount(int teacherId)
+        {
+            try
+            {
+                int count = 0;
+                List<Task> taskList = _context.Task.Where(m => m.CreatorID == teacherId).ToList();
+                if(taskList != null)
+                {
+                    count = taskList.Count();
+                }
+                return count;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public int GetAllAssignTask(int teacherId)
+        {
+            try
+            {
+                int count = 0;
+                List<Assignment> assignTaskList = _context.Assignment.Where(m => m.Task.CreatorID == teacherId).ToList();
+
+                if(assignTaskList != null)
+                {
+                    count = assignTaskList.Count();
+                }
+                return count;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public int CompletedTask(int teacherId)
+        {
+            try
+            {
+                int count = 0;
+                //true mean they will submit task
+                List<Assignment> assignTaskList = _context.Assignment.Where(m => m.Task.CreatorID == teacherId && m.Status == true).ToList();
+
+                if (assignTaskList != null)
+                {
+                    count = assignTaskList.Count();
+                }
+                return count;
+
             }
             catch (Exception ex)
             {

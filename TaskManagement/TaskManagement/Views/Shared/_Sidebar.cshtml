@@ -8,22 +8,21 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Task Management<sup>2</sup></div>
     </a>
 
-    <!-- Divider -->
-    <!-- Nav Item - Dashboard -->
-    <li class="nav-item active">
-        <a class="nav-link" href="index.html">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span>
-        </a>
-    </li>
+
 
     <!-- Divider -->
     <!-- Nav Item - Pages Collapse Menu -->
     @if (SessionHelper.UserRole == "Teacher")
     {
+        <li class="nav-item active">
+            <a class="nav-link" href="Index">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
 
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -42,6 +41,12 @@
 
     @if (SessionHelper.UserRole == "Student")
     {
+        <li class="nav-item active">
+            <a class="nav-link" href="Index">
+                <i class="fas fa-fw fa-tachometer-alt"></i>
+                <span>Dashboard</span>
+            </a>
+        </li>
         <!-- Nav Item - Utilities Collapse Menu -->
         <li class="nav-item">
             <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"

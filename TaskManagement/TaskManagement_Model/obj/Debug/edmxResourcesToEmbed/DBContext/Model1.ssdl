@@ -7,6 +7,7 @@
     <Property Name="AssignmentID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TaskID" Type="int" />
     <Property Name="StudentID" Type="int" />
+    <Property Name="Status" Type="bit" />
   </EntityType>
   <EntityType Name="City">
     <Key>
@@ -59,7 +60,7 @@
     <Property Name="StateID" Type="int" />
     <Property Name="CityID" Type="int" />
   </EntityType>
-  <Association Name="FK__Assignmen__Stude__5AEE82B9">
+  <Association Name="FK__Assignmen__Stude__628FA481">
     <End Role="Student" Type="Self.Student" Multiplicity="0..1" />
     <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -71,7 +72,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Assignmen__TaskI__59FA5E80">
+  <Association Name="FK__Assignmen__TaskI__619B8048">
     <End Role="Task" Type="Self.Task" Multiplicity="0..1" />
     <End Role="Assignment" Type="Self.Assignment" Multiplicity="*" />
     <ReferentialConstraint>
@@ -138,11 +139,11 @@
     <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Task" EntityType="Self.Task" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Teacher" EntityType="Self.Teacher" Schema="dbo" store:Type="Tables" />
-    <AssociationSet Name="FK__Assignmen__Stude__5AEE82B9" Association="Self.FK__Assignmen__Stude__5AEE82B9">
+    <AssociationSet Name="FK__Assignmen__Stude__628FA481" Association="Self.FK__Assignmen__Stude__628FA481">
       <End Role="Student" EntitySet="Student" />
       <End Role="Assignment" EntitySet="Assignment" />
     </AssociationSet>
-    <AssociationSet Name="FK__Assignmen__TaskI__59FA5E80" Association="Self.FK__Assignmen__TaskI__59FA5E80">
+    <AssociationSet Name="FK__Assignmen__TaskI__619B8048" Association="Self.FK__Assignmen__TaskI__619B8048">
       <End Role="Task" EntitySet="Task" />
       <End Role="Assignment" EntitySet="Assignment" />
     </AssociationSet>

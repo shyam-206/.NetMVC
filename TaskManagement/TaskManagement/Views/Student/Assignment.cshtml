@@ -1,23 +1,61 @@
 ﻿@model List<TaskManagement_Model.DBContext.Assignment>
+@using TaskManagement.Session;
 
-<div class="container">
-    
-    @Session["UserId"]
 
-    <table class="table">
+@if (@TempData["StudentLogin"] != null)
+{
+    <script>
+        toastr.success('@TempData["StudentLogin"]')
+    </script>
+}
+
+
+
+@if (@TempData["CompleteTask"] != null)
+{
+    <script>
+        toastr.success('@TempData["CompleteTask"]')
+    </script>
+}
+
+
+<div class="container-fluid mt-5">
+
+    <input type="text" value="@SessionHelper.UserId" hidden />
+
+    <table class="table table-striped table-bordered">
         <thead>
-            <td>Task Name</td>
-            <td>Task Description</td>
-            <td>Deadline</td>
+            <tr>
+                <td>Task Name</td>
+                <td>Task Description</td>
+                <td>Deadline</td>
+                <td>Teacher Name</td>
+                <td>Status</td>
+            </tr>
         </thead>
-
         <tbody>
-            @foreach(var item in Model)
+            @foreach (var item in Model)
             {
                 <tr>
                     <td>@item.Task.TaskName</td>
                     <td>@item.Task.Description</td>
                     <td>@item.Task.Deadline</td>
+                    <td>@item.Task.Teacher.Username</td>
+                    <td>
+
+                        @if (item.Status == false)
+                        {
+                            <div>
+                                <a class="text-danger" href="~/Student/SetAssignmentStatus?id=@item.AssignmentID">Please Submit</a>
+                            </div>
+                        }
+                        else
+                        {
+                             <div class="text-success">Already Completed</div>
+                        }
+
+
+                    </td>
                 </tr>
             }
         </tbody>

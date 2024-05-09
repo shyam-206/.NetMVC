@@ -50,6 +50,7 @@ namespace TaskManagement.Controllers
                             SessionHelper.UserId = student.StudentID;
                             SessionHelper.Username = _loginUserModel.Username;
                             SessionHelper.UserRole = "Student";
+                            TempData["StudentLogin"] = "Student is login successfully";
                             return RedirectToAction("Index", "Student");
                         }
                     }
@@ -64,6 +65,7 @@ namespace TaskManagement.Controllers
                             SessionHelper.UserId = teacher.TeacherID;
                             SessionHelper.Username = teacher.Username;
                             SessionHelper.UserRole = "Teacher";
+                            TempData["TeacherLogin"] = "Teacher is login successfully";
                             return RedirectToAction("Index", "Teacher");
                         }
                     }
@@ -102,6 +104,7 @@ namespace TaskManagement.Controllers
                         if (isCheckingSaveOrNot)
                         {
                             ModelState.Clear();
+                            TempData["StudentRegister"] = "Student Register Successfully";
                             return RedirectToAction("Login");
                         }
                     }
@@ -111,6 +114,7 @@ namespace TaskManagement.Controllers
                         if (isCheckingSaveOrNot)
                         {
                             ModelState.Clear();
+                            TempData["TeacherRegister"] = "Teacher Register Successfully";
                             return RedirectToAction("Login");
                         }
                      }
@@ -136,6 +140,7 @@ namespace TaskManagement.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
+            TempData["Logout"] = "Logout Successfully";
             return Redirect("/");
         }
         public JsonResult CitiesByState(int id)

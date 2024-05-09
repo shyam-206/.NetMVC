@@ -1,23 +1,28 @@
-﻿
+﻿@model TaskManagement_Model.ViewModel.AssignmentModel
+
 <div class="container">
     <h2>Assign task</h2>
     <form class="mt-5" action="Assigntask" method="post">
         <div class="form-group">
-            <select class="form-control" multiple="multiple" name="StudentID">
+            <select class="form-control" multiple="multiple" name="StudentID" required>
                 @foreach (var item in ViewBag.AllStudentList)
                 {
                     <option value="@item.StudentID">@item.Username</option>
                 }
             </select>
+            
+            @Html.ValidationMessageFor(m => m.StudentID)
         </div>
 
         <div class="form-group">
-            <select class="form-control"name="TaskID">
+            <select class="form-control" name="TaskID" required>
                 @foreach (var item in ViewBag.TaskList)
                 {
                     <option value="@item.TaskID">@item.TaskName</option>
                 }
             </select>
+
+            @Html.ValidationMessageFor(m => m.TaskID)
         </div>
 
         <div class="form-group">

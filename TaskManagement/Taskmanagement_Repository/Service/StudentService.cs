@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,13 +28,13 @@ namespace Taskmanagement_Repository.Service
                 Student student = new Student();
                 student = StudentHelper.ConvertRegisterModelToStudent(registerModel);
 
-                if(!_context.Student.Any(m => m.Email == student.Email))
+                if (!_context.Student.Any(m => m.Email == student.Email))
                 {
                     _context.Student.Add(student);
-                    isCheckingSaveOrNot =_context.SaveChanges();
+                    isCheckingSaveOrNot = _context.SaveChanges();
                 }
 
-                if(isCheckingSaveOrNot > 0)
+                if (isCheckingSaveOrNot > 0)
                 {
                     return true;
                 }
@@ -42,6 +43,38 @@ namespace Taskmanagement_Repository.Service
                     return false;
                 }
 
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool AssignmentStatusUpdate(int id)
+        {
+            try
+            {
+                Assignment assignments = new Assignment();
+                assignments = _context.Assignment.FirstOrDefault(m => m.AssignmentID == id);
+
+                int isUpdateSaveOrNot = 0;
+                if(assignments.Status != Convert.ToBoolean(1))
+                {
+                    assignments.Status = Convert.ToBoolean(1);
+                    _context.Entry(assignments).State = EntityState.Modified;
+                    isUpdateSaveOrNot = _context.SaveChanges();
+                }
+
+                if(isUpdateSaveOrNot > 0)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
+                
             }
             catch (Exception ex)
             {

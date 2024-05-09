@@ -13,5 +13,7 @@ namespace Taskmanagement_Repository.Interface
         bool AddStudent(RegisterModel registerModel);
 
         List<Assignment> GetAllTaskAssignByTeacher(int StudentId);
+
+        bool AssignmentStatusUpdate(int id);
     }
 }

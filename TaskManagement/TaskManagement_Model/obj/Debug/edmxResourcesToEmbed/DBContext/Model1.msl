@@ -7,6 +7,7 @@
           <ScalarProperty Name="AssignmentID" ColumnName="AssignmentID" />
           <ScalarProperty Name="TaskID" ColumnName="TaskID" />
           <ScalarProperty Name="StudentID" ColumnName="StudentID" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
