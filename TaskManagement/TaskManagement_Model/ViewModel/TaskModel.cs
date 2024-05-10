@@ -12,6 +12,8 @@ namespace TaskManagement_Model.ViewModel
     {
         public int TaskID { get; set; }
         [Required(ErrorMessage = "Please Give Task name")]
+        [MinLength(5,ErrorMessage = "Please provide a task name length 5")]
+        [MaxLength(15, ErrorMessage = "Task name length is not more than 15")]
         public string TaskName { get; set; }
         [Required(ErrorMessage = "Please provide a description")]
         public string Description { get; set; }

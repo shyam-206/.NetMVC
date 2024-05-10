@@ -17,6 +17,7 @@ namespace TaskManagement
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             UnityConfig.RegisterComponents();
+            DefaultModelBinder.ResourceClassKey = "Messages";
         }
     }
 }

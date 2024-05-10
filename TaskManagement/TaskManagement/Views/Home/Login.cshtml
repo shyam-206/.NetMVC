@@ -64,6 +64,14 @@
         </script>
     }
 
+    @if (@TempData["LoginError"] != null)
+    {
+        <script>
+            toastr.error('@TempData["LoginError"]');
+        </script>
+    }
+
+
 
     <div class="main">
 

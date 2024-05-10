@@ -12,6 +12,7 @@ using Taskmanagement_Repository.Service;
 namespace TaskManagement.Controllers
 {
     [CustomAuthorization]
+    [CustomErrorMessage]
     public class TeacherController : Controller
     {
         private readonly ITaskRepository taskRepository;
@@ -89,6 +90,20 @@ namespace TaskManagement.Controllers
             
         }
 
+        public ActionResult Tasklist()
+        {
+            try
+            {
+                List<TaskModel> taskModelList = taskRepository.GetAllTaskList(SessionHelper.UserId);
+                return View(taskModelList);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         [HttpPost]
         public ActionResult Assigntask(AssignmentModel assignmentModel)
         {
@@ -103,7 +118,9 @@ namespace TaskManagement.Controllers
                         return RedirectToAction("Index");
                     }
                 }
-                
+                int teacherId = SessionHelper.UserId;
+                ViewBag.AllStudentList = taskRepository.GetAllStudentList();
+                ViewBag.TaskList = taskRepository.GetAllTaskList(teacherId);
                 return View(assignmentModel);
             }
             catch (Exception ex)
@@ -111,6 +128,10 @@ namespace TaskManagement.Controllers
 
                 throw ex;
             }
+        }
+        public ActionResult PageNotFound()
+        {
+            return View("Error");
         }
     }
 }

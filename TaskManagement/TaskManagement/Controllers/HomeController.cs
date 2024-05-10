@@ -53,6 +53,7 @@ namespace TaskManagement.Controllers
                             TempData["StudentLogin"] = "Student is login successfully";
                             return RedirectToAction("Index", "Student");
                         }
+                       
                     }
 
                     if (_loginUserModel.Role == UserRole.Teacher)
@@ -70,10 +71,12 @@ namespace TaskManagement.Controllers
                         }
                     }
 
+                    TempData["LoginError"] = "Username or Password Invalid";
                     return View(_loginUserModel);
                 }
                 else
                 {
+                    TempData["LoginError"] = "Something Went Wrong";
                     return View(_loginUserModel);
                 }
                 
@@ -92,6 +95,8 @@ namespace TaskManagement.Controllers
         }
 
         [HttpPost]
+        
+
         public ActionResult Register(RegisterModel registerModel)
         {
             try

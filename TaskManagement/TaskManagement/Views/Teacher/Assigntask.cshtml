@@ -4,18 +4,22 @@
     <h2>Assign task</h2>
     <form class="mt-5" action="Assigntask" method="post">
         <div class="form-group">
-            <select class="form-control" multiple="multiple" name="StudentID" required>
+            <select class="form-control choices-multiple" name="StudentID" multiple>
                 @foreach (var item in ViewBag.AllStudentList)
                 {
                     <option value="@item.StudentID">@item.Username</option>
                 }
             </select>
-            
+
             @Html.ValidationMessageFor(m => m.StudentID)
         </div>
 
+
+
+
         <div class="form-group">
-            <select class="form-control" name="TaskID" required>
+            <select class="form-control" name="TaskID">
+                <option value="" selected>Select Task</option>
                 @foreach (var item in ViewBag.TaskList)
                 {
                     <option value="@item.TaskID">@item.TaskName</option>
@@ -32,3 +36,7 @@
     </form>
 </div>
 
+
+<script>
+    new Choices(document.querySelector(".choices-multiple"));
+</script>

@@ -39,19 +39,27 @@
                 <tr>
                     <td>@item.Task.TaskName</td>
                     <td>@item.Task.Description</td>
-                    <td>@item.Task.Deadline</td>
+                    <td>@item.Task.Deadline.ToString().Split(' ')[0]</td>
                     <td>@item.Task.Teacher.Username</td>
                     <td>
 
                         @if (item.Status == false)
                         {
-                            <div>
-                                <a class="text-danger" href="~/Student/SetAssignmentStatus?id=@item.AssignmentID">Please Submit</a>
-                            </div>
+                            if (item.Task.Deadline > DateTime.Now)
+                            {
+                                <div>
+                                    <a class="btn btn-warning btn-sm" href="~/Student/SetAssignmentStatus?id=@item.AssignmentID">Please Submit</a>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="btn btn-danger btn-sm" disabled>Deadline Over</div>
+                            }
+
                         }
                         else
                         {
-                             <div class="text-success">Already Completed</div>
+                            <div class="btn btn-success btn-sm">Already Completed</div>
                         }
 
 
@@ -60,4 +68,8 @@
             }
         </tbody>
     </table>
+
+
+
+
 </div>

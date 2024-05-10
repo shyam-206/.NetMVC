@@ -2,7 +2,7 @@
 
 
 
-<div class="container">
+<div class="container-fluid">
     <h2>Add Task</h2>
     <div class="mt-5">
         <form action="Addtask" method="post">
@@ -21,7 +21,7 @@
 
             <div class="form-group">
                 <label for="Deadline">Deadline</label>
-                <input type="date" class="form-control" name="Deadline" />
+                <input type="date" class="form-control" name="Deadline" id="deadline" />
                 @Html.ValidationMessageFor(m => m.Deadline)
             </div>
 
@@ -31,3 +31,16 @@
         </form>
     </div>
 </div>
+
+<script>
+    // Get today's date
+    var today = new Date();
+
+    // Format today's date to YYYY-MM-DD
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); // January is 0!
+    var yyyy = today.getFullYear();
+
+    // Set the input field's min attribute to today's date
+    document.getElementById("deadline").min = yyyy + '-' + mm + '-' + dd;
+</script>

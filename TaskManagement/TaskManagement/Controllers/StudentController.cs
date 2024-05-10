@@ -12,6 +12,7 @@ using TaskManagement_Model.DBContext;
 namespace TaskManagement.Controllers
 {
     [CustomAuthorization]
+    
     public class StudentController : Controller
     {
         private readonly IStudentRepository studentRepository;
@@ -67,6 +68,11 @@ namespace TaskManagement.Controllers
             }
 
             return RedirectToAction("Assignment");
+        }
+
+        public ActionResult PageNotFound()
+        {
+            return View("Error");
         }
     }
 }

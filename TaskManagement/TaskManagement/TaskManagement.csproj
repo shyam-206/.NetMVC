@@ -144,6 +144,7 @@
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
     <Compile Include="CustomFilter\CustomAuthorizationAttribute.cs" />
+    <Compile Include="CustomFilter\CustomErrorMessage.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2156,6 +2157,7 @@
     <Content Include="Views\Teacher\Addtask.cshtml" />
     <Content Include="Views\Teacher\Assigntask.cshtml" />
     <Content Include="Views\Student\Assignment.cshtml" />
+    <Content Include="Views\Teacher\Tasklist.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

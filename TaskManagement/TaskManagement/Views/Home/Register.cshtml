@@ -28,9 +28,14 @@
     <!--<link rel="stylesheet" href="css/style.css">-->
     <link rel="stylesheet" href="~/Content/Theme/Login/css/style.css">
 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.3/jquery.validate.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validation-unobtrusive/3.2.12/jquery.validate.unobtrusive.min.js"></script>
+
+
     <style>
-        .field-validation-error{
-            color : red;
+        .field-validation-error {
+            color: red;
         }
     </style>
 </head>
@@ -47,7 +52,7 @@
                         <form method="POST" class="register-form" id="register-form" action="~/Home/Register">
                             <div class="form-group">
 
-                                <select class="form-select" aria-label="Default select example" name="Role" >
+                                <select class="form-select" aria-label="Default select example" name="Role">
                                     <option value="select" selected>Select Role</option>
                                     <option>Teacher</option>
                                     <option>Student</option>
@@ -56,7 +61,7 @@
                             </div>
                             <div class="form-group">
                                 <label for="Username"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="text" name="Username" id="Username" placeholder="Username" value="@(Model!=null?Model.Username:string.Empty)"/>
+                                <input type="text" name="Username" id="Username" placeholder="Username" value="@(Model!=null?Model.Username:string.Empty)" />
                                 @Html.ValidationMessageFor(m => m.Username)
                             </div>
                             <div class="form-group">
@@ -77,24 +82,24 @@
                             </div>
                             <div class="form-group">
                                 <label for="ContactNumber"><i class="zmdi zmdi-account material-icons-name"></i></label>
-                                <input type="Number" name="ContactNumber" id="ContactNumber" placeholder="ContactNumber" value="@(Model!=null?Model.ContactNumber:string.Empty)"/>
+                                <input type="Number" name="ContactNumber" id="ContactNumber" placeholder="ContactNumber" value="@(Model!=null?Model.ContactNumber:string.Empty)" />
                                 @Html.ValidationMessageFor(m => m.ContactNumber)
                             </div>
                             <div class="form-group">
                                 <select name="StateId" id="StateId" class="form-select" aria-label="Default select example">
-                                    <option value="Select" selected>Select State</option>
+                                    <option value="" selected>Select State</option>
                                     @foreach (var item in ViewBag.States)
                                     {
                                         <option value="@item.StateID">@item.StateName</option>
                                     }
 
                                 </select>
-                                <span id="StatIdSpanTag"></span>
-                                
+                                @Html.ValidationMessageFor(m => m.StateId)
+
                             </div>
                             <div class="form-group">
-                                <select name="CityId" id="CityID" class="form-select" aria-label="Default select example" required>
-                                    <option value="Select" selected>Select City</option>
+                                <select name="CityId" id="CityID" class="form-select" aria-label="Default select example">
+                                    <option value="" selected>Select City</option>
                                 </select>
                                 @Html.ValidationMessageFor(m => m.CityId)
                             </div>
@@ -119,32 +124,11 @@
             </div>
         </section>
     </div>
-      
-    <script>
-        $document.ready(function () {
-            var StateId = document.getElementById('StateId').value;
-            var Spantag = document.getElementById('StatIdSpanTag');
-            if (StateId == "Select") {
-                Spantag.innerText = "Please Select Staet";
-            }
-            else {
-                Spantag.innerText = "";
-            }
-        })
-    </script>
-    <script>
-        function ChangeCityDropdown(data) {
-
-            for (var i = 0; i < data.length; i++) {
-                var options = '<option id="' + data[i].CityID + '" value="' + data[i].CityID + '" >' + data[i].CityName + '</option>';
-                $('#CityID').append(options);
-            }
-        }
-    </script>
+    
     <script>
         $(document).ready(function () {
             $('#StateId').on('change', function () {
-                $('#CityID').html('<option value="Select">Select City</option>');
+                $('#CityID').html('<option value="">Select City</option>');
                 var StateId = document.getElementById('StateId').value;
                 $.ajax({
                     type: "GET",
@@ -156,8 +140,18 @@
 
                 });
             })
-        })
 
+            $("#ContactNumber").on("change", function () {
+                $("#register-form").validate().element("#ContactNumber");
+            })
+        });
+        function ChangeCityDropdown(data) {
+
+            for (var i = 0; i < data.length; i++) {
+                var options = '<option id="' + data[i].CityID + '" value="' + data[i].CityID + '" >' + data[i].CityName + '</option>';
+                $('#CityID').append(options);
+            }
+        }
     </script>
     <!-- JS -->
     <script src="~/Content/Theme/Login/vendor/jquery/jquery.min.js"></script>
