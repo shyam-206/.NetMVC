@@ -2158,6 +2158,7 @@
     <Content Include="Views\Teacher\Assigntask.cshtml" />
     <Content Include="Views\Student\Assignment.cshtml" />
     <Content Include="Views\Teacher\Tasklist.cshtml" />
+    <Content Include="Views\Student\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

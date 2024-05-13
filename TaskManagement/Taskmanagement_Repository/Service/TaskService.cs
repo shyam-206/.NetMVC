@@ -111,7 +111,7 @@ namespace Taskmanagement_Repository.Service
                 List<TaskModel> taskModelList = new List<TaskModel>();
                 List<Task> taskList = _context.Task.Where(m => m.CreatorID == teacherId).ToList();
 
-                taskModelList = TaskHelper.ConvertTaskToTaskModel(taskList);
+                taskModelList = TaskHelper.ConvertTaskListToTaskModelList(taskList);
                 return taskModelList;
             }
             catch (Exception ex)
@@ -195,6 +195,25 @@ namespace Taskmanagement_Repository.Service
                     pendingTaskCount = pendingTaskList.Count();
                 }
                 return pendingTaskCount;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public TaskModel GetTaskByTaskId(int TaskID)
+        {
+            try
+            {
+                TaskModel taskModel = new TaskModel();
+                Task task = new Task();
+
+                task = _context.Task.FirstOrDefault(m => m.TaskID == TaskID);
+                taskModel = TaskHelper.ConvertTasktoTaskModel(task);
+
+                return taskModel;
             }
             catch (Exception ex)
             {

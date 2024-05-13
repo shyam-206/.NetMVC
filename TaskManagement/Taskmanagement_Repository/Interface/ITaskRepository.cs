@@ -24,5 +24,7 @@ namespace Taskmanagement_Repository.Interface
 
         int PendingTaskCount(int teacherId);
 
+        TaskModel GetTaskByTaskId(int TaskID);
+
     }
 }

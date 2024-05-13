@@ -1,0 +1,23 @@
+﻿@model TaskManagement_Model.ViewModel.TaskModel
+
+<div class="container-fluid">
+    <div class="row">
+
+
+        <div class="col-12 d-flex">
+            <h5 class="mx-2">@Html.DisplayNameFor(m => m.TaskName)</h5>
+            @Html.DisplayTextFor(m => m.TaskName)
+        </div>
+
+        <div class="col-12 d-flex">
+            <h5 class="mx-2">@Html.DisplayNameFor(m => m.Description)</h5>
+            @Html.DisplayTextFor(m => m.Description)
+        </div>
+
+        <div class="col-12 d-flex">
+            <h5 class="mx-2">@Html.DisplayNameFor(m => m.Deadline)</h5>
+            @Html.DisplayTextFor(m => m.Deadline)
+        </div>
+    </div>
+
+</div>

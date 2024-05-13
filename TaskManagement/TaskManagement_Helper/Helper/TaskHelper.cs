@@ -29,16 +29,37 @@ namespace TaskManagement_Helper.Helper
                 throw ex;
             }
         }
+        public static TaskModel ConvertTasktoTaskModel(Task task)
+        {
+            try
+            {
+                TaskModel taskModel = new TaskModel();
 
-        public static List<TaskModel> ConvertTaskToTaskModel(List<Task> tasks)
+                taskModel.TaskID = task.TaskID;
+                taskModel.TaskName = task.TaskName;
+                taskModel.Description = task.Description;
+                taskModel.Deadline = task.Deadline;
+                taskModel.CreatorID = task.CreatorID;
+
+                return taskModel;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+
+        public static List<TaskModel> ConvertTaskListToTaskModelList(List<Task> tasks)
         {
             try
             {
                 List<TaskModel> taskModelList = new List<TaskModel>();
 
-                if(tasks != null)
+                if (tasks != null)
                 {
-                    foreach(var task in tasks)
+                    foreach (var task in tasks)
                     {
                         TaskModel taskModel = new TaskModel();
                         taskModel.TaskID = task.TaskID;
@@ -48,7 +69,7 @@ namespace TaskManagement_Helper.Helper
                         taskModel.CreatorID = task.CreatorID;
                         taskModelList.Add(taskModel);
                     }
-                }   
+                }
 
                 return taskModelList;
             }
