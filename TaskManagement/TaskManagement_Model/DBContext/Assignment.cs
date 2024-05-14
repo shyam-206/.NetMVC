@@ -21,7 +21,5 @@ namespace TaskManagement_Model.DBContext
     
         public virtual Student Student { get; set; }
         public virtual Task Task { get; set; }
-
-        
     }
 }

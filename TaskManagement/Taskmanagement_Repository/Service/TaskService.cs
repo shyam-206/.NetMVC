@@ -6,6 +6,7 @@ using TaskManagement_Helper.Helper;
 using TaskManagement_Model.DBContext;
 using TaskManagement_Model.ViewModel;
 using Taskmanagement_Repository.Interface;
+using System.Data.SqlClient;
 
 namespace Taskmanagement_Repository.Service
 {
@@ -87,14 +88,16 @@ namespace Taskmanagement_Repository.Service
             }
         }
 
-        public List<StudentModel> GetAllStudentList()
+        public List<StudentModel> GetAllStudentList(int Taskid)
         {
             try
             {
+                SqlParameter[] sqlParameters = new SqlParameter[]
+                {
+                    new SqlParameter("@id",Taskid)
+                };
                 List<StudentModel> studentModelList = new List<StudentModel>();
-                List<Student> studentList = new List<Student>();
-                studentList = _context.Student.ToList();
-                studentModelList = StudentHelper.ConvertStudentToStudentModel(studentList);
+                studentModelList = _context.Database.SqlQuery<StudentModel>("exec GetAllStudentList @id", sqlParameters).ToList();
                 return studentModelList;
              }
             catch (Exception)
@@ -219,6 +222,31 @@ namespace Taskmanagement_Repository.Service
             {
 
                 throw ex;
+            }
+        }
+
+        public List<Assignment> CompleteTaskList(int teacherId)
+        {
+            try
+            {
+                
+                List<Assignment> CompleteTaskList = new List<Assignment>();
+
+                CompleteTaskList = _context.Assignment.Where(m => m.Task.CreatorID == teacherId && m.Status == true).ToList();
+                
+                if(CompleteTaskList != null)
+                {
+                    return CompleteTaskList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
     }

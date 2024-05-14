@@ -34,3 +34,15 @@ C:\Shyam\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper
 C:\Shyam\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper.csproj.CopyComplete
 C:\Shyam\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper.dll
 C:\Shyam\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper.pdb
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\bin\Debug\TaskManagement_Helper.dll
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\bin\Debug\TaskManagement_Helper.pdb
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\bin\Debug\TaskManagement_Model.dll
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\bin\Debug\EntityFramework.dll
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\bin\Debug\TaskManagement_Model.pdb
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\bin\Debug\TaskManagement_Model.dll.config
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\bin\Debug\EntityFramework.xml
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper.csproj.AssemblyReference.cache
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper.csproj.CoreCompileInputs.cache
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper.csproj.CopyComplete
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper.dll
+C:\Shyam Dhokiya\C#\TaskManagement\TaskManagement_Helper\obj\Debug\TaskManagement_Helper.pdb

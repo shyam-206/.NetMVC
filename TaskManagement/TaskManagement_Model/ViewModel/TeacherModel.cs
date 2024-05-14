@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TaskManagement_Model.ViewModel
 {
-    public class TeacheModel
+    public class TeacherModel
     {
         public int TeacherID { get; set; }
         public string Username { get; set; }

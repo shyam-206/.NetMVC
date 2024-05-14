@@ -67,29 +67,44 @@ namespace TaskManagement.Controllers
             {
                 throw ex;
             }
-            
-
-            /*return View(taskModel);*/
         }
 
-        public ActionResult Assigntask()
+        public ActionResult AssignTaskByTeacher()
         {
             try
             {
-                int teacherId = SessionHelper.UserId;
-                List<TaskModel> taskModelList = new List<TaskModel>();
+                try
+                {
+                    List<TaskModel> taskModelList = taskRepository.GetAllTaskList(SessionHelper.UserId);
+                    return View(taskModelList);
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public ActionResult AssignTask(int TaskId)
+        {
+            try
+            {
                 
-                ViewBag.AllStudentList = taskRepository.GetAllStudentList();
-                ViewBag.TaskList = taskRepository.GetAllTaskList(teacherId);
-                return View();
+                ViewBag.AllStudentList = taskRepository.GetAllStudentList(TaskId);
+                return PartialView("AssignTask");
             }
             catch (Exception ex)
             {
+
                 throw ex;
             }
-            
         }
-
         public ActionResult Tasklist()
         {
             try
@@ -104,31 +119,6 @@ namespace TaskManagement.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Assigntask(AssignmentModel assignmentModel)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                {
-                    bool isCheckSave = taskRepository.AssignTask(assignmentModel);
-                    if (isCheckSave)
-                    {
-                        TempData["Assgintask"] = "Task is Assign to Student";
-                        return RedirectToAction("Index");
-                    }
-                }
-                int teacherId = SessionHelper.UserId;
-                ViewBag.AllStudentList = taskRepository.GetAllStudentList();
-                ViewBag.TaskList = taskRepository.GetAllTaskList(teacherId);
-                return View(assignmentModel);
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
         public ActionResult PageNotFound()
         {
             return View("Error");

@@ -11,7 +11,7 @@ namespace Taskmanagement_Repository.Interface
     public interface ITaskRepository
     {
         bool AddTask(TaskModel taskModel);
-        List<StudentModel> GetAllStudentList();
+        List<StudentModel> GetAllStudentList(int TaskId);
 
         List<TaskModel> GetAllTaskList(int teacherId);
 
@@ -25,6 +25,8 @@ namespace Taskmanagement_Repository.Interface
         int PendingTaskCount(int teacherId);
 
         TaskModel GetTaskByTaskId(int TaskID);
+
+        List<Assignment> CompleteTaskList(int teacherId);
 
     }
 }

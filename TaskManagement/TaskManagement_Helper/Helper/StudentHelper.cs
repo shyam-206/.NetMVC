@@ -84,5 +84,29 @@ namespace TaskManagement_Helper.Helper
                 throw ex;
             }
         }
+
+        public static List<Student> ConvertAssignmentListTostudentList(List<Assignment> assignments)
+        {
+            try
+            {
+                List<Student> students = new List<Student>();
+                if(assignments != null)
+                {
+                    foreach(var assignment in assignments)
+                    {
+                        Student student = new Student();
+                        student.StudentID = assignment.Student.StudentID;
+                        student.Username = assignment.Student.Username;
+                    }
+                    
+                }
+                return students;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

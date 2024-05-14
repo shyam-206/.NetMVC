@@ -1,0 +1,71 @@
+﻿@model List<TaskManagement_Model.ViewModel.TaskModel>
+
+<div class="container-fluid">
+
+    <table class="table table-striped table-bordered mt-5" id="datatable">
+        <thead>
+            <tr>
+                <td>Task Name</td>
+                <td>Task Description</td>
+                <td>Task Deadline</td>
+                <td>Action</td>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@item.TaskName</td>
+                    <td>@item.Description</td>
+                    <td>@item.Deadline.ToString().Split(' ')[0]</td>
+                    <td>
+                        <button class="btn btn-info Edit" id="assignTask" value="@item.TaskID">Assign Task</button>
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Task Detail</h5>
+
+                </div>
+                <div class="modal-body" id="modalBody">
+
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('.Edit').on("click", function () {
+            debugger
+            $('#modalBody').empty();
+            var TaskId = $(this).val();
+            console.log(TaskId)
+            $.ajax({
+                type: "GET",
+                url: "/Teacher/AssignTask?TaskId=" + TaskId,
+               
+                success: function (data) {
+
+                    $('#modalBody').append(data);
+                    $('#exampleModal').modal('show');
+
+                    console.log('Success');
+                }
+            })
+        })
+    })
+</script>

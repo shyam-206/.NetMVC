@@ -17,5 +17,7 @@ namespace TaskManagement_Model.ViewModel
         public Nullable<int> StateID { get; set; }
         public Nullable<int> CityID { get; set; }
 
+
+        
     }
 }

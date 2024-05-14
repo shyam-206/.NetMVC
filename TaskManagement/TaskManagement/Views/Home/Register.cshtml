@@ -94,6 +94,8 @@
                                     }
 
                                 </select>
+                                @*<input type="hidden" id="SelectedState" name="SelectedState" value="@(Model != null ? Model.StateId : "null");" />*@
+
                                 @Html.ValidationMessageFor(m => m.StateId)
 
                             </div>
@@ -124,9 +126,15 @@
             </div>
         </section>
     </div>
-    
+
     <script>
         $(document).ready(function () {
+            var selectedState = "@(Model?.StateId ?? "")";
+            if (selectedState) {
+                $('#StateId').val(selectedState);
+
+            }
+
             $('#StateId').on('change', function () {
                 $('#CityID').html('<option value="">Select City</option>');
                 var StateId = document.getElementById('StateId').value;
@@ -137,21 +145,23 @@
                         console.log(data)
                         ChangeCityDropdown(data)
                     }
-
                 });
+
+
             })
 
-            $("#ContactNumber").on("change", function () {
-                $("#register-form").validate().element("#ContactNumber");
-            })
-        });
-        function ChangeCityDropdown(data) {
+            function ChangeCityDropdown(data) {
 
-            for (var i = 0; i < data.length; i++) {
-                var options = '<option id="' + data[i].CityID + '" value="' + data[i].CityID + '" >' + data[i].CityName + '</option>';
-                $('#CityID').append(options);
+                for (var i = 0; i < data.length; i++) {
+                    var options = '<option id="' + data[i].CityID + '" value="' + data[i].CityID + '" >' + data[i].CityName + '</option>';
+                    $('#CityID').append(options);
+                }
             }
-        }
+        });
+
+
+
+
     </script>
     <!-- JS -->
     <script src="~/Content/Theme/Login/vendor/jquery/jquery.min.js"></script>

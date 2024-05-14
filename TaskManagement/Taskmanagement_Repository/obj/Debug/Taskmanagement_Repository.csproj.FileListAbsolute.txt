@@ -49,3 +49,20 @@ C:\Shyam\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Re
 C:\Shyam\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.csproj.CopyComplete
 C:\Shyam\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.dll
 C:\Shyam\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.pdb
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.csproj.AssemblyReference.cache
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.csproj.CoreCompileInputs.cache
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.dll
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.pdb
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\Taskmanagement_Repository.dll.config
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\Taskmanagement_Repository.dll
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\Taskmanagement_Repository.pdb
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\EntityFramework.dll
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Helper.dll
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Model.dll
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Helper.pdb
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Model.pdb
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\TaskManagement_Model.dll.config
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\EntityFramework.xml
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Shyam Dhokiya\C#\TaskManagement\Taskmanagement_Repository\obj\Debug\Taskmanagement_Repository.csproj.CopyComplete

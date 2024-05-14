@@ -94,7 +94,7 @@
     <Compile Include="ViewModel\StateModel.cs" />
     <Compile Include="ViewModel\StudentModel.cs" />
     <Compile Include="ViewModel\TaskModel.cs" />
-    <Compile Include="ViewModel\TeacheModel.cs" />
+    <Compile Include="ViewModel\TeacherModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.Config" />

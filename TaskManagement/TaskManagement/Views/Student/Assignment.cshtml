@@ -67,7 +67,7 @@
                     </td>
 
                     <td>
-                        <button class="btn btn-secondary" id="detailTask" value="@item.Task.TaskID">
+                        <button class="btn btn-secondary detailTask" id="detailTask" value="@item.Task.TaskID">
                             Detail
                         </button>
                     </td>
@@ -97,10 +97,10 @@
 
 <script>
     $(document).ready(function () {
-        $('#detailTask').on("click", function (exampleModal) {
+        $('.detailTask').on("click", function () {
             debugger
             $('#modalBody').empty();
-            var TaskID = $('#detailTask').val()
+            var TaskID = $(this).val()
             
             $.ajax({
                 type: "GET",
