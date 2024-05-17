@@ -35,7 +35,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Task
+                                @Html.ActionLink("Total Task","Tasklist")
+                                @*Total Task*@
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> @ViewBag.TotalTaskCount  </div>
                         </div>
@@ -53,7 +54,8 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Assign Task by to Student
+                                
+                                @Html.ActionLink("Assign Task by to Student", "AssignTaskList")
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> @ViewBag.AssignTaskCount  </div>
                         </div>
@@ -71,7 +73,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Completed Task
+                                @Html.ActionLink("Completed Task", "CompleteTaskList")
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> @ViewBag.CompletedTaskCount  </div>
                         </div>
@@ -89,7 +91,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Pending Task
+                                @Html.ActionLink("Pending Task", "PendingTaskList")
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> @ViewBag.PendingTaskCount </div>
                         </div>

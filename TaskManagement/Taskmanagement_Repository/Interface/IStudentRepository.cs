@@ -12,7 +12,7 @@ namespace Taskmanagement_Repository.Interface
     {
         bool AddStudent(RegisterModel registerModel);
 
-        List<Assignment> GetAllTaskAssignByTeacher(int StudentId);
+        List<AssignmentModelList> GetAllTaskAssignByTeacher(int StudentId);
 
         bool AssignmentStatusUpdate(int id);
 
@@ -21,5 +21,8 @@ namespace Taskmanagement_Repository.Interface
         int GetCompleteTaskCount(int studentId);
 
         int GetPendingTaskCount(int studentId);
+
+        List<AssignmentModelList> GetCompleteTaskList(int studentId);
+        List<AssignmentModelList> GetPendingTaskList(int studentId);
     }
 }

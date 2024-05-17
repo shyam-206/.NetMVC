@@ -225,18 +225,19 @@ namespace Taskmanagement_Repository.Service
             }
         }
 
-        public List<Assignment> CompleteTaskList(int teacherId)
+        public List<AssignmentModelList> CompleteTaskList(int teacherId)
         {
             try
             {
                 
                 List<Assignment> CompleteTaskList = new List<Assignment>();
-
                 CompleteTaskList = _context.Assignment.Where(m => m.Task.CreatorID == teacherId && m.Status == true).ToList();
-                
-                if(CompleteTaskList != null)
+                List<AssignmentModelList> assignmentModelLists = new List<AssignmentModelList>();
+                assignmentModelLists = AssignmentHelper.ConvertDBAssignmentListToAssignmentModelList(CompleteTaskList);   
+
+                if (assignmentModelLists != null)
                 {
-                    return CompleteTaskList;
+                    return assignmentModelLists;
                 }
                 else
                 {
@@ -247,6 +248,47 @@ namespace Taskmanagement_Repository.Service
             {
 
                 throw;
+            }
+        }
+
+        public List<AssignmentModelList> PendingTaskList(int teacherId)
+        {
+            List<Assignment> PendingTaskList = new List<Assignment>();
+            PendingTaskList = _context.Assignment.Where(m => m.Task.CreatorID == teacherId && m.Status == false).ToList();
+            List<AssignmentModelList> PendingTaskModelList = new List<AssignmentModelList>();
+            PendingTaskModelList = AssignmentHelper.ConvertDBAssignmentListToAssignmentModelList(PendingTaskList);
+
+
+            if (PendingTaskModelList != null)
+            {
+                return PendingTaskModelList;
+            }
+            else
+            {
+                return null;
+            }
+        }
+
+        public List<AssignmentModelList> AssignTaskList(int teacherId)
+        {
+            try
+            {
+                List<Assignment> assignTaskList = _context.Assignment.Where(m => m.Task.CreatorID == teacherId).ToList();
+                List<AssignmentModelList> assignModelList = new List<AssignmentModelList>();
+                assignModelList = AssignmentHelper.ConvertDBAssignmentListToAssignmentModelList(assignTaskList);
+                if (assignModelList != null)
+                {
+                    return assignModelList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
             }
         }
     }

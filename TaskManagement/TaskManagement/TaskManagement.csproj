@@ -140,6 +140,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Common\WebHelper.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="Controllers\TeacherController.cs" />
@@ -2160,6 +2161,11 @@
     <Content Include="Views\Student\Detail.cshtml" />
     <Content Include="Views\Teacher\AssignTaskByTeacher.cshtml" />
     <Content Include="Views\Teacher\AssignTask.cshtml" />
+    <Content Include="Views\Teacher\CompleteTaskList.cshtml" />
+    <Content Include="Views\Teacher\PendingTaskList.cshtml" />
+    <Content Include="Views\Teacher\AssignTaskList.cshtml" />
+    <Content Include="Views\Student\CompleteList.cshtml" />
+    <Content Include="Views\Student\PendingList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

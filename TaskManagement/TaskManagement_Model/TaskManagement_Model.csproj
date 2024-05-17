@@ -90,6 +90,7 @@
     <Compile Include="ViewModel\AssignmentModel.cs" />
     <Compile Include="ViewModel\CityModel.cs" />
     <Compile Include="ViewModel\LoginModel.cs" />
+    <Compile Include="ViewModel\PaginationModel.cs" />
     <Compile Include="ViewModel\RegisterModel.cs" />
     <Compile Include="ViewModel\StateModel.cs" />
     <Compile Include="ViewModel\StudentModel.cs" />

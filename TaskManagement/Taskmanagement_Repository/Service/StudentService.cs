@@ -83,15 +83,15 @@ namespace Taskmanagement_Repository.Service
             }
         }
 
-        public List<Assignment> GetAllTaskAssignByTeacher(int StudentId)
+        public List<AssignmentModelList> GetAllTaskAssignByTeacher(int StudentId)
         {
             try
             {
-                List<TaskModel> taskModels = new List<TaskModel>();
                 Student student = new Student();
                 student = _context.Student.FirstOrDefault(m => m.StudentID == StudentId);
                 List<Assignment> assignmentList = _context.Assignment.Where(m => m.StudentID == student.StudentID).ToList();
-                return assignmentList;
+                List<AssignmentModelList> assignmentModelLists = AssignmentHelper.ConvertDBAssignmentListToAssignmentModelList(assignmentList);
+                return assignmentModelLists;
             }
             catch (Exception)
             {
@@ -163,6 +163,55 @@ namespace Taskmanagement_Repository.Service
             {
                 throw ex;
             }         
+        }
+
+        public List<AssignmentModelList> GetCompleteTaskList(int studentId)
+        {
+           
+            try
+            {
+                List<Assignment> CompleteAssignmentList = new List<Assignment>();
+                CompleteAssignmentList = _context.Assignment.Where(m => m.StudentID == studentId && m.Status == true).ToList();
+                List<AssignmentModelList> CompleteAssignmentModelList = AssignmentHelper.ConvertDBAssignmentListToAssignmentModelList(CompleteAssignmentList);
+
+                if(CompleteAssignmentModelList != null)
+                {
+                    return CompleteAssignmentModelList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<AssignmentModelList> GetPendingTaskList(int studentId)
+        {
+            try
+            {
+                List<Assignment> CompleteAssignmentList = new List<Assignment>();
+                CompleteAssignmentList = _context.Assignment.Where(m => m.StudentID == studentId && m.Status == false).ToList();
+                List<AssignmentModelList> CompleteAssignmentModelList = AssignmentHelper.ConvertDBAssignmentListToAssignmentModelList(CompleteAssignmentList);
+
+                if (CompleteAssignmentModelList != null)
+                {
+                    return CompleteAssignmentModelList;
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

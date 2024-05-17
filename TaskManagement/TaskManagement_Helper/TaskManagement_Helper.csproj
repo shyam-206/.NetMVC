@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Helper\AssignmentHelper.cs" />
     <Compile Include="Helper\CityHelper.cs" />
     <Compile Include="Helper\StateHelper.cs" />
     <Compile Include="Helper\StudentHelper.cs" />

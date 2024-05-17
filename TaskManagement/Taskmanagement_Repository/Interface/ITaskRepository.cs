@@ -26,7 +26,9 @@ namespace Taskmanagement_Repository.Interface
 
         TaskModel GetTaskByTaskId(int TaskID);
 
-        List<Assignment> CompleteTaskList(int teacherId);
+        List<AssignmentModelList> CompleteTaskList(int teacherId);
+        List<AssignmentModelList> PendingTaskList(int teacherId);
 
+        List<AssignmentModelList> AssignTaskList(int teacherId);
     }
 }

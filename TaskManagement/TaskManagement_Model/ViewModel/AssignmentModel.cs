@@ -16,8 +16,21 @@ namespace TaskManagement_Model.ViewModel
 
         [Required(ErrorMessage = "Please select Task")]
         public Nullable<int> TaskID { get; set; }
-
         public Nullable<bool> Status { get; set; }
+    }  
+    
+    public class AssignmentModelList
+    {
+        public int AssignmentID { get; set; }     
+        public int StudentID { get; set; }
+        public Nullable<int> TaskID { get; set; }
+        public Nullable<bool> Status { get; set; }
+        public string StudentName { get; set; }
+        public string TaskName { get; set; }
+
+        public string TeacherName { get; set; }
+        public string Description { get; set; }
+        public DateTime Deadline { get; set; }
     }
     
 }

@@ -1,8 +1,8 @@
-﻿
+﻿@model TaskManagement_Model.ViewModel.AssignmentModel
 
 <div class="container-fluid">
     <form action="AssignTask" method="post">
-        <input class="form-control"/>
+        <input class="form-control" value="@ViewBag.TaskId" name="TaskID" hidden/>
         <div>
             <select class="form-control choices-multiple" name="StudentID" multiple>
                 @foreach (var item in ViewBag.AllStudentList)
@@ -10,6 +10,11 @@
                     <option value="@item.StudentID">@item.Username</option>
                 }
             </select>
+            @Html.ValidationMessageFor(m => m.StudentID)
+        </div>
+
+        <div class="form-group mt-3">
+            <input type="submit" value="submit" class="btn btn-primary"/>
         </div>
     </form>
 </div>

@@ -47,9 +47,8 @@ namespace TaskManagement.Controllers
         {
             try
             {
-
                 int studentId = SessionHelper.UserId;
-                List<Assignment> assignments = studentRepository.GetAllTaskAssignByTeacher(studentId);
+                List<AssignmentModelList> assignments = studentRepository.GetAllTaskAssignByTeacher(studentId);
                 return View(assignments);
             }
             catch (Exception ex)
@@ -95,6 +94,36 @@ namespace TaskManagement.Controllers
             }
 
 
+        }
+
+        public ActionResult CompleteList()
+        {
+            try
+            {
+                int studentId = SessionHelper.UserId;
+                List<AssignmentModelList> CompleteList = studentRepository.GetCompleteTaskList(studentId);
+                return View(CompleteList);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public ActionResult PendingList()
+        {
+            try
+            {
+                int studentId = SessionHelper.UserId;
+                List<AssignmentModelList> PendingTaskList = studentRepository.GetPendingTaskList(studentId);
+                return View(PendingTaskList);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
 
         public ActionResult PageNotFound()

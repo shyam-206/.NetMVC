@@ -12,7 +12,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Total Assignment
+                                @Html.ActionLink("Total Assignment", "Assignment")
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> @ViewBag.TotalAssignmentCount </div>
                         </div>
@@ -30,7 +30,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Completed Assignment
+                                @Html.ActionLink("Completed Assignment","CompleteList")
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> @ViewBag.CompleteAssignMentCount </div>
                         </div>
@@ -48,7 +48,7 @@
                     <div class="row no-gutters align-items-center">
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                Pending Assignment
+                                @Html.ActionLink("Pending Assignment", "PendingList")
                             </div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800"> @ViewBag.PendingAssignmentCount </div>
                         </div>
