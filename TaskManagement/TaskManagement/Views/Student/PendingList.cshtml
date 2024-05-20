@@ -1,5 +1,4 @@
-﻿@model List<TaskManagement_Model.ViewModel.AssignmentModelList>
-
+﻿@model TaskManagement_Model.ViewModel.PaginationModel
 <div class="container-fluid">
     <div class="card">
         <div class="card-body">
@@ -14,7 +13,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
+                    @foreach (var item in Model.assignmentList)
                     {
                         <tr>
                             <td>@item.TaskName</td>
@@ -46,8 +45,26 @@
                 </tbody>
             </table>
 
-            <div>
-                <a href="Index" class="btn btn-info">Back to Dashboard</a>
+            <div class="d-flex justify-content-between">
+
+                <div>
+
+                    <div>
+                        <a href="Index" class="btn btn-info">Back to Dashboard</a>
+                    </div>
+                </div>
+                <div class="d-flex">
+                    @for (var i = 0; i < Math.Ceiling((double)Model.Count) / 3; i++)
+                    {
+                        if (i + 1 == Model.CurrentIndex)
+                        {
+                            <span style="margin-right:5px;font-size:larger; margin-top:5px" class="page-link">@Html.Raw(i + 1)</span> }
+                        else
+                        {
+                            <a href="~/Student/PendingList?index=@(i + 1)" style="margin-right:5px;font-size:larger; margin-top:5px" class="page-link">@(i + 1)</a>
+                        }
+                    }
+                </div>
             </div>
         </div>
     </div>

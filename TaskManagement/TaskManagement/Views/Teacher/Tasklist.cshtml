@@ -20,7 +20,7 @@
                 </thead>
 
                 <tbody>
-                    @foreach (var item in Model.TaskList)
+                    @foreach (var item in Model.taskList)
                     {
                         <tr>
                             <td>@item.TaskName</td>
@@ -32,15 +32,13 @@
                 </tbody>
             </table>
             <div class="d-flex justify-content-between">
-
                 <div>
-
                     <div>
                         <a href="Index" class="btn btn-info">Back to Dashboard</a>
                     </div>
                 </div>
                 <div class="d-flex">
-                    @for (var i = 0; i < Math.Ceiling((double)Model.Count) / 2; i++)
+                    @for (var i = 0; i < Math.Ceiling((double)Model.Count) / 3; i++)
                     {
                         if (i + 1 == Model.CurrentIndex)
                         {

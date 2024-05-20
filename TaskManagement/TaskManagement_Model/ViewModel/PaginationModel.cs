@@ -8,8 +8,10 @@ namespace TaskManagement_Model.ViewModel
 {
     public class PaginationModel
     {
-        public List<TaskModel> TaskList { get;  set; }
+        public List<TaskModel> taskList { get; set; }
+        public List<AssignmentModelList> assignmentList {get;set;}
         public int CurrentIndex { get;  set; }
         public int Count { get;  set; }
+
     }
 }

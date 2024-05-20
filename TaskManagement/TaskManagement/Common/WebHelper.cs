@@ -34,7 +34,7 @@ namespace TaskManagement.Common
             return _list;
         }*/
 
-        public static async Task<string> HttpRequestResponce(string url)
+        public static async Task<string> HttpRequestResponse(string url)
         {
             try
             {

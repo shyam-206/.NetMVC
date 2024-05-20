@@ -9,6 +9,9 @@ using Taskmanagement_Repository.Interface;
 using Taskmanagement_Repository.Service;
 using TaskManagement_Model.DBContext;
 using TaskManagement_Model.ViewModel;
+using TaskManagement.Common;
+using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace TaskManagement.Controllers
 {
@@ -25,15 +28,26 @@ namespace TaskManagement.Controllers
             taskRepository = new TaskService();
         }
         // GET: Student
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             try
             {
                 int studentId = SessionHelper.UserId;
-
-                ViewBag.TotalAssignmentCount = studentRepository.GetTaskAssignByTeacherCount(studentId);
+                /*ViewBag.TotalAssignmentCount = studentRepository.GetTaskAssignByTeacherCount(studentId);
                 ViewBag.CompleteAssignMentCount = studentRepository.GetCompleteTaskCount(studentId);
-                ViewBag.PendingAssignmentCount = studentRepository.GetPendingTaskCount(studentId);
+                ViewBag.PendingAssignmentCount = studentRepository.GetPendingTaskCount(studentId);*/
+
+                string TotalAssignmentURL = $"api/StudentAPI/GetTaskAssignByTeacherCount?studentId={studentId}";
+                string CompleteAssignMentURL = $"api/StudentAPI/GetCompleteTaskCount?studentId={studentId}";
+                string PendingAssignmentURL= $"api/StudentAPI/GetPendingTaskCount?studentId={studentId}";
+                string resTotalAssignment = await WebHelper.HttpRequestResponse(TotalAssignmentURL);
+                string resCompleteAssignment = await WebHelper.HttpRequestResponse(CompleteAssignMentURL);
+                string resPendingAssignment = await WebHelper.HttpRequestResponse(PendingAssignmentURL);
+
+                ViewBag.TotalAssignmentCount = JsonConvert.DeserializeObject<int>(resTotalAssignment);
+                ViewBag.CompleteAssignMentCount = JsonConvert.DeserializeObject<int>(resCompleteAssignment);
+                ViewBag.PendingAssignmentCount = JsonConvert.DeserializeObject<int>(resPendingAssignment);
+
                 return View();
             }
             catch (Exception ex)
@@ -43,13 +57,26 @@ namespace TaskManagement.Controllers
             }
         }
 
-        public ActionResult Assignment()
+        public async Task<ActionResult> Assignment(int index = 1)
         {
             try
             {
                 int studentId = SessionHelper.UserId;
-                List<AssignmentModelList> assignments = studentRepository.GetAllTaskAssignByTeacher(studentId);
-                return View(assignments);
+                /*List<AssignmentModelList> assignments = studentRepository.GetAllTaskAssignByTeacher(studentId);*/
+                string url = $"api/StudentAPI/GetAllTaskAssignByTeacher?studentId={studentId}";
+                string res = await WebHelper.HttpRequestResponse(url);
+                List<AssignmentModelList> assignments = JsonConvert.DeserializeObject<List<AssignmentModelList>>(res);
+
+                int currentIndex = index;
+                int count = 3;
+                List<AssignmentModelList> list = assignments.Skip((currentIndex - 1) * count).Take(count).ToList();
+                PaginationModel paginationModel = new PaginationModel { 
+                    assignmentList = list,
+                    CurrentIndex = currentIndex,
+                    Count = assignments.Count()
+                };
+
+                return View(paginationModel);
             }
             catch (Exception ex)
             {
@@ -58,10 +85,15 @@ namespace TaskManagement.Controllers
             }
         }
 
-        public ActionResult SetAssignmentStatus(int id)
+        
+        public async Task<ActionResult> SetAssignmentStatus(int id)
         {
 
-            bool setStatus = studentRepository.AssignmentStatusUpdate(id);
+            /*bool setStatus = studentRepository.AssignmentStatusUpdate(id);*/
+            string url = $"api/StudentAPI/SetAssignmentStatus?id={id}";
+            string content = JsonConvert.SerializeObject(id);
+            string res = await WebHelper.HttpClientPostRequest(url, content);
+            bool setStatus = JsonConvert.DeserializeObject<bool>(res);
 
             if (setStatus)
             {
@@ -72,14 +104,15 @@ namespace TaskManagement.Controllers
             return RedirectToAction("Assignment");
         }
 
-        public ActionResult Detail(int TaskID)
+        public async Task<ActionResult> Detail(int TaskId)
         {
             try
             {
                 TaskModel taskModel = new TaskModel();
-
-
-                taskModel = taskRepository.GetTaskByTaskId(TaskID);
+                /*taskModel = taskRepository.GetTaskByTaskId(TaskID);*/
+                string url = $"api/StudentAPI/GetTaskByTaskId?TaskId={TaskId}";
+                string res = await WebHelper.HttpRequestResponse(url);
+                taskModel = JsonConvert.DeserializeObject<TaskModel>(res);
                 if (taskModel != null)
                 {
                     return PartialView("Detail",taskModel);
@@ -96,13 +129,25 @@ namespace TaskManagement.Controllers
 
         }
 
-        public ActionResult CompleteList()
+        public async Task<ActionResult> CompleteList(int index = 1)
         {
             try
             {
                 int studentId = SessionHelper.UserId;
-                List<AssignmentModelList> CompleteList = studentRepository.GetCompleteTaskList(studentId);
-                return View(CompleteList);
+                /*List<AssignmentModelList> CompleteList = studentRepository.GetCompleteTaskList(studentId);*/
+                string url = $"api/StudentAPI/CompleteList?studentId={studentId}";
+                string res = await WebHelper.HttpRequestResponse(url);
+                List<AssignmentModelList> CompleteList = JsonConvert.DeserializeObject<List<AssignmentModelList>>(res);
+                int currentIndex = index;
+                int count = 3;
+                List<AssignmentModelList> list = CompleteList.Skip((currentIndex - 1) * count).Take(count).ToList();
+                PaginationModel paginationModel = new PaginationModel {
+                    assignmentList = list,
+                    CurrentIndex = currentIndex,
+                    Count = CompleteList.Count()
+                };
+
+                return View(paginationModel);
             }
             catch (Exception ex)
             {
@@ -111,13 +156,26 @@ namespace TaskManagement.Controllers
             }
         }
 
-        public ActionResult PendingList()
+        public async Task<ActionResult> PendingList(int index = 1)
         {
             try
             {
                 int studentId = SessionHelper.UserId;
-                List<AssignmentModelList> PendingTaskList = studentRepository.GetPendingTaskList(studentId);
-                return View(PendingTaskList);
+                /*List<AssignmentModelList> PendingTaskList = studentRepository.GetPendingTaskList(studentId);*/
+                List<AssignmentModelList> PendingTaskList = new List<AssignmentModelList>();
+                string url = $"api/StudentAPI/PendingList?studentId={studentId}";
+                string res = await WebHelper.HttpRequestResponse(url);
+                PendingTaskList = JsonConvert.DeserializeObject<List<AssignmentModelList>>(res);
+
+                int currentIndex = index;
+                int count = 3;
+                List<AssignmentModelList> list = PendingTaskList.Skip((currentIndex - 1) * count).Take(count).ToList();
+                PaginationModel paginationModel = new PaginationModel { 
+                    assignmentList = list,
+                    CurrentIndex = currentIndex,
+                    Count = PendingTaskList.Count()
+                };
+                return View(paginationModel);
             }
             catch (Exception ex)
             {

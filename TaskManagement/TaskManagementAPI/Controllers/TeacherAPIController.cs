@@ -108,7 +108,6 @@ namespace TaskManagementAPI.Controllers
 
         [HttpPost]
         [Route("api/TeacherAPI/AssignTask")]
-
         public bool AssignTask(AssignmentModel assignment)
         {
             try
@@ -131,6 +130,91 @@ namespace TaskManagementAPI.Controllers
             {
                 bool checkSaveOrNot = taskRepository.AddTask(taskModel);
                 return checkSaveOrNot;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TeacherAPI/GetTotaTaskCount")]
+        public int GetTotaTaskCount(int teacherId)
+        {
+            try
+            {
+                int TotalTaskcount = 0;
+                TotalTaskcount = taskRepository.GetTotaTaskCount(teacherId);
+                return TotalTaskcount;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TeacherAPI/GetAllAssignTaskCount")]
+        public int GetAllAssignTaskCount(int teacherId)
+        {
+            try
+            {
+                int AssignTaskCount = 0;
+                AssignTaskCount = taskRepository.GetAllAssignTaskCount(teacherId);
+                return AssignTaskCount;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TeacherAPI/CompletedTaskCount")]
+        public int CompletedTaskCount(int teacherId)
+        {
+            try
+            {
+                int CompletedTaskCount = 0;
+                CompletedTaskCount = taskRepository.CompletedTaskCount(teacherId);
+                return CompletedTaskCount;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TeacherAPI/PendingTaskCount")]
+        public int PendingTaskCount(int teacherId)
+        {
+            try
+            {
+                int PendingTaskCount = 0;
+                PendingTaskCount = taskRepository.PendingTaskCount(teacherId);
+                return PendingTaskCount;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [HttpGet]
+        [Route("api/TeacherAPI/GetAllStudentList")]
+        public List<StudentModel> GetAllStudentList(int Taskid)
+        {
+            try
+            {
+                List<StudentModel> studentModelList = new List<StudentModel>();
+                studentModelList = taskRepository.GetAllStudentList(Taskid);
+                return studentModelList != null ? studentModelList : null;
             }
             catch (Exception ex)
             {

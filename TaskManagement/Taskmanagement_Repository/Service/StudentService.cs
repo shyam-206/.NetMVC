@@ -195,7 +195,7 @@ namespace Taskmanagement_Repository.Service
             try
             {
                 List<Assignment> CompleteAssignmentList = new List<Assignment>();
-                CompleteAssignmentList = _context.Assignment.Where(m => m.StudentID == studentId && m.Status == false).ToList();
+                CompleteAssignmentList = _context.Assignment.Where(m => m.StudentID == studentId && m.Status == false ).ToList();
                 List<AssignmentModelList> CompleteAssignmentModelList = AssignmentHelper.ConvertDBAssignmentListToAssignmentModelList(CompleteAssignmentList);
 
                 if (CompleteAssignmentModelList != null)
