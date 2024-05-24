@@ -82,11 +82,24 @@
     }
 
     function bindCorrectAnswer(QuesID, ele) {
-        debugger
+       
         let correctAns = $(ele).val();
-        let element = $(`[name = "QuestionModelList[${QuesID}].OptionList[${correctAns}].is_correct"]`);
-        $(element).attr('value', true);
-        console.log(element.value)
+        let options = document.querySelectorAll(`[name^="QuestionModelList[${QuesID}].OptionList"]`)
+
+        options.forEach(function (option) {
+            if (option.name.endsWith('.is_correct')) {
+                option.value = 'false';
+            }
+        })
+
+        
+      
+        if (correctAns !== '') {
+            let element = $(`[name = "QuestionModelList[${QuesID}].OptionList[${correctAns}].is_correct"]`);
+            $(element).attr('value', true);
+            console.log(element.value)
+
+        }
     }
 
 
