@@ -40,5 +40,49 @@ namespace QuizManagement_Repository.Service
                 throw ex;
             }
         }
+
+        public AdminModel CheckAdminExist(LoginModel loginModel)
+        {
+            try
+            {
+                Admin admin = LoginHelper.ConvertLoginModelToAdmin(loginModel);
+                AdminModel adminModel = new AdminModel();
+                Admin checkAdmin = _context.Admin.Where(m => m.email == admin.email && m.password == admin.password).FirstOrDefault();
+                if(checkAdmin != null)
+                {
+                    adminModel = LoginHelper.ConvertAdminToAdminModel(checkAdmin);   
+                }
+                return adminModel != null ? adminModel : null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public UserModel CheckUserExist(LoginModel loginModel)
+        {
+            try
+            {
+                Users loginUser = LoginHelper.ConvertLoginModelToLogin(loginModel);
+                Users checkUser = _context.Users.Where(m => m.email == loginUser.email && m.password == loginUser.password).FirstOrDefault();
+                UserModel userModel = new UserModel();
+                if(checkUser != null)
+                {
+
+                 userModel = LoginHelper.ConvertUserToUserModel(checkUser);
+                }
+                return userModel != null ? userModel : null;
+                
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+
     }
 }

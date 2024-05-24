@@ -1,4 +1,4 @@
-﻿
+﻿@model QuizManagement_Model.ViewModel.LoginModel
 @{
     Layout = null;
 }
@@ -33,24 +33,26 @@
                                     </div>
                                 </div>
                             </div>
-                            <form action="#!">
+                            <form action="Login" method="post">
                                 <div class="row gy-3 gy-md-4 overflow-hidden">
                                     <div class="col-12">
-                                        <label for="email" class="form-label">Username <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="name_12" required>
+                                        <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
+                                        <input type="email" class="form-control" name="email" placeholder="name@gmail.com">
+                                        @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-12">
                                         <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                                        <input type="password" class="form-control" name="password" id="password" value="" required>
+                                        <input type="password" class="form-control" name="password" id="password" value="" >
+                                        @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
                                     </div>
                                     @*<div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
-                <label class="form-check-label text-secondary" for="remember_me">
-                    Keep me logged in
-                </label>
-            </div>
-        </div>*@
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" name="remember_me" id="remember_me">
+                                                <label class="form-check-label text-secondary" for="remember_me">
+                                                    Keep me logged in
+                                                </label>
+                                            </div>
+                                        </div>*@
                                     <div class="col-12">
                                         <div class="d-grid">
                                             <button class="btn bsb-btn-xl btn-primary" type="submit">Log in now</button>
@@ -67,7 +69,7 @@
                                     </div>
                                 </div>
                             </div>
-                            
+
                         </div>
                     </div>
                 </div>

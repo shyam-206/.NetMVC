@@ -13,5 +13,75 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="Admin">
+      <EntityTypeMapping TypeName="Quizmanagement_557Model.Admin">
+        <MappingFragment StoreEntitySet="Admin">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="admin_id" ColumnName="admin_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Answer">
+      <EntityTypeMapping TypeName="Quizmanagement_557Model.Answer">
+        <MappingFragment StoreEntitySet="Answer">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+          <ScalarProperty Name="ques_id" ColumnName="ques_id" />
+          <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="answer_id" ColumnName="answer_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Options">
+      <EntityTypeMapping TypeName="Quizmanagement_557Model.Options">
+        <MappingFragment StoreEntitySet="Options">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="is_correct" ColumnName="is_correct" />
+          <ScalarProperty Name="option_text" ColumnName="option_text" />
+          <ScalarProperty Name="ques_id" ColumnName="ques_id" />
+          <ScalarProperty Name="option_id" ColumnName="option_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Question">
+      <EntityTypeMapping TypeName="Quizmanagement_557Model.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="ques_text" ColumnName="ques_text" />
+          <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
+          <ScalarProperty Name="ques_id" ColumnName="ques_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Quiz">
+      <EntityTypeMapping TypeName="Quizmanagement_557Model.Quiz">
+        <MappingFragment StoreEntitySet="Quiz">
+          <ScalarProperty Name="updated_at" ColumnName="updated_at" />
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="created_By" ColumnName="created_By" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="title" ColumnName="title" />
+          <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Result">
+      <EntityTypeMapping TypeName="Quizmanagement_557Model.Result">
+        <MappingFragment StoreEntitySet="Result">
+          <ScalarProperty Name="created_at" ColumnName="created_at" />
+          <ScalarProperty Name="score" ColumnName="score" />
+          <ScalarProperty Name="quiz_id" ColumnName="quiz_id" />
+          <ScalarProperty Name="user_id" ColumnName="user_id" />
+          <ScalarProperty Name="result_id" ColumnName="result_id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

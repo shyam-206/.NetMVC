@@ -10,5 +10,7 @@ namespace QuizManagement_Repository.Interface
     public interface ILoginRepository
     {
         bool AddRegister(UserModel registerModel);
+        UserModel CheckUserExist(LoginModel loginModel);
+        AdminModel CheckAdminExist(LoginModel loginModel);
     }
 }

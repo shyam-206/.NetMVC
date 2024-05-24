@@ -1,4 +1,5 @@
-﻿using System;
+﻿using QuizManagement.Session;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,7 @@ namespace QuizManagement.Controllers
     {
         public ActionResult Index()
         {
+            ViewBag.Email = SessionHelper.Useremail;
             return View();
         }
 

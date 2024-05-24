@@ -37,12 +37,12 @@
                                 <div class="row gy-3 gy-md-4 overflow-hidden">
                                     <div class="col-12">
                                         <label for="username" class="form-label">Username <span class="text-danger">*</span></label>
-                                        <input type="text" class="form-control" name="username" id="email" placeholder="name_12" >
+                                        <input type="text" class="form-control" name="username" placeholder="name_12" >
                                         @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-12">
                                         <label for="email" class="form-label">Email <span class="text-danger">*</span></label>
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="name@gmail.com">
+                                        <input type="email" class="form-control" name="email"placeholder="name@gmail.com">
                                         @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" })
                                     </div>
                                     <div class="col-12">

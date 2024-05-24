@@ -17,11 +17,22 @@ namespace QuizManagement_Model.ViewModel
         [EmailAddress(ErrorMessage = "Please provide a valid email")]
         public string email { get; set; }
         [Required(ErrorMessage = "Password is required")]
-        [MinLength(8,ErrorMessage = "Please provide a password min length 8")]
+        [MinLength(6,ErrorMessage = "Please provide a password min length 6")]
         public string password { get; set; }
         [Required(ErrorMessage = "Confirm Password is required")]
-        [MinLength(8, ErrorMessage = "Please provide a confirmPassword min length 8")]
+        [MinLength(6, ErrorMessage = "Please provide a confirmPassword min length 6")]
         public string confirmPassword { get; set; }
+
+    }
+
+    public class LoginModel
+    {
+        [Required(ErrorMessage = "Email is required")]
+        [EmailAddress(ErrorMessage = "Please provide a valid email")]
+        public string email { get; set; }
+        [Required(ErrorMessage = "Password is required")]
+        [MinLength(6, ErrorMessage = "Please provide a password min length 6")]
+        public string password { get; set; }
 
     }
 }

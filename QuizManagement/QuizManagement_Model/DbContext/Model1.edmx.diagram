@@ -4,8 +4,23 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6f0d35edad0a4f0c9d4525ed0ef20aaa" Name="Diagram1">
+      <Diagram DiagramId="6f0d35edad0a4f0c9d4525ed0ef20aaa" Name="Diagram1" ZoomLevel="51">
         <EntityTypeShape EntityType="Quizmanagement_557Model.Users" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Quizmanagement_557Model.Admin" Width="1.5" PointX="3.375" PointY="0.75" />
+        <EntityTypeShape EntityType="Quizmanagement_557Model.Answer" Width="1.5" PointX="12.375" PointY="6.5" />
+        <EntityTypeShape EntityType="Quizmanagement_557Model.Options" Width="1.5" PointX="10.125" PointY="12.625" />
+        <EntityTypeShape EntityType="Quizmanagement_557Model.Question" Width="1.5" PointX="7.875" PointY="12.625" />
+        <EntityTypeShape EntityType="Quizmanagement_557Model.Quiz" Width="1.5" PointX="5.625" PointY="5.625" />
+        <EntityTypeShape EntityType="Quizmanagement_557Model.Result" Width="1.5" PointX="7.875" PointY="3.5" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Quiz__created_By__4D94879B" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Answer__option_i__619B8048" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Answer__ques_id__60A75C0F" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Answer__quiz_id__5FB337D6" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Answer__user_id__5EBF139D" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Options__ques_id__5812160E" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Question__quiz_i__5165187F" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Result__quiz_id__66603565" />
+        <AssociationConnector Association="Quizmanagement_557Model.FK__Result__user_id__656C112C" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

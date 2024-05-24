@@ -26,5 +26,11 @@ namespace QuizManagement_Model.DbContext
         }
     
         public virtual DbSet<Users> Users { get; set; }
+        public virtual DbSet<Admin> Admin { get; set; }
+        public virtual DbSet<Answer> Answer { get; set; }
+        public virtual DbSet<Options> Options { get; set; }
+        public virtual DbSet<Question> Question { get; set; }
+        public virtual DbSet<Quiz> Quiz { get; set; }
+        public virtual DbSet<Result> Result { get; set; }
     }
 }
