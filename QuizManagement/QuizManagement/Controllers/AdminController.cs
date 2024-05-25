@@ -20,6 +20,7 @@ namespace QuizManagement.Controllers
         }
         public ActionResult Index()
         {
+            ViewBag.adminId = SessionHelper.UserId;
             List<QuizModel> quizModelList = repository.GetAllQuizModelList();
             return View(quizModelList);
         }
@@ -45,6 +46,70 @@ namespace QuizManagement.Controllers
             return View(quizModel);
         }
 
-        
+        public ActionResult AdminProfile(int adminId)
+        {
+            try
+            {
+                AdminModel adminModel = new AdminModel();
+                adminModel = repository.GetAdminProfile(adminId);
+                if(adminModel != null  && adminModel.admin_id > 0)
+                {
+                    return View(adminModel);
+                }
+
+                return RedirectToAction("Index");
+                
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        [HttpPost]
+        public ActionResult AdminProfile(AdminModel adminModel)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    bool CheckUpdateProfile = repository.UpdateAdminProfile(adminModel);
+
+                    if (CheckUpdateProfile)
+                    {
+                        return RedirectToAction("Index");
+                    }
+                    else
+                    {
+                        
+                        return View(adminModel);
+                    }
+                }
+                else
+                {
+                    return View(adminModel);
+                }
+           
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
+
+        public ActionResult EditQuiz(int quiz_id)
+        {
+            QuizModel quizModel = repository.GetQuizById(quiz_id);
+            return View(quizModel);
+        }
+
+        [HttpPost]
+        public ActionResult EditQuiz(QuizModel quizModel)
+        {
+            return View();
+        }
+
+
     }
 }

@@ -2080,6 +2080,8 @@
     <Content Include="Theme\Dashboard\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Views\Shared\_Header.cshtml" />
     <Content Include="Views\Admin\Create.cshtml" />
+    <Content Include="Views\Admin\AdminProfile.cshtml" />
+    <Content Include="Views\Admin\EditQuiz.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

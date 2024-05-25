@@ -4,7 +4,7 @@
     <div class="card">
         <div class="card-body">
             <div class="container-fluid">
-                <form action="Create" method="post">
+                <form action="Create" method="post" id="myForm">
                     <h2 class="text-primary text-center">Create Quiz</h2>
                     <div class="row">
                         <div class="col-6 mt-3">
@@ -18,7 +18,7 @@
                             @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-12">
-                            <input type="text" value="@Session["UserId"]" name="created_By" class="form-control"/>
+                            <input type="text" value="@Session["UserId"]" name="created_By" class="form-control" hidden/>
                         </div>
                     </div>
                     <div class="row">
@@ -42,39 +42,40 @@
 
 <script>
     function addQuestion() {
-        var numOfQuestions = $(".question").length;
+
+        var NumOfQuestions = $(".question").length;
         var html = $(".questionBody");
-        if (numOfQuestions < 5) {
-            var questionHtml = `<div class="question mt-2">
-                                <div class="d-flex gap-4">
-                                    <input type="text" name="QuestionModelList.Index" value="${numOfQuestions}" hidden/>
-                                    <p class="fs-4 mx-2">${numOfQuestions + 1}.</p>
-                                    <input class="form-control" name="QuestionModelList[${numOfQuestions}].ques_text" />
-                                </div>
-                                <div>
-                                    <div class="row mt-2">`;
-
-            // Loop through options
-            for (var option = 0; option < 4; option++) {
-                questionHtml += `<div class="col-6 d-flex align-items-center gap-4 mt-2">
-                                <span class="fs-4 mx-2">(${String.fromCharCode(65 + option)})</span>
-                                <input class="form-control" name="QuestionModelList[${numOfQuestions}].OptionList[${option}].option_text" />
-                                <input type="hidden" name="QuestionModelList[${numOfQuestions}].OptionList[${option}].is_correct" value="false" />
-                            </div>`;
-            }
-
-            questionHtml += `</div>
-                            </div>
-                            <div class="mt-2">
-                                <select class="form-select" onchange="bindCorrectAnswer(${numOfQuestions}, this)">
-                                    <option value="">Select Correct option</option>
-                                    <option value="0">A</option>
-                                    <option value="1">B</option>
-                                    <option value="2">C</option>
-                                    <option value="3">D</option>
-                                </select>
-                            </div>
-                        </div>`;
+        if (NumOfQuestions < 5) {
+            var questionHtml = `<div class="question mt-3">
+                                    <div class="d-flex justify-content-center align-items-center gap-4">
+                                        <input type="text" name="QuestionModelList.Index" value="${NumOfQuestions}" hidden/>
+                                        <p class="fs-4"> ${NumOfQuestions + 1}.</p>
+                                        <input class = "form-control mx-2" name="QuestionModelList[${ NumOfQuestions}].ques_text" />
+                                    </div>
+                                    <div>
+                                        <div class="row mt-2">
+                                        @{
+                                            for (int option = 0; option < 4; option++)
+                                            {
+                                                <div class="col-6 d-flex align-items-center gap-4 mt-3">
+                                                <span class="fs-4">(@((char)('A' + option)))</span>
+                                                <input class="form-control mx-2" name="QuestionModelList[${NumOfQuestions}].OptionList[@option].option_text" />
+                                                <input hidden class = "form-control" name="QuestionModelList[${NumOfQuestions}].OptionList[@option].is_correct" value=false />
+                                                </div>
+                                            }
+                                        }
+                                        </div>
+                                    </div>
+                                    <div class="mt-3">
+                                        <select onchange="bindCorrectAnswer(${NumOfQuestions}, this)">
+                                            <option>Select Correct option</option>
+                                            <option value="0">A</option>
+                                            <option value="1">B</option>
+                                            <option value="2">C</option>
+                                            <option value="3">D</option>
+                                        </select>
+                                    </div>
+                                </div>`;
 
             // Append to HTML
             html.append(questionHtml);
@@ -82,7 +83,7 @@
     }
 
     function bindCorrectAnswer(QuesID, ele) {
-       
+
         let correctAns = $(ele).val();
         let options = document.querySelectorAll(`[name^="QuestionModelList[${QuesID}].OptionList"]`)
 
@@ -91,9 +92,6 @@
                 option.value = 'false';
             }
         })
-
-        
-      
         if (correctAns !== '') {
             let element = $(`[name = "QuestionModelList[${QuesID}].OptionList[${correctAns}].is_correct"]`);
             $(element).attr('value', true);
@@ -101,7 +99,6 @@
 
         }
     }
-
 
     
 </script>

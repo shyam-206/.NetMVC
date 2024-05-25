@@ -4,6 +4,7 @@ using QuizManagement_Model.ViewModel;
 using QuizManagement_Repository.Interface;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -27,9 +28,10 @@ namespace QuizManagement_Repository.Service
                 _context.SaveChanges();
 
 
-                for(var i = 0; i < quizModel.QuestionModelList.Count(); i++)
+                for (var i = 0; i < quizModel.QuestionModelList.Count(); i++)
                 {
-                    Question question = new Question {
+                    Question question = new Question
+                    {
                         quiz_id = quiz.quiz_id,
                         ques_text = quizModel.QuestionModelList[i].ques_text,
                         created_at = DateTime.Now
@@ -38,7 +40,7 @@ namespace QuizManagement_Repository.Service
                     _context.Question.Add(question);
                     _context.SaveChanges();
 
-                    foreach(var item in quizModel.QuestionModelList[i].OptionList)
+                    foreach (var item in quizModel.QuestionModelList[i].OptionList)
                     {
                         Options option = new Options
                         {
@@ -49,11 +51,11 @@ namespace QuizManagement_Repository.Service
                         };
 
                         _context.Options.Add(option);
-                        CheckQuizSave =  _context.SaveChanges();
+                        CheckQuizSave = _context.SaveChanges();
                     }
                 }
 
-             
+
 
                 return CheckQuizSave > 0 ? true : false;
 
@@ -65,8 +67,23 @@ namespace QuizManagement_Repository.Service
             }
         }
 
+        public AdminModel GetAdminProfile(int adminId)
+        {
+            try
+            {
+                Admin admin = _context.Admin.Where(m => m.admin_id == adminId).FirstOrDefault();
+                AdminModel adminModel = LoginHelper.ConvertAdminToAdminModel(admin);
+                return adminModel != null ? adminModel : null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public List<QuizModel> GetAllQuizModelList()
-        {   
+        {
             try
             {
                 List<QuizModel> quizModelList = new List<QuizModel>();
@@ -81,6 +98,44 @@ namespace QuizManagement_Repository.Service
                 throw ex;
             }
 
+        }
+
+        public QuizModel GetQuizById(int quiz_id)
+        {
+            try
+            {
+
+                Quiz quiz = _context.Quiz.Where(m => m.quiz_id == quiz_id).FirstOrDefault();
+                QuizModel quizModel = AdminHelper.ConvertQuizToQuizModel(quiz);
+                return quizModel != null ? quizModel : null;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool UpdateAdminProfile(AdminModel adminModel)
+        {
+            try
+            {
+                int checkUpdateOrNot = 0;
+                Admin admin = _context.Admin.Where(m => m.admin_id == adminModel.admin_id).FirstOrDefault();
+                admin.username = adminModel.username;
+                adminModel.email = adminModel.email;
+                admin.password = adminModel.password;
+                admin.updated_at = DateTime.Now;
+
+                _context.Entry(admin).State = EntityState.Modified;
+                checkUpdateOrNot = _context.SaveChanges();
+                return checkUpdateOrNot > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
         }
     }
 }

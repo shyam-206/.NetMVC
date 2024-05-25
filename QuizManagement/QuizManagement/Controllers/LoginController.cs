@@ -2,6 +2,7 @@
 using QuizManagement_Model.ViewModel;
 using QuizManagement_Repository.Interface;
 using QuizManagement_Repository.Service;
+using System;
 using System.Web.Mvc;
 
 namespace QuizManagement.Controllers
@@ -90,5 +91,7 @@ namespace QuizManagement.Controllers
             Session.Clear();
             return RedirectToAction("Login");
         }
+
+       
     }
 }

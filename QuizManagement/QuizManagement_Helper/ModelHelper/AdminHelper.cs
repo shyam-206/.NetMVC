@@ -46,5 +46,89 @@ namespace QuizManagement_Helper.ModelHelper
                 throw ex;
             }
         }
+
+        public static QuizModel ConvertQuizToQuizModel(Quiz quiz)
+        {
+            try
+            {
+                QuizModel quizModel = new QuizModel
+                {
+                    quiz_id = quiz.quiz_id,
+                    title = quiz.title,
+                    description = quiz.description,
+                    created_By = quiz.created_By
+                };
+
+                quizModel.QuestionModelList = ConvertQuestionListToQuestionModelList(quiz.Question.ToList());
+             
+                return quizModel;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public static List<QuestionModel> ConvertQuestionListToQuestionModelList(List<Question> questions)
+        {
+            try
+            {
+                List<QuestionModel> questionModelList = new List<QuestionModel>();
+                if(questions != null)
+                {
+                    foreach(Question question in questions)
+                    {
+                        QuestionModel questionModel = new QuestionModel
+                        {
+                            ques_id = question.ques_id,
+                            ques_text = question.ques_text,
+                            quiz_id = question.quiz_id
+                        };
+
+                        questionModel.OptionList = ConvertOptionListToOptionModelList(question.Options.ToList());
+                        questionModelList.Add(questionModel);
+                    }
+                }
+
+                return questionModelList;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        public static List<OptionModel> ConvertOptionListToOptionModelList(List<Options> options)
+        {
+            
+            try
+            {
+                List<OptionModel> optionModelList = new List<OptionModel>();
+                if(options != null)
+                {
+                    foreach(Options option in options)
+                    {
+                        OptionModel optionModel = new OptionModel
+                        {
+                            option_id = option.option_id,
+                            option_text = option.option_text,
+                            is_correct = (bool)option.is_correct,
+                            ques_id = option.ques_id
+                        };
+
+                        optionModelList.Add(optionModel);
+                    }
+                }
+                return optionModelList;
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }

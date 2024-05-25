@@ -22,7 +22,7 @@ namespace QuizManagement_Helper.ModelHelper
                     user.user_id = userModel.user_id;
                     user.username = userModel.username;
                     user.email = userModel.email;
-                    user.password = EncryptPassword(userModel.password);
+                    user.password = userModel.password;
                     user.created_at = DateTime.Now;
                 }
 

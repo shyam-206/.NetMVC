@@ -14,8 +14,9 @@ namespace QuizManagement_Model.ViewModel
         public string title { get; set; }
         [Required(ErrorMessage = "Please Enter a Description")]
         public string description { get; set; }
+        [Required]
         public Nullable<int> created_By { get; set; }
-        [Required(ErrorMessage = "Please ")]
+        [Required(ErrorMessage = "Question is compulsory")]
         public List<QuestionModel> QuestionModelList { get; set; }
 
     }
