@@ -1,0 +1,46 @@
+﻿@model QuizManagement_Model.ViewModel.QuestionModel
+
+<div class="container">
+    <div>
+        <h5 class="card-title">Question @Model.ques_id</h5>
+        <p class="card-text">@Model.ques_text</p>
+        <ul class="list-group">
+            @for (int i = 0; i < Model.OptionList.Count; i++)
+            {
+                <li class="list-group-item">
+                    <input type="text" hidden value="@Model.OptionList[i].option_id" />
+                    <input type="radio" name="option" value="@Model.OptionList[i].option_id"/>
+                    @Model.OptionList[i].option_text
+                </li>
+            }
+        </ul>
+    </div>
+    <div class="row mt-3 d-flex justify-content-end">
+        @if (@Model.ques_id != 1)
+        {
+            <button type="button" class="btn btn-primary mx-2" onclick="getPreviousQuestion(@Model.ques_id)">Previous</button>
+
+            if (@Model.ques_id == 5)
+            {
+                <button>Submit</button>
+            }
+        }
+        @if (Model.ques_id != 5)
+        {
+            <button type="button" class="btn btn-primary" onclick="getNextQuestion(@Model.ques_id)">Next</button>
+        }
+    </div>
+</div>
+@*
+<script type="text/javascript">
+    
+
+    function getNextQuestion(currentQuestionId) {
+        console.log("Helloo 1", currentQuestionId)
+        $.ajax({
+            url: /Home/GetNextQuestion,
+            type: 'POST',
+
+        });
+    }
+</script>*@

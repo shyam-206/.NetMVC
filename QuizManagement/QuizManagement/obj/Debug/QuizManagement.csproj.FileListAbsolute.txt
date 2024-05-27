@@ -1,5 +1,3 @@
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\EntityFramework.xml
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\QuizManagement.dll.config
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\QuizManagement.dll
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\QuizManagement.pdb
@@ -78,6 +76,7 @@ C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\QuizManagement_Model.pdb
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\QuizManagement_Model.dll.config
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\QuizManagement_Repository.pdb
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\QuizManagement_Repository.dll.config
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\EntityFramework.xml
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\EntityFramework.SqlServer.xml
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\System.Runtime.CompilerServices.Unsafe.xml
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\System.Web.Helpers.xml
@@ -91,6 +90,7 @@ C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\Newtonsoft.Json.xml
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\Unity.Abstractions.pdb
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\Unity.Container.pdb
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\Antlr3.Runtime.pdb
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\bin\QuizManagement_Helper.pdb
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\obj\Debug\QuizManagement.csproj.AssemblyReference.cache
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement\obj\Debug\QuizManagement.csproj.CoreCompileInputs.cache

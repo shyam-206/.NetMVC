@@ -5,8 +5,8 @@ C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\bin\Debug\EntityFramewor
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\bin\Debug\EntityFramework.SqlServer.dll
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\bin\Debug\EntityFramework.xml
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.csproj.AssemblyReference.cache
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.csproj.CoreCompileInputs.cache
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.csproj.CopyComplete
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.dll
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.pdb
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.csproj.AssemblyReference.cache

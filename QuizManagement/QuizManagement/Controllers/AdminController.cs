@@ -107,7 +107,22 @@ namespace QuizManagement.Controllers
         [HttpPost]
         public ActionResult EditQuiz(QuizModel quizModel)
         {
-            return View();
+            try
+            {
+                bool CheckUpdateOrNot = repository.UpdateQuizById(quizModel);
+
+                if (CheckUpdateOrNot)
+                {
+                    return RedirectToAction("Index");
+                }
+
+                return View(quizModel);
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
         }
 
 

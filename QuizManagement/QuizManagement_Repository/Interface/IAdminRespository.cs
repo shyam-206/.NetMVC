@@ -13,7 +13,8 @@ namespace QuizManagement_Repository.Interface
         List<QuizModel> GetAllQuizModelList();
         AdminModel GetAdminProfile(int adminId);
         bool UpdateAdminProfile(AdminModel adminModel);
-
         QuizModel GetQuizById(int quiz_id);
+
+        bool UpdateQuizById(QuizModel quizModel);
     }
 }

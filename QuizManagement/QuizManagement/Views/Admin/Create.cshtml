@@ -60,7 +60,7 @@
                                                 <div class="col-6 d-flex align-items-center gap-4 mt-3">
                                                 <span class="fs-4">(@((char)('A' + option)))</span>
                                                 <input class="form-control mx-2" name="QuestionModelList[${NumOfQuestions}].OptionList[@option].option_text" />
-                                                <input hidden class = "form-control" name="QuestionModelList[${NumOfQuestions}].OptionList[@option].is_correct" value=false />
+                                                <input type="checkbox" class="form-control" name="QuestionModelList[${NumOfQuestions}].OptionList[@option].is_correct" value="true"  hidden />
                                                 </div>
                                             }
                                         }
@@ -84,21 +84,19 @@
 
     function bindCorrectAnswer(QuesID, ele) {
 
-        let correctAns = $(ele).val();
-        let options = document.querySelectorAll(`[name^="QuestionModelList[${QuesID}].OptionList"]`)
+        let correctAns = ele.value;
+        let options = document.querySelectorAll(`[name^="QuestionModelList[${QuesID}].OptionList"]`);
 
         options.forEach(function (option) {
-            if (option.name.endsWith('.is_correct')) {
-                option.value = 'false';
+            if (option.type === 'checkbox') {
+                option.checked = false;
             }
-        })
+        });
         if (correctAns !== '') {
-            let element = $(`[name = "QuestionModelList[${QuesID}].OptionList[${correctAns}].is_correct"]`);
-            $(element).attr('value', true);
-            console.log(element.value)
-
+            let element = document.querySelector(`[name="QuestionModelList[${QuesID}].OptionList[${correctAns}].is_correct"]`);
+            element.checked = true;
         }
     }
 
-    
+
 </script>

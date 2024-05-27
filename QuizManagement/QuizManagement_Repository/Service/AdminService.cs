@@ -137,5 +137,50 @@ namespace QuizManagement_Repository.Service
                 throw ex;
             }
         }
+
+        public bool UpdateQuizById(QuizModel quizModel)
+        {
+            try
+            {
+                int checkQuizUpdateOrNot = 0;
+                
+                Quiz quiz = _context.Quiz.Where(m => m.quiz_id == quizModel.quiz_id).FirstOrDefault();
+                quiz.title = quizModel.title;
+                quiz.description = quizModel.description;
+                quiz.updated_at = DateTime.Now;
+                _context.Entry(quiz).State = EntityState.Modified;
+                checkQuizUpdateOrNot = _context.SaveChanges(); 
+
+                for (var i = 0; i < quizModel.QuestionModelList.Count(); i++)
+                {
+                    //Question are update
+                    Question question = quiz.Question.Where(m => m.ques_id == quizModel.QuestionModelList[i].ques_id).FirstOrDefault();
+                    question.ques_text = quizModel.QuestionModelList[i].ques_text;
+                    question.updated_at = DateTime.Now;
+
+                    //after that save changes in the database
+                    _context.Entry(question).State = EntityState.Modified;
+                    _context.SaveChanges();
+
+                    foreach(var item in quizModel.QuestionModelList[i].OptionList)
+                    {
+                        Options option = question.Options.Where(m => m.option_id == item.option_id).FirstOrDefault();
+
+                        option.option_text = item.option_text;
+                        option.is_correct = item.is_correct;
+                        option.updated_at = DateTime.Now;
+                        _context.Entry(option).State = EntityState.Modified;
+                        _context.SaveChanges();
+
+                    }
+                }
+                return checkQuizUpdateOrNot > 0 ? true  : false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
     }
 }
