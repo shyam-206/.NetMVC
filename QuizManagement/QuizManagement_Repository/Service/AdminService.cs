@@ -18,6 +18,32 @@ namespace QuizManagement_Repository.Service
         {
             _context = new Quizmanagement_557Entities();
         }
+
+        public bool AddAnswer(AnswerModel answerModel)
+        {
+            try
+            {
+                int CheckAnswerAddOrNot = 0;
+                Answer answer = new Answer {
+                    user_id = answerModel.user_id,
+                    quiz_id = answerModel.quiz_id,
+                    ques_id = answerModel.ques_id,
+                    option_id = answerModel.selected_option_id,
+                    created_at = DateTime.Now
+                };
+
+                _context.Answer.Add(answer);
+                CheckAnswerAddOrNot = _context.SaveChanges();
+
+                return CheckAnswerAddOrNot > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public bool AddQuiz(QuizModel quizModel)
         {
             try

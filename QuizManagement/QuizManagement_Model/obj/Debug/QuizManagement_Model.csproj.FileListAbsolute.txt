@@ -10,3 +10,15 @@ C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.csproj.CopyComplete
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.dll
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.pdb
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\bin\Debug\QuizManagement_Model.dll.config
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\bin\Debug\QuizManagement_Model.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\bin\Debug\QuizManagement_Model.pdb
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.csproj.CopyComplete
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Model\obj\Debug\QuizManagement_Model.pdb

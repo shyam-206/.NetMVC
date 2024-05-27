@@ -15,3 +15,20 @@ C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManag
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManagement_Repository.csproj.CopyComplete
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManagement_Repository.dll
 C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManagement_Repository.pdb
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\QuizManagement_Repository.dll.config
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\QuizManagement_Repository.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\QuizManagement_Repository.pdb
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\QuizManagement_Helper.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\QuizManagement_Model.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\QuizManagement_Helper.pdb
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\QuizManagement_Model.pdb
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\QuizManagement_Model.dll.config
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManagement_Repository.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManagement_Repository.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManagement_Repository.csproj.CopyComplete
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManagement_Repository.dll
+C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Repository\obj\Debug\QuizManagement_Repository.pdb

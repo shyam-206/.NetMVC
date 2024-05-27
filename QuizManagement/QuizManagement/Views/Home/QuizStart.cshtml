@@ -56,23 +56,36 @@
         });
     }
     function saveAndGetNextQuestion(currentQuestionId) {
-        var selectedOption = $('input[name="option"]:checked').val();
-        var quiz_id = @Model.quiz_id;
+        let selectedOption = $('input[name="option"]:checked').val();
+        let user_id = @Session["UserId"];
+        let quiz_id = @Model.quiz_id;
+        let ques_id = currentQuestionId;   
+        let selected_option_id = selectedOption;
+
+        
+
 
         if (!selectedOption) {
             alert("Please select an option before proceeding.");
             return;
         }
 
-        debugger
+        
         $.ajax({
             url: '/Home/GetNextQuestion',
             type: 'POST',
             data: {
-                quiz_id: quiz_id
+                user_id,
+                quiz_id,
+                ques_id,
+                selected_option_id
             },
-            success: function() {
-                getNextQuestion(currentQuestionId);
+            success: function(res) {
+                if (res.success) {
+                    getNextQuestion(currentQuestionId)
+                } else {
+                    console.log("No Data Found")
+                }
             },
             error: function() {
                 alert("There was an error saving your answer. Please try again.");
@@ -80,10 +93,8 @@
         });
     }
 
-
-
     function getPreviousQuestion(currentQuestionId) {
-
+        console.log("hello")
         var quiz_id = @Model.quiz_id;
 
         $.ajax({

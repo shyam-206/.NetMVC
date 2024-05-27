@@ -73,9 +73,24 @@ namespace QuizManagement.Controllers
         }
 
         [HttpPost]
-        public void GetNextQuestion(AnswerModel answerModel)
+        public JsonResult GetNextQuestion(AnswerModel answerModel)
         {
+            try
+            {
+                bool CheckSave = repository.AddAnswer(answerModel);
 
+                if (CheckSave)
+                {
+                    return Json(new { success = true}, JsonRequestBehavior.AllowGet);
+                }
+
+                return Json(new { success = false},JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
             
         }
 

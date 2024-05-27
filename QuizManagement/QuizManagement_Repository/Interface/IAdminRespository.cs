@@ -14,7 +14,7 @@ namespace QuizManagement_Repository.Interface
         AdminModel GetAdminProfile(int adminId);
         bool UpdateAdminProfile(AdminModel adminModel);
         QuizModel GetQuizById(int quiz_id);
-
         bool UpdateQuizById(QuizModel quizModel);
+        bool AddAnswer(AnswerModel answerModel);
     }
 }
