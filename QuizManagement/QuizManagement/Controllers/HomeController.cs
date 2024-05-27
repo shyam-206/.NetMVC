@@ -73,10 +73,10 @@ namespace QuizManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult GetNextQuestion(AnswerModel answerModel)
+        public void GetNextQuestion(AnswerModel answerModel)
         {
 
-            return View("Index");
+            
         }
 
         public ActionResult GetPreviousQuestion(int quiz_id, int currentQuestionId)

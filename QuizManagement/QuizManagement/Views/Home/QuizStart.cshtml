@@ -28,8 +28,6 @@
 <script type="text/javascript">
 
 
-
-
     $(document).ready(function () {
         $("#start-btn").on("click", function () {
             $("#start-btn").hide()
@@ -49,32 +47,45 @@
     function getNextQuestion(currentQuestionId) {
         var quiz_id = @Model.quiz_id;
 
-        console.log("Helloo 1", currentQuestionId)
-
-        answerData = {
-            ques_id: currentQuestionId
-        }
-        $.ajax({
-            url: /Home/GetNextQuestion,
-            type: 'POST',
-            contentType: "application/json",
-            data: JSON.stringify(answerData)
-        });
-
         $.ajax({
             url: `/Home/GetNextQuestion?quiz_id=${quiz_id}&currentQuestionId=${currentQuestionId}`,
             type: 'GET',
             success: function(result) {
                 $("#QuestionContainer").html(result);
             },
-
         });
     }
+    function saveAndGetNextQuestion(currentQuestionId) {
+        var selectedOption = $('input[name="option"]:checked').val();
+        var quiz_id = @Model.quiz_id;
+
+        if (!selectedOption) {
+            alert("Please select an option before proceeding.");
+            return;
+        }
+
+        debugger
+        $.ajax({
+            url: '/Home/GetNextQuestion',
+            type: 'POST',
+            data: {
+                quiz_id: quiz_id
+            },
+            success: function() {
+                getNextQuestion(currentQuestionId);
+            },
+            error: function() {
+                alert("There was an error saving your answer. Please try again.");
+            }
+        });
+    }
+
+
 
     function getPreviousQuestion(currentQuestionId) {
 
         var quiz_id = @Model.quiz_id;
-        
+
         $.ajax({
             url: `/Home/GetPreviousQuestion?quiz_id=${quiz_id}&currentQuestionId=${currentQuestionId}`,
             type: 'GET',

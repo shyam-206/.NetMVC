@@ -27,20 +27,8 @@
         }
         @if (Model.ques_id != 5)
         {
-            <button type="button" class="btn btn-primary" onclick="getNextQuestion(@Model.ques_id)">Next</button>
+            <button type="button" class="btn btn-primary" onclick="saveAndGetNextQuestion(@Model.ques_id)">Next</button>
         }
     </div>
 </div>
-@*
-<script type="text/javascript">
-    
 
-    function getNextQuestion(currentQuestionId) {
-        console.log("Helloo 1", currentQuestionId)
-        $.ajax({
-            url: /Home/GetNextQuestion,
-            type: 'POST',
-
-        });
-    }
-</script>*@
