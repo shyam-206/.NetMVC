@@ -18,23 +18,43 @@ namespace QuizManagement_Repository.Service
         {
             _context = new Quizmanagement_557Entities();
         }
-
-        public bool AddAnswer(AnswerModel answerModel)
+        public bool AddAnswer(List<AnswerModel> answerModelList)
         {
             try
             {
                 int CheckAnswerAddOrNot = 0;
-                Answer answer = new Answer {
-                    user_id = answerModel.user_id,
-                    quiz_id = answerModel.quiz_id,
-                    ques_id = answerModel.ques_id,
-                    option_id = answerModel.selected_option_id,
-                    created_at = DateTime.Now
-                };
+                int score = 0;
+                Result result = new Result();
+                
+                foreach(var item in answerModelList)
+                {
+                    Options option = _context.Options.Where(m => m.ques_id == item.ques_id && m.is_correct == true).FirstOrDefault();
+                    Answer answer = new Answer
+                    {
+                        user_id = item.user_id,
+                        quiz_id = item.quiz_id,
+                        ques_id = item.ques_id,
+                        option_id = item.selected_option_id,
+                        created_at = DateTime.Now
+                    };
 
-                _context.Answer.Add(answer);
-                CheckAnswerAddOrNot = _context.SaveChanges();
+                    if(item.selected_option_id == option.option_id)
+                    {
+                        score += 1;
+                    }
+                    result.quiz_id = item.quiz_id;
+                    result.user_id = item.user_id;
 
+
+                    _context.Answer.Add(answer);
+                    CheckAnswerAddOrNot = _context.SaveChanges();
+                    
+                }
+
+                result.score = score;
+                result.created_at = DateTime.Now;
+                _context.Result.Add(result);
+                _context.SaveChanges();
                 return CheckAnswerAddOrNot > 0 ? true : false;
             }
             catch (Exception ex)
@@ -93,6 +113,34 @@ namespace QuizManagement_Repository.Service
             }
         }
 
+        public bool DeleteQuiz(int quiz_id)
+        {
+            try
+            {
+                int checkDelete = 0;
+                Quiz quiz = _context.Quiz.Where(q => q.quiz_id == quiz_id).FirstOrDefault();
+                List<Question> questionList = new List<Question>();
+                foreach (Question question in quiz.Question)
+                {
+                    List<Options> optionList = new List<Options>();
+                    foreach (Options option in question.Options)
+                    {
+                        optionList.Add(option);
+                    }
+                    _context.Options.RemoveRange(optionList);
+                    questionList.Add(question);
+                }
+                _context.Question.RemoveRange(questionList);
+                Quiz removedQuiz = _context.Quiz.Remove(quiz);
+                checkDelete = _context.SaveChanges();
+                return checkDelete > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
         public AdminModel GetAdminProfile(int adminId)
         {
             try
@@ -108,13 +156,13 @@ namespace QuizManagement_Repository.Service
             }
         }
 
-        public List<QuizModel> GetAllQuizModelList()
+        public List<QuizModel> GetAllQuizModelList(int userId)
         {
             try
             {
                 List<QuizModel> quizModelList = new List<QuizModel>();
                 List<Quiz> quizes = _context.Quiz.ToList();
-                quizModelList = AdminHelper.ConvertQuizListToQuizModelList(quizes);
+                quizModelList = AdminHelper.ConvertQuizListToQuizModelList(quizes,userId);
                 return quizModelList != null ? quizModelList : null;
 
             }
@@ -142,6 +190,48 @@ namespace QuizManagement_Repository.Service
             }
         }
 
+        public UserModel GetUserProfile(int userId)
+        {
+            try
+            {
+                Users user = _context.Users.Where(m => m.user_id == userId).FirstOrDefault();
+                UserModel userModel = new UserModel
+                {
+                    user_id = user.user_id,
+                    username = user.username,
+                    email = user.email,
+                    password = user.password,
+                };
+
+                return userModel;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public int QuizScore(int quiz_id, int user_id)
+        {
+            try
+            {
+                Result result = _context.Result.Where(m => m.quiz_id == quiz_id && m.user_id == user_id).FirstOrDefault();
+                int QuizScore = 0;
+                if(result != null)
+                {
+                    QuizScore = (int)result.score;
+                }
+
+                return QuizScore;
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public bool UpdateAdminProfile(AdminModel adminModel)
         {
             try
@@ -149,7 +239,7 @@ namespace QuizManagement_Repository.Service
                 int checkUpdateOrNot = 0;
                 Admin admin = _context.Admin.Where(m => m.admin_id == adminModel.admin_id).FirstOrDefault();
                 admin.username = adminModel.username;
-                adminModel.email = adminModel.email;
+                admin.email = adminModel.email;
                 admin.password = adminModel.password;
                 admin.updated_at = DateTime.Now;
 
@@ -201,6 +291,28 @@ namespace QuizManagement_Repository.Service
                     }
                 }
                 return checkQuizUpdateOrNot > 0 ? true  : false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public bool UpdateUserProfile(UserModel userModel)
+        {
+            try
+            {
+                int checkUpdateOrNot = 0;
+                Users user = _context.Users.Where(m => m.user_id == userModel.user_id).FirstOrDefault();
+                user.username = userModel.username;
+                user.email = userModel.email;
+                user.password = userModel.password;
+                user.updated_at = DateTime.Now;
+
+                _context.Entry(user).State = EntityState.Modified;
+                checkUpdateOrNot = _context.SaveChanges();
+                return checkUpdateOrNot > 0 ? true : false;
             }
             catch (Exception ex)
             {

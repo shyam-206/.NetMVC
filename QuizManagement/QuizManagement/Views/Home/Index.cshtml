@@ -1,8 +1,12 @@
-﻿@model List<QuizManagement_Model.ViewModel.QuizModel>
-
+﻿
+@model List<QuizManagement_Model.ViewModel.QuizModel>
+@if (@TempData["LoginUser"] != null)
+{
+    <script>
+        toastr.success('@TempData["LoginUser"]')
+    </script>
+}
 <div class="container mt-5">
-    
-
     <div class="card mt-5">
         <div class="card-body">
             <h4 class="text-center" style="color: #2A629A;">Quiz List</h4>
@@ -25,10 +29,16 @@
                                         <a href="CreateQuestion">@item.title</a>
                                     </td>
                                     <td>@item.description</td>
-                                    <td>
-                                        <div>
-                                            @Html.ActionLink("Start","QuizStart", new { quiz_id = item.quiz_id, Controller = "Home" }, new { @class = "btn btn-success sm" })
-                                        </div>
+                                    <td class="d-flex">
+                                        @if (item.is_completed == 0)
+                                        {
+                                            @Html.ActionLink("Start", "QuizStart", new { quiz_id = item.quiz_id, Controller = "Home" }, new { @class = "btn btn-success sm mx-2" })
+                                        }
+                                        else
+                                        {
+                                            @Html.ActionLink("Result", "ViewResult", new { quiz_id = item.quiz_id, user_id = Session["UserId"], Controller = "Home" }, new { @class = "btn btn-success sm" })
+                                        }
+
                                     </td>
                                 </tr>
                             }

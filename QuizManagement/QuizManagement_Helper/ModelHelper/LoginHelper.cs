@@ -43,7 +43,7 @@ namespace QuizManagement_Helper.ModelHelper
                 if (loginModel != null)
                 {
                     user.email = loginModel.email;
-                    user.password = EncryptPassword(loginModel.password);
+                    user.password = loginModel.password;
                 }
                 return user;
             }

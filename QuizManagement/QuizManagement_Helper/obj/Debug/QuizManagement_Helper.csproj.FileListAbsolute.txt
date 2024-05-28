@@ -1,15 +1,3 @@
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Helper.dll
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Helper.pdb
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Model.dll
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\EntityFramework.dll
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Model.pdb
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Model.dll.config
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\EntityFramework.xml
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.csproj.AssemblyReference.cache
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.csproj.CoreCompileInputs.cache
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.csproj.CopyComplete
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.dll
-C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.pdb
 C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Helper.dll
 C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Helper.pdb
 C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Model.dll
@@ -22,3 +10,15 @@ C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Helper\obj\Debug\Qu
 C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.csproj.CopyComplete
 C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.dll
 C:\Users\admin\Desktop\.NetMVC\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.pdb
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Helper.dll
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Helper.pdb
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Model.dll
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\EntityFramework.dll
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Model.pdb
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\QuizManagement_Model.dll.config
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\bin\Debug\EntityFramework.xml
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.csproj.AssemblyReference.cache
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.csproj.CoreCompileInputs.cache
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.csproj.CopyComplete
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.dll
+C:\Shyam Dhokiya\C#\QuizManagement\QuizManagement_Helper\obj\Debug\QuizManagement_Helper.pdb

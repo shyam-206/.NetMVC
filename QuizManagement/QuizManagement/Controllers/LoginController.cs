@@ -32,7 +32,9 @@ namespace QuizManagement.Controllers
                     SessionHelper.UserId = checkAdmin.admin_id;
                     SessionHelper.Username = checkAdmin.username;
                     SessionHelper.Useremail = checkAdmin.email;
+                    SessionHelper.Role = "Admin";
                     TempData["Email"] = checkAdmin.email;
+                    TempData["LoginAdmin"] = "Admin Login Successfully";
                     return RedirectToAction("Index", "Admin");
                 }
                 else if (checkUser != null && checkUser.user_id > 0)
@@ -40,11 +42,14 @@ namespace QuizManagement.Controllers
                     SessionHelper.UserId = checkUser.user_id;
                     SessionHelper.Username = checkUser.username;
                     SessionHelper.Useremail = checkUser.email;
+                    SessionHelper.Role = "User";
                     TempData["Email"] = checkUser.email;
+                    TempData["LoginUser"] = "User Login Successfully";
                     return RedirectToAction("Index", "Home");
                 }
                 else
                 {
+                    TempData["Wrong"] = "Username or password is wrong";
                     return View(loginModel);
                 }
             }
@@ -70,6 +75,7 @@ namespace QuizManagement.Controllers
 
                     if (isAddUser)
                     {
+                        TempData["register"] = "Register Successfully";
                         return RedirectToAction("Login");
                     }
                     else
@@ -89,6 +95,7 @@ namespace QuizManagement.Controllers
         public ActionResult Logout()
         {
             Session.Clear();
+            TempData["logout"] = "Logout Successfully";
             return RedirectToAction("Login");
         }
 

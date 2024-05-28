@@ -1,4 +1,11 @@
 ﻿@model List<QuizManagement_Model.ViewModel.QuizModel>
+@if (@TempData["LoginAdmin"] != null)
+{
+    <script>
+            toastr.success('@TempData["LoginAdmin"]')
+
+    </script>
+}
 
 <div class="container mt-5">
     <div class="card">
@@ -33,8 +40,8 @@
                                     <td>@item.description</td>
                                     <td>
                                         <div>
-                                            @Html.ActionLink("Edit", "EditQuiz", new { quiz_id=item.quiz_id, Controller = "Admin" }, new { @class = "btn btn-success sm" })
-                                            @Html.ActionLink("Delete", "Delete", new { quiz_id=item.quiz_id ,Controller = "Admin" }, new { @class = "btn btn-danger sm" })
+                                            @Html.ActionLink("Edit", "EditQuiz", new { quiz_id = item.quiz_id, Controller = "Admin" }, new { @class = "btn btn-success sm" })
+                                            @Html.ActionLink("Delete", "DeleteQuiz", new { quiz_id = item.quiz_id, Controller = "Admin" }, new { @class = "btn btn-danger sm" })
                                         </div>
                                     </td>
                                 </tr>

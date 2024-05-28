@@ -1,0 +1,35 @@
+﻿@model QuizManagement_Model.ViewModel.UserModel
+
+<div class="container mt-5">
+    <form action="UserProfile" method="post">
+        <div class="row">
+            <input type="hidden" name="user_id" value="@(Model != null && Model.user_id != 0 ? Model.user_id : 0)" />
+            <div class="col-12 mt-3">
+                <label>Username</label>
+                <input type="text" class="form-control" name="username" value="@(Model != null && Model.username != null ?  Model.username : "" )" />
+                @Html.ValidationMessageFor(m => m.username, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-12 mt-3">
+                <label>User Email</label>
+                <input type="text" class="form-control" name="email" value="@(Model != null && Model.email != null ?  Model.email : "" )" />
+                @Html.ValidationMessageFor(m => m.email, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-12 mt-3">
+                <label>Password</label>
+                <input type="text" class="form-control" name="password" value="@(Model != null && Model.password != null ? Model.password : "")" />
+                @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-12 mt-3">
+                <label>Confirm Password</label>
+                <input type="text" class="form-control" name="confirmPassword" value="@(Model != null && Model.password != null ? Model.password : "")" />
+                @Html.ValidationMessageFor(m => m.confirmPassword, "", new { @class = "text-danger" })
+            </div>
+            <div class="col-12 mt-3">
+                <a href="Index" class="btn btn-success">Back To Dashboard</a>
+                <button type="submit" class="btn btn-outline-primary">Edit Profile</button>
+            </div>
+        </div>
+
+    </form>
+</div>
+

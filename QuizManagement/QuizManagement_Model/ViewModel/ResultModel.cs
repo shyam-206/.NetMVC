@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QuizManagement_Repository
+namespace QuizManagement_Model.ViewModel
 {
-    public class Class1
+    public class ResultModel
     {
+        public int user_id { get; set; }
     }
 }

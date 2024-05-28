@@ -16,8 +16,9 @@ namespace QuizManagement_Model.ViewModel
         public string description { get; set; }
         [Required]
         public Nullable<int> created_By { get; set; }
-        [Required(ErrorMessage = "Question is compulsory")]
+        
         public List<QuestionModel> QuestionModelList { get; set; }
+        public int is_completed { get; set; }
 
     }
 }

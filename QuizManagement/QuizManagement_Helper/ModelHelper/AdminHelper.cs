@@ -21,7 +21,7 @@ namespace QuizManagement_Helper.ModelHelper
             return quiz;
         }
 
-        public static List<QuizModel> ConvertQuizListToQuizModelList(List<Quiz> quizes)
+        public static List<QuizModel> ConvertQuizListToQuizModelList(List<Quiz> quizes,int userId)
         {
             try
             {
@@ -35,6 +35,7 @@ namespace QuizManagement_Helper.ModelHelper
                         quizModel.title = quiz.title;
                         quizModel.description = quiz.description;
                         quizModel.created_By = quiz.created_By;
+                        quizModel.is_completed = quiz.Result.FirstOrDefault(m => m.quiz_id == quiz.quiz_id && m.user_id == userId) != null ? 1 : 0;
                         quizModelList.Add(quizModel);
                     }
                 }

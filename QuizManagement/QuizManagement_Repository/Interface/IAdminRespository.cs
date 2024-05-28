@@ -10,11 +10,16 @@ namespace QuizManagement_Repository.Interface
     public interface IAdminRespository
     {
         bool AddQuiz(QuizModel quizModel);
-        List<QuizModel> GetAllQuizModelList();
+        List<QuizModel> GetAllQuizModelList(int userId);
         AdminModel GetAdminProfile(int adminId);
         bool UpdateAdminProfile(AdminModel adminModel);
         QuizModel GetQuizById(int quiz_id);
         bool UpdateQuizById(QuizModel quizModel);
-        bool AddAnswer(AnswerModel answerModel);
+        bool AddAnswer(List<AnswerModel> answerModelList);
+        int QuizScore(int quiz_id, int user_id);
+        bool DeleteQuiz(int quiz_id);
+        UserModel GetUserProfile(int userId);
+
+        bool UpdateUserProfile(UserModel userModel);
     }
 }

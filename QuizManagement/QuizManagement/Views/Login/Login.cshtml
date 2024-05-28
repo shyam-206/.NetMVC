@@ -14,8 +14,34 @@
     <script src="~/Scripts/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.3.3/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://unpkg.com/bs-brain@2.0.4/components/logins/login-4/assets/css/login-4.css">
+    <link href="~/Content/toastr.css" rel="stylesheet" />
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.js"></script>
+    <script src="~/Scripts/toastr.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 </head>
 <body>
+    @if (@TempData["Logout"] != null)
+    {
+        <script>
+        toastr.success('@TempData["Logout"]')
+        </script>
+    }
+    @if (@TempData["register"] != null)
+    {
+        <script>
+        toastr.success('@TempData["register"]')
+        </script>
+    }
+    @if (@TempData["Wrong"] != null)
+    {
+        <script>
+            toastr.error('@TempData["Wrong"]')
+
+        </script>
+    }
+
+
     <!-- Login 4 - Bootstrap Brain Component -->
     <section class="p-3 p-md-4 p-xl-5">
         <div class="container">
@@ -42,7 +68,7 @@
                                     </div>
                                     <div class="col-12">
                                         <label for="password" class="form-label">Password <span class="text-danger">*</span></label>
-                                        <input type="password" class="form-control" name="password" id="password" value="" >
+                                        <input type="password" class="form-control" name="password" id="password" value="">
                                         @Html.ValidationMessageFor(m => m.password, "", new { @class = "text-danger" })
                                     </div>
                                     @*<div class="col-12">

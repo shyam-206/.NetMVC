@@ -21,13 +21,13 @@ namespace QuizManagement.Controllers
         public ActionResult Index()
         {
             ViewBag.adminId = SessionHelper.UserId;
-            List<QuizModel> quizModelList = repository.GetAllQuizModelList();
+            List<QuizModel> quizModelList = repository.GetAllQuizModelList(SessionHelper.UserId);
             return View(quizModelList);
         }
 
         public ActionResult Create()
-        {
-            
+        { 
+
             return View();
         }
 
@@ -43,7 +43,7 @@ namespace QuizManagement.Controllers
                     return RedirectToAction("Index");
                 }
             }
-            return View(quizModel);
+            return View();
         }
 
         public ActionResult AdminProfile(int adminId)
@@ -125,6 +125,18 @@ namespace QuizManagement.Controllers
             }
         }
 
+        public ActionResult DeleteQuiz(int quiz_id)
+        {
+            try
+            {
+                bool deleteQuiz = repository.DeleteQuiz(quiz_id);
+                return RedirectToAction("Index");
+            }
+            catch (Exception ex)
+            {
 
+                throw ex;
+            }
+        }
     }
 }
