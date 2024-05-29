@@ -14,25 +14,7 @@ namespace TaskManagement.Common
     public class WebHelper
     {
         
-        /*public static async Task<List<AssignmentModelList>> CompleteTaskList()
-        {
-            List<AssignmentModelList> _list = new List<AssignmentModelList>();
-            int teacherId = SessionHelper.UserId;
-
-            using (HttpClient client = new HttpClient())
-            {
-                client.BaseAddress = new Uri(url);
-                var response = await client.GetAsync($"api/TeacherAPI/CompleteTaskList?teacherId={teacherId}");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var resData = await response.Content.ReadAsStringAsync();
-                    _list = JsonConvert.DeserializeObject<List<AssignmentModelList>>(resData);
-                }
-            }
-
-            return _list;
-        }*/
+        
 
         public static async Task<string> HttpRequestResponse(string url)
         {

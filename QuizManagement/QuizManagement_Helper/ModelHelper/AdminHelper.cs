@@ -47,6 +47,31 @@ namespace QuizManagement_Helper.ModelHelper
                 throw ex;
             }
         }
+        public static List<QuizModel> ConvertQuizListToQuizModelList(List<Quiz> quizes)
+        {
+            try
+            {
+                List<QuizModel> quizModelList = new List<QuizModel>();
+                if (quizes != null)
+                {
+                    foreach (Quiz quiz in quizes)
+                    {
+                        QuizModel quizModel = new QuizModel();
+                        quizModel.quiz_id = quiz.quiz_id;
+                        quizModel.title = quiz.title;
+                        quizModel.description = quiz.description;
+                        quizModel.created_By = quiz.created_By;
+                        quizModelList.Add(quizModel);
+                    }
+                }
+                return quizModelList;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
 
         public static QuizModel ConvertQuizToQuizModel(Quiz quiz)
         {

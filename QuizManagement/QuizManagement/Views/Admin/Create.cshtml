@@ -18,7 +18,7 @@
                             @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-12">
-                            <input type="text" value="@Session["UserId"]" name="created_By" class="form-control" hidden/>
+                            <input type="text" value="@Session["UserId"]" name="created_By" class="form-control" hidden />
                         </div>
                     </div>
                     <div class="row">
@@ -26,7 +26,57 @@
                             <h4 class="text-primary">Question List</h4>
                             <button type="button" class="btn btn-info" onclick="addQuestion()">Add Question</button>
                         </div>
-                        <div class="questionBody mt-3"></div>
+                        <div class="questionBody mt-3" id="questionBody">
+                            @{
+                                if (Model != null && Model.QuestionModelList != null)
+                                {
+                                    for (int item = 0; item < Model.QuestionModelList.Count(); item++)
+                                    {
+                                        <div class="question">
+                                            <div class="d-flex gap-4">
+                                                <p class=" fs-4"> @(item + 1).</p>
+                                                <div class="w-100 mb-3">
+                                                    <input type="text" name="QuizQuestionList.Index" value="@item" hidden />
+                                                    @Html.TextBoxFor(m => m.QuestionModelList[item].ques_text, new { @class = "form-control" })
+                                                    @Html.TextBoxFor(m => m.QuestionModelList[item].ques_id, new { @class = "form-control", @type = "hidden" })
+                                                    @Html.ValidationMessageFor(m => m.QuestionModelList[item].ques_text, null, new { @class = "text-danger" })
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <div class="row mb-5">
+                                                    @{ for (int option = 0; option < 4; option++)
+                                                        {
+                                                            <div class="col-6 d-flex align-items-center gap-4 mb-4">
+                                                                @Html.TextBoxFor(m => m.QuestionModelList[item].OptionList[option].is_correct, new { @class = "form-control", @type = "hidden" })
+                                                                <span class=" fs-4">(@((char)('A' + option)))</span>
+                                                                <div class="w-100">
+                                                                    @Html.TextBoxFor(m => m.QuestionModelList[item].OptionList[option].option_text, new { @class = "form-control" })
+                                                                    @Html.ValidationMessageFor(m => m.QuestionModelList[item].OptionList[option].option_text, null, new { @class = "text-danger" })
+                                                                    @Html.TextBoxFor(m => m.QuestionModelList[item].OptionList[option].option_id, new { @class = "form-control", @type = "hidden" })
+                                                                </div>
+                                                            </div> } }
+                                                    <div class="d-flex justify-content-end">
+                                                        <select onchange="bindCorrectAnswer(@item, this)">
+                                                            <option>Select Correct option</option>
+                                                            @{ for (int i = 0; i < 4; i++)
+                                                                {
+                                                                    if (Model.QuestionModelList[item].OptionList[@i].is_correct == true)
+                                                                    {
+                                                                        <option value=@i selected>@((char)('A' + i))</option>
+ }
+                                                                    else
+                                                                    {
+                                                                        <option value=@i>@((char)('A' + i))</option>
+ }
+                                                                    @Html.ValidationMessageFor(m => m.QuestionModelList[item].OptionList[@i].is_correct, null, new { @class = "text-danger" }) } }
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> }
+                                }
+                            }
+                        </div>
                     </div>
                     <div class="d-flex justify-content-center mt-3">
                         <button class="btn btn-info" type="submit">Create Quiz</button>
@@ -44,7 +94,7 @@
     function addQuestion() {
 
         var NumOfQuestions = $(".question").length;
-        var html = $(".questionBody");
+        var html = $("#questionBody");
         if (NumOfQuestions < 5) {
             var questionHtml = `<div class="question mt-3">
                                     <div class="d-flex justify-content-center align-items-center gap-4">

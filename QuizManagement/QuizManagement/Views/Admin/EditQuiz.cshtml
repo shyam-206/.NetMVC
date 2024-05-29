@@ -36,6 +36,7 @@
                                     <p class="fs-4">@(i+1)</p>
                                     <input type="text" value="@(Model.QuestionModelList[@i].ques_id)" name="QuestionModelList[@i].ques_id"  hidden/>
                                     <input class="form-control mx-2" name="QuestionModelList[@i].ques_text" value="@(Model != null && Model.QuestionModelList != null ? Model.QuestionModelList[@i].ques_text : "")" />
+                                    @Html.ValidationMessageFor(m => m.QuestionModelList[@i].ques_text,null,new { @class="text-danger"})
                                 </div>
                                 <div>
                                     <div class="row mt-2">
@@ -46,6 +47,7 @@
                                                     <span class="fs-4">(@((char)('A' + option)))</span>
                                                     <input type="text" value="@(Model.QuestionModelList[@i].OptionList[option].option_id)" name="QuestionModelList[@i].OptionList[@option].option_id" hidden />
                                                     <input class="form-control mx-2" name="QuestionModelList[@i].OptionList[@option].option_text" value="@(Model != null && Model.QuestionModelList[@i].OptionList != null ? Model.QuestionModelList[@i].OptionList[option].option_text : "" )"/>
+                                                    @Html.ValidationMessageFor(m => m.QuestionModelList[@i].OptionList[option].option_text,null ,new { @class = "text-danger"})
                                                     <input type="checkbox" class="form-control" name="QuestionModelList[@i].OptionList[@option].is_correct" value="true" @(Model.QuestionModelList[@i].OptionList[option].is_correct ? "checked" : "") hidden />
                                                 </div>
                                             }

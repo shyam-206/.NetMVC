@@ -95,6 +95,7 @@
     <Compile Include="ViewModel\OptionModel.cs" />
     <Compile Include="ViewModel\QuestionModel.cs" />
     <Compile Include="ViewModel\QuizModel.cs" />
+    <Compile Include="ViewModel\ResultAnswerModel.cs" />
     <Compile Include="ViewModel\ResultModel.cs" />
     <Compile Include="ViewModel\UserModel.cs" />
   </ItemGroup>

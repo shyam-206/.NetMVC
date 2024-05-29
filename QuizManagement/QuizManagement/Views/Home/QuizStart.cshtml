@@ -66,7 +66,8 @@
         
         var selectedOption = $(".optionId:checked")
         if (selectedOption.length === 0) {
-            alert("Please select an option before proceeding.");
+            @*alert("Please select an option before proceeding.");*@
+            toastr.error("Please select an option before proceeding.")
             return;
         }
 
@@ -92,7 +93,7 @@
                 $(".optionId").each(function () {
                     if ($(this).val() == currentObject.selected_option_id) {
                         $(this).prop('checked', true);
-                    }
+                    } 
                 });
             },
 

@@ -113,32 +113,64 @@ namespace QuizManagement_Repository.Service
             }
         }
 
+        public List<QuizModel> AllQuizList()
+        {
+            try
+            {
+                try
+                {
+                    List<QuizModel> quizModelList = new List<QuizModel>();
+                    List<Quiz> quizes = _context.Quiz.ToList();
+                    quizModelList = AdminHelper.ConvertQuizListToQuizModelList(quizes);
+                    return quizModelList != null ? quizModelList : null;
+
+                }
+                catch (Exception ex)
+                {
+
+                    throw ex;
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
         public bool DeleteQuiz(int quiz_id)
         {
             try
             {
                 int checkDelete = 0;
                 Quiz quiz = _context.Quiz.Where(q => q.quiz_id == quiz_id).FirstOrDefault();
+
+                Result result = _context.Result.FirstOrDefault(m => m.quiz_id == quiz_id);
+                _context.Result.Remove(result);
+
                 List<Question> questionList = new List<Question>();
                 foreach (Question question in quiz.Question)
                 {
+                    Answer answer = _context.Answer.FirstOrDefault(m => m.ques_id == question.ques_id);
+                    _context.Answer.Remove(answer);
                     List<Options> optionList = new List<Options>();
                     foreach (Options option in question.Options)
                     {
                         optionList.Add(option);
                     }
                     _context.Options.RemoveRange(optionList);
+                    
                     questionList.Add(question);
                 }
                 _context.Question.RemoveRange(questionList);
-                Quiz removedQuiz = _context.Quiz.Remove(quiz);
+                _context.Quiz.Remove(quiz);
                 checkDelete = _context.SaveChanges();
                 return checkDelete > 0 ? true : false;
             }
             catch (Exception ex)
             {
 
-                throw ex;
+                    throw ex;
             }
         }
         public AdminModel GetAdminProfile(int adminId)
@@ -155,7 +187,6 @@ namespace QuizManagement_Repository.Service
                 throw ex;
             }
         }
-
         public List<QuizModel> GetAllQuizModelList(int userId)
         {
             try
@@ -173,7 +204,6 @@ namespace QuizManagement_Repository.Service
             }
 
         }
-
         public QuizModel GetQuizById(int quiz_id)
         {
             try
@@ -313,6 +343,46 @@ namespace QuizManagement_Repository.Service
                 _context.Entry(user).State = EntityState.Modified;
                 checkUpdateOrNot = _context.SaveChanges();
                 return checkUpdateOrNot > 0 ? true : false;
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
+        public List<ResultAnswerModel> AllAnswerList(int quiz_id,int user_id)
+        {
+            try
+            {
+                List<ResultAnswerModel> list = new List<ResultAnswerModel>();
+                Quiz quiz = _context.Quiz.FirstOrDefault(m => m.quiz_id == quiz_id);
+                foreach(var item in quiz.Question)
+                {
+                    ResultAnswerModel resultAnswerModel = new ResultAnswerModel();
+                    Question question = _context.Question.FirstOrDefault(m => m.quiz_id == quiz_id && m.ques_id == item.ques_id);
+                    resultAnswerModel.ques_text = question.ques_text;
+                    List<Options> optionList = question.Options.Where(m => m.ques_id == item.ques_id).ToList();
+                    List<OptionModel> optionModelList = new List<OptionModel>();
+
+                    foreach(var i in optionList)
+                    {
+                        OptionModel option = new OptionModel
+                        {
+                            option_id = i.option_id,
+                            is_correct = (bool)i.is_correct,
+                            option_text = i.option_text
+                        };
+                        optionModelList.Add(option);
+                    }
+                    resultAnswerModel.OptionList = optionModelList;
+                    resultAnswerModel.Correct_option_Id = _context.Options.FirstOrDefault(m => m.ques_id == question.ques_id && m.is_correct == true).option_id;
+                    int selected_option_id = (int)_context.Answer.FirstOrDefault(m => m.quiz_id == quiz_id && m.ques_id == question.ques_id && m.user_id == user_id).option_id;
+                    resultAnswerModel.Selected_option_id = selected_option_id;
+
+                    list.Add(resultAnswerModel);
+                }
+                return list != null ? list : null;
             }
             catch (Exception ex)
             {

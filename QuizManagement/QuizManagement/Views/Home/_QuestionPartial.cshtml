@@ -17,16 +17,15 @@
         </ul>
     </div>
     <div class="row mt-3 d-flex justify-content-end">
-        @if (@Model.ques_id != 1)
+        @if ((@Model.ques_id % 5) != 1 )
         {
             <button type="button" class="btn btn-primary mx-2" onclick="getPreviousQuestion(@Model.ques_id)">Previous</button>
-
-            if (@Model.ques_id == 5)
-            {
-                <button type="button" class="btn btn-success" onclick="mySubmitData()">Submit</button>
-            }
         }
-        @if (Model.ques_id != 5)
+        @if ((@Model.ques_id % 5) == 0)
+        {
+        <button type="button" class="btn btn-success" onclick="mySubmitData()">Submit</button>
+        }
+        @if ((@Model.ques_id % 5) != 5 && (Model.ques_id % 5) != 0)
         {
             <button type="button" class="btn btn-primary" onclick="getNextQuestion(@Model.ques_id)">Next</button>
         }

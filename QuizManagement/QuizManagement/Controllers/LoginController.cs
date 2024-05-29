@@ -1,8 +1,11 @@
-﻿using QuizManagement.Session;
+﻿using Newtonsoft.Json;
+using QuizManagement.Common;
+using QuizManagement.Session;
 using QuizManagement_Model.ViewModel;
 using QuizManagement_Repository.Interface;
 using QuizManagement_Repository.Service;
 using System;
+using System.Threading.Tasks;
 using System.Web.Mvc;
 
 namespace QuizManagement.Controllers
@@ -18,15 +21,23 @@ namespace QuizManagement.Controllers
         // GET: Login
         public ActionResult Login()
         {
+            Session.Clear();
             return View();
         }
         [HttpPost]
-        public ActionResult Login(LoginModel loginModel)
+        public async Task<ActionResult> Login(LoginModel loginModel)
         {
             if (ModelState.IsValid)
             {
-                AdminModel checkAdmin = loginRepository.CheckAdminExist(loginModel);
-                UserModel checkUser = loginRepository.CheckUserExist(loginModel);
+                /*AdminModel checkAdmin = loginRepository.CheckAdminExist(loginModel);
+                UserModel checkUser = loginRepository.CheckUserExist(loginModel);*/
+                string url = "api/LoginAPI/CheckAdminExist";
+                string content = JsonConvert.SerializeObject(loginModel);
+                string res = await WebHelper.HttpClientPostRequest(url, content);
+                AdminModel checkAdmin = JsonConvert.DeserializeObject<AdminModel>(res);
+
+                string res1 = await WebHelper.HttpClientPostRequest("api/LoginAPI/CheckUserExist",content);
+                UserModel checkUser = JsonConvert.DeserializeObject<UserModel>(res1);
                 if (checkAdmin != null && checkAdmin.admin_id  > 0)
                 {
                     SessionHelper.UserId = checkAdmin.admin_id;
@@ -62,17 +73,17 @@ namespace QuizManagement.Controllers
         }
 
         [HttpPost]
-        public ActionResult Register(UserModel registerModel)
+        public async Task<ActionResult> Register(UserModel registerModel)
         {
             if (ModelState.IsValid)
             {
-                UserModel userModel = new UserModel();
-                userModel = registerModel;
-
+                UserModel userModel = registerModel;
                 if(userModel.password == userModel.confirmPassword)
                 {
-                    bool isAddUser = loginRepository.AddRegister(userModel);
+                    /*bool isAddUser = loginRepository.AddRegister(userModel);*/
 
+                    string res = await WebHelper.HttpClientPostRequest("api/LoginAPI/AddRegister", JsonConvert.SerializeObject(userModel));
+                    bool isAddUser = JsonConvert.DeserializeObject<bool>(res);
                     if (isAddUser)
                     {
                         TempData["register"] = "Register Successfully";
@@ -85,7 +96,6 @@ namespace QuizManagement.Controllers
                 }
                 else
                 {
-                    
                     ModelState.AddModelError("confirmPassword", "Password must be same");
                 }
             }
