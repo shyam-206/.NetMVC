@@ -356,11 +356,12 @@ namespace QuizManagement_Repository.Service
             try
             {
                 List<ResultAnswerModel> list = new List<ResultAnswerModel>();
-                Quiz quiz = _context.Quiz.FirstOrDefault(m => m.quiz_id == quiz_id);
-                foreach(var item in quiz.Question)
+                /*Quiz quiz = _context.Quiz.FirstOrDefault(m => m.quiz_id == quiz_id);*/
+                Quiz quiz = _context.Quiz.Include(q => q.Question).FirstOrDefault(m => m.quiz_id == quiz_id);
+                foreach (var item in quiz.Question)
                 {
                     ResultAnswerModel resultAnswerModel = new ResultAnswerModel();
-                    Question question = _context.Question.FirstOrDefault(m => m.quiz_id == quiz_id && m.ques_id == item.ques_id);
+                    Question question = item;
                     resultAnswerModel.ques_text = question.ques_text;
                     List<Options> optionList = question.Options.Where(m => m.ques_id == item.ques_id).ToList();
                     List<OptionModel> optionModelList = new List<OptionModel>();
