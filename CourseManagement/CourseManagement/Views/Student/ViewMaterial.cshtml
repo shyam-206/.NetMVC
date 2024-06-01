@@ -1,0 +1,33 @@
+﻿@model CourseManagement_Model.ViewModel.MaterialModel
+
+<div class="container-fluid mt-2">
+    <div class="card">
+        <div class="card-body">
+            <div class="form-group">
+                CourseId = @Model.CourseId ||
+                MaterialId = @Model.MaterialId
+            </div>
+            <div class="form-group mt-2">
+                <p>Title = @Model.Title</p>
+            </div>
+            <div class="form-group mt-2 d-flex">
+                @if (Model.FilePath != null)
+                {
+                    foreach (var file in Model.Files)
+                    {
+                        <div class="m-2">
+                            @if (file.EndsWith(".pdf"))
+                            {
+                                <embed class="pdf" src="~/Content/UploadFiles/@file" width="400" height="600" />
+                            }
+                            else
+                            {
+                                <img src="~/Content/UploadFiles/@file" width="400" height="600"/>
+                            }
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+    </div>
+</div>

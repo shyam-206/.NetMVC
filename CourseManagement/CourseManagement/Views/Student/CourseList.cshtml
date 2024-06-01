@@ -1,0 +1,46 @@
+﻿@model List<CourseManagement_Model.ViewModel.CourseModel>
+<div class="container mt-5">
+    <div class="card mt-3">
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>Title</td>
+                        <td>Description</td>
+                        <td>Action</td>
+                        <td>Material</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @if (Model != null)
+                    {
+
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Title</td>
+                                <td>@item.Description</td>
+                                <td>
+                                    @if(item.IsEnrollment != true)
+                                    {
+                                        <a href="~/Student/EnrollCourse?CourseId=@item.CourseId" class="btn btn-success">Enroll course</a>
+                                    }
+                                    else
+                                    {
+                                        <a class="btn btn-info" disabled>Already Enroll</a>
+                                    }
+                                </td>
+                                <td>
+                                    <a href="~/Student/ViewMaterial?CourseId=@item.CourseId" class="btn btn-info">View Material</a>
+                                </td>
+                            </tr>
+                        }
+
+                    }
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</div>
+
