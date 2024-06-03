@@ -9,12 +9,12 @@
                     <div class="row">
                         <div class="col-6 mt-3">
                             <label for="title">Quiz Title</label>
-                            <input type="text" name="title" class="form-control" />
+                            <input type="text" name="title" class="form-control" id="title"/>
                             @Html.ValidationMessageFor(m => m.title, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-6 mt-3">
                             <label name="description">Quiz Description</label>
-                            <input type="text" name="description" class="form-control" />
+                            <input type="text" name="description" class="form-control " id="description" />
                             @Html.ValidationMessageFor(m => m.description, "", new { @class = "text-danger" })
                         </div>
                         <div class="col-12">
@@ -92,10 +92,41 @@
 
 <script>
     function addQuestion() {
+        var valid = true;
+        var quizTitle = document.querySelector("#title").value
+        var quizDescription = document.querySelector("#description").value
+        debugger
 
+        if (!quizTitle || !quizDescription) {
+            toastr.error("Quiz title or description can not be null")
+            return;
+        }
+        var questions = document.querySelectorAll(".question");
+        questions.forEach(function (question) {
+            var questionText = question.querySelector("input[name*='ques_text']").value.trim();
+            if (!questionText) {
+                valid = false;
+                return;
+            }
+            var options = question.querySelectorAll("input[name*='option_text']");
+            options.forEach(function (option) {
+                if (!option.value) {
+                    valid = false;
+                }
+            });
+        });
+
+        if (!valid) {
+            toastr.error("Please fill out Question Detail First");
+            return;
+        }
         var NumOfQuestions = $(".question").length;
         var html = $("#questionBody");
-        if (NumOfQuestions < 5) {
+        if (NumOfQuestions == 5) {
+            toastr.error("can not enter more than 5 question")
+            return;
+        }
+        else {
             var questionHtml = `<div class="question mt-3">
                                     <div class="d-flex justify-content-center align-items-center gap-4">
                                         <input type="text" name="QuestionModelList.Index" value="${NumOfQuestions}" hidden/>

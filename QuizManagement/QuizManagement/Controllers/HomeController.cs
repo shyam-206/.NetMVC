@@ -44,6 +44,7 @@ namespace QuizManagement.Controllers
                 string url = $"api/UserAPI/GetQuizById?quiz_id={quiz_id}";
                 string res = await WebHelper.HttpRequestResponse(url);
                 QuizModel quizModel = JsonConvert.DeserializeObject<QuizModel>(res);
+                Session["QuizId"] = quiz_id;
                 return View(quizModel);
             }
             catch (Exception ex)
@@ -146,7 +147,7 @@ namespace QuizManagement.Controllers
             catch (Exception ex)
             {
 
-                throw;
+                throw ex;
             }
         }
         [HttpPost]
@@ -162,7 +163,7 @@ namespace QuizManagement.Controllers
 
                 if (CheckSaveAnswerList)
                 {
-                    return Json(new { success = true, redirectUrl = Url.Action("Index", "Home") });
+                    return Json(new { success = true, redirectUrl = Url.Action("Result", "Home") });
                 }
                 return RedirectToAction("QuizStart");
             }
@@ -170,6 +171,19 @@ namespace QuizManagement.Controllers
             {
 
                 throw ex;
+            }
+        }
+
+        public ActionResult Result()
+        {
+            try
+            {
+                return View();
+            }
+            catch (Exception)
+            {
+
+                throw;
             }
         }
         public async Task<ActionResult> ViewResult(int quiz_id,int user_id)

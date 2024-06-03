@@ -40,7 +40,6 @@ namespace QuizManagementAPI.Controllers
         {
             try
             {
-
                 bool addquiz = repository.AddQuiz(quizModel);
                 return addquiz;
             }

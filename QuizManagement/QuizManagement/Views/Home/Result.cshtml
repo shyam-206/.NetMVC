@@ -1,0 +1,9 @@
+﻿
+@{
+    ViewBag.Title = "Result";
+}
+
+<h2>Result of Quiz</h2>
+<a href="~/Home/ViewResult?quiz_id=@Session["QuizId"]&user_id=@Session["UserId"]">
+    View Result
+</a>
