@@ -1,0 +1,43 @@
+﻿@model ShyamDhokiya_557_Model.ViewModel.ProductModel
+
+<div class="container mt-3">
+
+    <form method="post" action="Addproduct">
+        <div class="form-group">
+            <label>Name</label>
+            <input type="text" class="form-control" name="Name" />
+            @Html.ValidationMessageFor(m => m.Name)
+        </div>
+        <div class="form-group">
+            <label>Descrption</label>
+            <input type="text" class="form-control" name="Descrption" />
+            @Html.ValidationMessageFor(m => m.Descrption)
+        </div>
+        <div class="form-group">
+            <select class="form-select" aria-label="Default select example" name="Type">
+                <option value=" " selected>Select Product Type</option>
+                <option value="Electric">Electric</option>
+                <option value="Fashion">Fashion</option>
+                <option value="Home and Kitchen">Home and Kitchen</option>
+                <option value="Sports and Outdoors">Sports and Outdoors</option>
+                <option value="Books and Media">Books and Media</option>
+            </select>
+            @Html.ValidationMessageFor(m => m.Type)
+        </div>
+        <div class="form-group">
+            <label for="Price">Price</label>
+            <input type="number" class="form-control" name="Price" />
+            @Html.ValidationMessageFor(m => m.Price)
+        </div>
+        <div class="form-group">
+            <label for="Quantity">Quantity</label>
+            <input type="number" class="form-control" name="Quantity" />
+            @Html.ValidationMessageFor(m => m.Quantity)
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+    </form>
+
+</div>
+

@@ -13,9 +13,6 @@ namespace TaskManagement.Common
 {
     public class WebHelper
     {
-        
-        
-
         public static async Task<string> HttpRequestResponse(string url)
         {
             try

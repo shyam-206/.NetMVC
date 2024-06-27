@@ -1,0 +1,31 @@
+﻿@model List<ShyamDhokiya_557_Model.ViewModel.UserModel>
+
+<div class="container">
+   
+    <div class="mt-4">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <td>Name</td>
+                    <th>Email</th>
+                    <th>Password</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@item.Name</td>
+                            <td>@item.Email</td>
+                            <td>@item.Password</td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+
+</div>

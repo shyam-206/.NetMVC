@@ -1,0 +1,34 @@
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.dll.config
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.dll
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.pdb
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.dll
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Helper.dll
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.dll
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Helper.pdb
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.pdb
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.dll.config
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.xml
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.AssemblyReference.cache
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.CoreCompileInputs.cache
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.CopyComplete
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.dll
+C:\Shyam Dhokiya\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.pdb
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.AssemblyReference.cache
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.CoreCompileInputs.cache
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.dll
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.pdb
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.dll.config
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.dll
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.pdb
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.dll
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Helper.dll
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.dll
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Helper.pdb
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.pdb
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.dll.config
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.xml
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Shyam Dhokiya\DotNet Training Task\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.CopyComplete

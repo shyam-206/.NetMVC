@@ -1,0 +1,52 @@
+﻿@model List<ShyamDhokiya_557_Model.ViewModel.ProductModel>
+
+<div class="container-fluid mt-4">
+    <div class="card">
+        <div class="card-body">
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <td>Name</td>
+                        <th>Description</th>
+                        <th>Type</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @if (Model != null)
+                    {
+                        foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Name</td>
+                                <td>@item.Descrption</td>
+                                <td>@item.Type</td>
+                                <td>@item.Price</td>
+                                <td>@item.Quantity</td>
+                                <td>
+                                    @if (item.IsAddCart != true)
+                                    {
+                                        <div>
+                                            <a class="btn btn-primary" href="~/Suppier/AddCart?ProductId=@item.ProductId">Add Cart</a>
+                                        </div>
+                                    }
+                                    else
+                                    {
+                                        <div>
+                                            <a class="btn btn-success">Already In Cart</a>
+                                        </div>
+                                    }
+
+                                </td>
+                            </tr>
+                        }
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>

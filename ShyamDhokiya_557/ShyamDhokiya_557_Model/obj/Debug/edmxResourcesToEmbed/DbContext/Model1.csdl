@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StockManagement_557Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminStock">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AdminPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Suppiers">
+    <Key>
+      <PropertyRef Name="SuppierId" />
+    </Key>
+    <Property Name="SuppierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Cart" Relationship="StockManagement_557Model.FK__Cart__SuppierId__4D94879B" FromRole="Suppiers" ToRole="Cart" />
+    <NavigationProperty Name="Orders" Relationship="StockManagement_557Model.FK__Orders__SuppierI__46E78A0C" FromRole="Suppiers" ToRole="Orders" />
+  </EntityType>
+  <EntityContainer Name="StockManagement_557Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminStock" EntityType="Self.AdminStock" />
+    <EntitySet Name="Suppiers" EntityType="Self.Suppiers" />
+    <EntitySet Name="Product" EntityType="StockManagement_557Model.Product" />
+    <EntitySet Name="Cart" EntityType="StockManagement_557Model.Cart" />
+    <EntitySet Name="CartDetail" EntityType="StockManagement_557Model.CartDetail" />
+    <EntitySet Name="OrderDetail" EntityType="StockManagement_557Model.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="StockManagement_557Model.Orders" />
+    <AssociationSet Name="FK__Cart__SuppierId__4D94879B" Association="StockManagement_557Model.FK__Cart__SuppierId__4D94879B">
+      <End Role="Suppiers" EntitySet="Suppiers" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetai__CartI__5070F446" Association="StockManagement_557Model.FK__CartDetai__CartI__5070F446">
+      <End Role="Cart" EntitySet="Cart" />
+      <End Role="CartDetail" EntitySet="CartDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetai__Produ__5165187F" Association="StockManagement_557Model.FK__CartDetai__Produ__5165187F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="CartDetail" EntitySet="CartDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__49C3F6B7" Association="StockManagement_557Model.FK__OrderDeta__Order__49C3F6B7">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Produ__4AB81AF0" Association="StockManagement_557Model.FK__OrderDeta__Produ__4AB81AF0">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__SuppierI__46E78A0C" Association="StockManagement_557Model.FK__Orders__SuppierI__46E78A0C">
+      <End Role="Suppiers" EntitySet="Suppiers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descrption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="CartDetail" Relationship="StockManagement_557Model.FK__CartDetai__Produ__5165187F" FromRole="Product" ToRole="CartDetail" />
+    <NavigationProperty Name="OrderDetail" Relationship="StockManagement_557Model.FK__OrderDeta__Produ__4AB81AF0" FromRole="Product" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SuppierId" Type="Int32" />
+    <NavigationProperty Name="Suppiers" Relationship="StockManagement_557Model.FK__Cart__SuppierId__4D94879B" FromRole="Cart" ToRole="Suppiers" />
+    <NavigationProperty Name="CartDetail" Relationship="StockManagement_557Model.FK__CartDetai__CartI__5070F446" FromRole="Cart" ToRole="CartDetail" />
+  </EntityType>
+  <EntityType Name="CartDetail">
+    <Key>
+      <PropertyRef Name="CartDetailId" />
+    </Key>
+    <Property Name="CartDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <NavigationProperty Name="Cart" Relationship="StockManagement_557Model.FK__CartDetai__CartI__5070F446" FromRole="CartDetail" ToRole="Cart" />
+    <NavigationProperty Name="Product" Relationship="StockManagement_557Model.FK__CartDetai__Produ__5165187F" FromRole="CartDetail" ToRole="Product" />
+    <Property Name="IsAdd" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailId" />
+    </Key>
+    <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <NavigationProperty Name="Orders" Relationship="StockManagement_557Model.FK__OrderDeta__Order__49C3F6B7" FromRole="OrderDetail" ToRole="Orders" />
+    <NavigationProperty Name="Product" Relationship="StockManagement_557Model.FK__OrderDeta__Produ__4AB81AF0" FromRole="OrderDetail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SuppierId" Type="Int32" />
+    <Property Name="OrderTotal" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OrderDetail" Relationship="StockManagement_557Model.FK__OrderDeta__Order__49C3F6B7" FromRole="Orders" ToRole="OrderDetail" />
+    <NavigationProperty Name="Suppiers" Relationship="StockManagement_557Model.FK__Orders__SuppierI__46E78A0C" FromRole="Orders" ToRole="Suppiers" />
+  </EntityType>
+  <Association Name="FK__Cart__SuppierId__4D94879B">
+    <End Type="StockManagement_557Model.Suppiers" Role="Suppiers" Multiplicity="0..1" />
+    <End Type="StockManagement_557Model.Cart" Role="Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppiers">
+        <PropertyRef Name="SuppierId" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="SuppierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetai__CartI__5070F446">
+    <End Type="StockManagement_557Model.Cart" Role="Cart" Multiplicity="0..1" />
+    <End Type="StockManagement_557Model.CartDetail" Role="CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="CartId" />
+      </Principal>
+      <Dependent Role="CartDetail">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetai__Produ__5165187F">
+    <End Type="StockManagement_557Model.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="StockManagement_557Model.CartDetail" Role="CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="CartDetail">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__49C3F6B7">
+    <End Type="StockManagement_557Model.Orders" Role="Orders" Multiplicity="0..1" />
+    <End Type="StockManagement_557Model.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Produ__4AB81AF0">
+    <End Type="StockManagement_557Model.Product" Role="Product" Multiplicity="0..1" />
+    <End Type="StockManagement_557Model.OrderDetail" Role="OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__SuppierI__46E78A0C">
+    <End Type="StockManagement_557Model.Suppiers" Role="Suppiers" Multiplicity="0..1" />
+    <End Type="StockManagement_557Model.Orders" Role="Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppiers">
+        <PropertyRef Name="SuppierId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="SuppierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

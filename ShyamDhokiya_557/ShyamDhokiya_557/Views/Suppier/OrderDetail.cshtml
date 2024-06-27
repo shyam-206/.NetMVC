@@ -1,0 +1,58 @@
+﻿@model List<ShyamDhokiya_557_Model.ViewModel.OrderModel>
+
+<div class="container">
+    <div>
+        @if (Model != null)
+        {
+            <div class="mt-2 bg-primary-subtle border-2 rounded-2 px-2">
+                <p class="fw-medium fs-3 text-primary">Total Orders: @Model.Count()</p>
+            </div>
+
+            <div class="accordion mt-4" id="orderAccordion">
+                @for (int i = 0; i < Model.Count(); i++)
+                {
+                    var order = Model[i];
+                    string headingId = $"heading{i}";
+                    string collapseId = $"collapse{i}";
+
+                    <div class="accordion-item border-black">
+                        <h2 class="accordion-header" id="@headingId">
+                            <button class="accordion-button @((i == 0) ? "" : "collapsed")" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="@(i == 0)" aria-controls="@collapseId">
+                                Order @(i+1)
+                            </button>
+                        </h2>
+                        <div id="@collapseId" class="accordion-collapse collapse @(i == 0 ? "show" : "")" aria-labelledby="@headingId" data-bs-parent="#orderAccordion">
+                            <div class="accordion-body">
+                                <table class="table table-borderless table-striped">
+                                    <thead class="table-primary">
+                                        <tr>
+                                            <th>Product Name</th>
+                                            <th>Quantity</th>
+                                            <th>Product Price</th>
+                                            <th>Total Price</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var orderDetail in order.OrderDetailList)
+                                        {
+                                            <tr>
+                                                <td>@orderDetail.ProductName</td>
+                                                <td>@orderDetail.Quantity</td>
+                                                <td>@orderDetail.ProductPrice</td>
+                                                <td>@orderDetail.TotalPrice</td>
+                                            </tr>
+                                        }
+                                    </tbody>
+                                </table>
+                                <div class="d-flex justify-content-end fw-medium fs-3">
+                                    <p>Order Total: </p>
+                                    <p class="text-success mx-2">@order.OrderTotal ₹</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>

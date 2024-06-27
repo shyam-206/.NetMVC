@@ -1,0 +1,118 @@
+﻿@model ShyamDhokiya_557_Model.ViewModel.LoginModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Sign Up Form by Colorlib</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="~/Theme/Login/fonts/material-icon/css/material-design-iconic-font.min.css">
+
+    <!-- Main css -->
+
+    <link rel="stylesheet" href="~/Theme/Login/css/style.css">
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <link href="~/Content/toastr.min.css" rel="stylesheet" />
+    <script src="~/Scripts/toastr.min.js"></script>
+
+
+    <style>
+        .field-validation-error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+
+    @if (@TempData["NotExist"] != null)
+    {
+        <script>
+            toastr.error('@TempData["NotExist"]');
+        </script>
+    }
+    @if (@TempData["LoginFields"] != null)
+    {
+        <script>
+            toastr.error('@TempData["LoginFields"]');
+        </script>
+    }
+    @if (@TempData["RegisterDone"] != null)
+    {
+        <script>
+            toastr.success('@TempData["RegisterDone"]');
+        </script>
+    }
+    @if (@TempData["Logout"] != null)
+    {
+        <script>
+            toastr.success('@TempData["Logout"]');
+        </script>
+    }
+
+    <div class="main">
+
+        <!-- Sing in  Form -->
+        <section class="sign-in">
+            <div class="container">
+                <div class="signin-content">
+                    <div class="signin-image">
+                        <figure><img src="~/Theme/Login/images/signin-image.jpg" alt="sing up image"></figure>
+                        <a href="~/Login/Register" class="signup-image-link">Create an account</a>
+                    </div>
+
+                    <div class="signin-form">
+                        <h2 class="form-title">Sign up</h2>
+                        <form method="POST" class="register-form" id="login-form" action="Login">
+
+                            <div class="form-group">
+                                <select class="form-select" name="Role">
+                                    <option value=" ">Select Role</option>
+                                    <option value="Admin">Admin</option>
+                                    <option value="Suppier">Suppier</option>
+                                </select>
+                                @Html.ValidationMessageFor(m => m.Role)
+                            </div>
+                            <div class="form-group">
+                                <label for="Email"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                                <input type="text" name="Email" id="Email" placeholder="Your Email" />
+                                @Html.ValidationMessageFor(m => m.Email)
+                            </div>
+                            <div class="form-group">
+                                <label for="Password"><i class="zmdi zmdi-lock"></i></label>
+                                <input type="password" name="Password" id="Password" placeholder="Password" />
+                                @Html.ValidationMessageFor(m => m.Password)
+                            </div>
+
+                            <div class="form-group form-button">
+                                <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                            </div>
+                        </form>
+                        <div class="social-login">
+                            <span class="social-label">Or login with</span>
+                            <ul class="socials">
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-facebook"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-twitter"></i></a></li>
+                                <li><a href="#"><i class="display-flex-center zmdi zmdi-google"></i></a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="~/Theme/Login/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Theme/Login/js/main.js"></script>
+</body><!-- This templates was made by Colorlib (https://colorlib.com) -->
+</html>

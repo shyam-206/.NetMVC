@@ -1,0 +1,42 @@
+﻿@model List<ShyamDhokiya_557_Model.ViewModel.OrderModel>
+
+<div class="container-fluid">
+    <div class="bg-primary-subtle d-flex justify-content-between align-item-center">
+        <p class="text-primary fw-bold fs-2 px-2">All Orders</p>
+        <form method="post" action="OrderList" class="mt-3">
+            <div class="d-flex align-items-center mx-3 gap-2">
+                <input type="date" class="form-control" id="StartDate" name="StartDate" value="@(ViewBag.StartDate != null ? @ViewBag.StartDate : "")"/>
+                <input type="date" class="form-control" id="EndDate" name="EndDate" value="@(ViewBag.EndDate != null ? @ViewBag.EndDate : "")"/>
+                <button type="submit" class="btn btn-outline-primary" id="SearchRecord">Search</button>
+            </div>
+        </form>
+
+    </div>
+    <div class="card mt-3">
+        <div class="card-body">
+            <table class="table table-borderless table-striped table-hover">
+                <thead class="table-primary">
+                    <tr>
+                        <th>Order Id</th>
+                        <th>Supplier Name</th>
+                        <th>Supplier Email</th>
+                        <th>Order Total</th>
+                        <th>Order Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Order in Model)
+                    {
+                        <tr>
+                            <td>@Order.OrderId</td>
+                            <td>@Order.SuppierName</td>
+                            <td>@Order.SuppierEmail</td>
+                            <td>@Order.OrderTotal</td>
+                            <td>@Order.OrderDate</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

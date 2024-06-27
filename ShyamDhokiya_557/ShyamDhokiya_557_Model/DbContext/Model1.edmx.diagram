@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="622fd4ae69e34a648cce54be2b7ebbe4" Name="Diagram1" ZoomLevel="80">
+        <EntityTypeShape EntityType="StockManagement_557Model.AdminStock" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockManagement_557Model.Suppiers" Width="1.5" PointX="0.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StockManagement_557Model.Product" Width="1.5" PointX="8.375" PointY="2.5" />
+        <EntityTypeShape EntityType="StockManagement_557Model.Cart" Width="1.5" PointX="3" PointY="7.375" />
+        <EntityTypeShape EntityType="StockManagement_557Model.CartDetail" Width="1.5" PointX="5.5" PointY="7.375" />
+        <EntityTypeShape EntityType="StockManagement_557Model.OrderDetail" Width="1.5" PointX="5.625" PointY="2.5" />
+        <EntityTypeShape EntityType="StockManagement_557Model.Orders" Width="1.5" PointX="3.125" PointY="2.625" />
+        <AssociationConnector Association="StockManagement_557Model.FK__Cart__SuppierId__4D94879B" />
+        <AssociationConnector Association="StockManagement_557Model.FK__CartDetai__CartI__5070F446" />
+        <AssociationConnector Association="StockManagement_557Model.FK__CartDetai__Produ__5165187F" />
+        <AssociationConnector Association="StockManagement_557Model.FK__OrderDeta__Order__49C3F6B7" />
+        <AssociationConnector Association="StockManagement_557Model.FK__OrderDeta__Produ__4AB81AF0" />
+        <AssociationConnector Association="StockManagement_557Model.FK__Orders__SuppierI__46E78A0C" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
