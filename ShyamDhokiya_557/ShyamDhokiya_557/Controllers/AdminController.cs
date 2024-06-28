@@ -177,7 +177,7 @@ namespace ShyamDhokiya_557.Controllers
 
         [HttpPost]
         public async Task<ActionResult> OrderList(DateTime StartDate,DateTime EndDate)
-        {
+            {
             try
             {
                 string url = $"api/AdminAPI/SortOrderListByDate?StartDate={StartDate}&EndDate={EndDate}";
