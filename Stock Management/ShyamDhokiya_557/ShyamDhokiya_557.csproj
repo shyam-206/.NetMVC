@@ -2215,8 +2215,6 @@
     <Content Include="Views\Admin\SuppierList.cshtml" />
     <Content Include="Views\Admin\EditProduct.cshtml" />
     <Content Include="Views\Suppier\ViewCart.cshtml" />
-    <Content Include="Views\Shared\_AdminPartialPage.cshtml" />
-    <Content Include="Views\Shared\_SuppierPartialPage.cshtml" />
     <Content Include="Views\Suppier\OrderDetail.cshtml" />
     <Content Include="Views\Admin\OrderList.cshtml" />
   </ItemGroup>

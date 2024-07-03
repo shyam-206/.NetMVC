@@ -55,15 +55,18 @@ namespace ShyamDhokiya_557.Controllers
                 bool save = JsonConvert.DeserializeObject<bool>(res);
                 if (save)
                 {
+                    TempData["Add"] = "Add Product Successfully";
                     return RedirectToAction("Product");
                 }
                 else
                 {
+                    TempData["AddError"] = "Add Successfully";
                     return View(productModel);
                 }
             }
             else
             {
+                TempData["AddData"] = "Please Required all Fields";
                 return View(productModel);
             }
         }
@@ -114,15 +117,18 @@ namespace ShyamDhokiya_557.Controllers
 
                     if (saveEdit)
                     {
+                        TempData["Edit"] = "Edit Successfully";
                         return RedirectToAction("Product");
                     }
                     else
                     {
+                        TempData["EditError"] = "Something went Wrong";
                         return View(productModel);
                     }
                 }
                 else
                 {
+                    TempData["EditData"] = "Please Required all Fields";
                     return View(productModel);
                 }
             }
@@ -143,11 +149,12 @@ namespace ShyamDhokiya_557.Controllers
 
                 if (delete)
                 {
-                    TempData["delete"] = "delete Product";
+                    TempData["delete"] = "delete Product Successfully";
                     return RedirectToAction("Product");
                 }
                 else
                 {
+                    TempData["DeleteError"] = "Something went to Wrong";
                     return RedirectToAction("Product");
                 }
             }

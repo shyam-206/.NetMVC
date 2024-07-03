@@ -37,12 +37,14 @@
     {
 <script>
             toastr.success('@TempData["LoginSuppier"]');
-</script>}
+</script>
+}
     @if (@TempData["Admin"] != null)
     {
 <script>
             toastr.success('@TempData["Admin"]');
-</script>}
+</script>
+}
 
     <!-- Page Wrapper -->
     <div id="wrapper">
@@ -66,12 +68,12 @@
 
             @if (Session["Role"] == "Admin")
             {
-                <li class="nav-item active">
-                    <a class="nav-link" href="Product">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Product List</span>
-                    </a>
-                </li>
+<li class="nav-item active">
+    <a class="nav-link" href="Product">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Product List</span>
+    </a>
+</li>
 
                 <li class="nav-item active">
                     <a class="nav-link" href="OrderList">
@@ -80,24 +82,24 @@
                     </a>
                 </li>
 
-                <li class="nav-item active">
-                    <a class="nav-link" href="SuppierList">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Suppier List</span>
-                    </a>
-                </li>            
-                
-             }
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="SuppierList">
+                                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                                        <span>Suppier List</span>
+                                    </a>
+                                </li>
+
+}
 
 
             @if (Session["Role"] == "Suppier")
             {
-                <li class="nav-item active">
-                    <a class="nav-link" href="Index">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Product List</span>
-                    </a>
-                </li>
+<li class="nav-item active">
+    <a class="nav-link" href="Index">
+        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <span>Product List</span>
+    </a>
+</li>
 
                 <li class="nav-item active">
                     <a class="nav-link" href="ViewCart">
@@ -106,13 +108,12 @@
                     </a>
                 </li>
 
-                 <li class="nav-item active">
-                    <a class="nav-link" href="OrderDetail">
-                        <i class="fas fa-fw fa-tachometer-alt"></i>
-                        <span>Order Detail List</span>
-                    </a>
-                </li>
-             }
+                                <li class="nav-item active">
+                                    <a class="nav-link" href="OrderDetail">
+                                        <i class="fas fa-fw fa-tachometer-alt"></i>
+                                        <span>Order Detail List</span>
+                                    </a>
+                                </li>}
 
 
         </ul>

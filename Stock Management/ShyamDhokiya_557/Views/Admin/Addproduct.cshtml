@@ -1,5 +1,20 @@
 ﻿@model ShyamDhokiya_557_Model.ViewModel.ProductModel
 
+@if (@TempData["AddError"] != null)
+{
+    <script>
+        toastr.error('@TempData["AddError"]')
+    </script>
+}
+
+
+@if (@TempData["AddData"] != null)
+{
+    <script>
+        toastr.error('@TempData["AddData"]')
+    </script>
+}
+
 <div class="container mt-3">
 
     <form method="post" action="Addproduct">

@@ -1,5 +1,24 @@
 ﻿@model ShyamDhokiya_557_Model.ViewModel.ProductModel
 
+
+@if (@TempData["EditError"] != null)
+{
+    <script>
+        toastr.error('@TempData["EditError"]')
+    </script>
+}
+
+
+@if (@TempData["EditData"] != null)
+{
+    <script>
+        toastr.error('@TempData["EditData"]')
+    </script>
+}
+
+
+
+
 <div class="container mt-3">
     <form method="post" action="EditProduct">
         <input type="text" value="@Model.ProductId" name="ProductId" hidden />
@@ -16,11 +35,11 @@
         <div class="form-group">
             <select class="form-select" aria-label="Default select example" name="Type" id="typeProduct">
                 <option value=" " selected>Select Product Type</option>
-                <option value="Electric" @(Model!=null && Model.Type=="Electric"?"selected":"")>Electric</option>
-                <option value="Fashion"  @(Model!=null && Model.Type=="Fashion"?"selected":"")>Fashion</option>
-                <option value="Home and Kitchen"  @(Model!=null && Model.Type=="Home and Kitchen"?"selected":"")>Home and Kitchen</option>
-                <option value="Sports and Outdoors"  @(Model!=null && Model.Type=="Sports and Outdoors"?"selected":"")>Sports and Outdoors</option>
-                <option value="Books and Media"  @(Model!=null && Model.Type=="Books and Media"?"selected":"")>Books and Media</option>
+                <option value="Electric" @(Model != null && Model.Type == "Electric" ? "selected" : "")>Electric</option>
+                <option value="Fashion" @(Model != null && Model.Type == "Fashion" ? "selected" : "")>Fashion</option>
+                <option value="Home and Kitchen" @(Model != null && Model.Type == "Home and Kitchen" ? "selected" : "")>Home and Kitchen</option>
+                <option value="Sports and Outdoors" @(Model != null && Model.Type == "Sports and Outdoors" ? "selected" : "")>Sports and Outdoors</option>
+                <option value="Books and Media" @(Model != null && Model.Type == "Books and Media" ? "selected" : "")>Books and Media</option>
             </select>
             @Html.ValidationMessageFor(m => m.Type)
         </div>

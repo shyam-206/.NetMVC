@@ -1,5 +1,29 @@
 ﻿@model List<ShyamDhokiya_557_Model.ViewModel.CartDetailModel>
 
+@if (@TempData["Done"] != null)
+{
+    <script>
+        toastr.success('@TempData["Done"]')
+    </script>
+}
+
+@if (@TempData["ErrorCart"] != null)
+{
+    <script>
+        toastr.error('@TempData["ErrorCart"]')
+    </script>
+}
+
+
+@if (@TempData["ErrorCart"] != null)
+{
+    <script>
+        toastr.error('@TempData["ErrorCart"]')
+    </script>
+}
+
+
+
 <div class="container mt-3">
     <div class="card">
         <div class="card-body">
@@ -45,7 +69,7 @@
                 </div>
 
             }
-      
+
         </div>
     </div>
     <div class="mt-3">

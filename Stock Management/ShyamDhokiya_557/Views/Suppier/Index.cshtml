@@ -1,5 +1,22 @@
 ﻿@model List<ShyamDhokiya_557_Model.ViewModel.ProductModel>
 
+
+@if (@TempData["AddCart"] != null)
+{
+    <script>
+        toastr.success('@TempData["AddCart"]')
+    </script>
+}
+
+@if (@TempData["ErrorCart"] != null)
+{
+    <script>
+        toastr.error('@TempData["ErrorCart"]')
+    </script>
+}
+
+
+
 <div class="container-fluid mt-4">
     <div class="card">
         <div class="card-body">
