@@ -46,9 +46,8 @@ namespace ShyamDhokiya_557_Repository.Service
             {
                 int AddOrder = 0;
                 Cart cart = db.Cart.Where(m => m.SuppierId == SuppierId).FirstOrDefault();
-                List<CartDetail> cartDetails = db.CartDetail.Where(m => m.CartId == cart.CartId).ToList();
-
-                if (cart != null)
+                List<CartDetail> cartDetails = db.CartDetail.Where(m => m.CartId == cart.CartId && m.Product.IsDelete != true).ToList();
+                if (cart != null && cartDetails.Count() > 0)
                 {
                     Orders order = new Orders()
                     {
@@ -61,7 +60,7 @@ namespace ShyamDhokiya_557_Repository.Service
 
                     foreach (var item in cartDetails)
                     {
-                        Product product = db.Product.Where(m => m.ProductId == item.ProductId).FirstOrDefault();
+                        Product product = db.Product.Where(m => m.ProductId == item.ProductId && m.IsDelete != true).FirstOrDefault();
                         if (product != null && product.Quantity >= item.Quantity)
                         {
                             OrderDetail orderDetail = new OrderDetail()
@@ -139,18 +138,22 @@ namespace ShyamDhokiya_557_Repository.Service
                 {
                     foreach (var item in cartDetails)
                     {
-                        Product product = db.Product.Where(m => m.ProductId == item.ProductId).FirstOrDefault();
-                        CartDetailModel cartDetailModel = new CartDetailModel()
+                        Product product = db.Product.Where(m => m.ProductId == item.ProductId && m.IsDelete != true).FirstOrDefault();
+                        if(product != null)
                         {
-                            CartDetailId = item.CartDetailId,
-                            CartId = (int)item.CartId,
-                            ProductId = (int)item.ProductId,
-                            ProductName = product.Name,
-                            Price = (int)product.Price,
-                            Quantity = (int)item.Quantity,
-                            Total = (int)product.Price
-                        };
-                        list.Add(cartDetailModel);
+                            CartDetailModel cartDetailModel = new CartDetailModel()
+                            {
+                                CartDetailId = item.CartDetailId,
+                                CartId = (int)item.CartId,
+                                ProductId = (int)item.ProductId,
+                                ProductName = product.Name,
+                                Price = (int)product.Price,
+                                Quantity = (int)item.Quantity,
+                                Total = (int)product.Price
+                            };
+                            list.Add(cartDetailModel);
+                        }
+                        
                     }
                 }
                 return list;
@@ -167,7 +170,7 @@ namespace ShyamDhokiya_557_Repository.Service
             try
             {
                 List<ProductModel> list = new List<ProductModel>();
-                List<Product> products = db.Product.ToList();
+                List<Product> products = db.Product.Where(m => m.IsDelete != true).ToList();
                 list = AdminHelper.ConvertProductListToList(products);
                 foreach (var product in list)
                 {

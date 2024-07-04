@@ -43,10 +43,11 @@ namespace ShyamDhokiya_557_Repository.Service
             {
                 int delete = 0;
                 Product product = db.Product.Where(m => m.ProductId == ProductId).FirstOrDefault();
-
-                db.Product.Remove(product);
+                product.IsDelete = true;
                 delete = db.SaveChanges();
-
+                List<CartDetail> cartDetails = db.CartDetail.Where(m => m.ProductId == product.ProductId).ToList();
+                db.CartDetail.RemoveRange(cartDetails);
+                delete = db.SaveChanges();
                 return delete > 0 ? true : false;
             }
             catch (Exception ex)
@@ -100,7 +101,7 @@ namespace ShyamDhokiya_557_Repository.Service
             try
             {
                 List<ProductModel> productModelList = new List<ProductModel>();
-                List<Product> products = db.Product.ToList();
+                List<Product> products = db.Product.Where(m => m.IsDelete != true).ToList();
                 if(products != null)
                 {
                     productModelList = AdminHelper.ConvertProductListToList(products);

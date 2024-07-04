@@ -60,6 +60,7 @@
           <Property Name="Type" Type="varchar" MaxLength="50" />
           <Property Name="Price" Type="int" />
           <Property Name="Quantity" Type="int" />
+          <Property Name="IsDelete" Type="bit" />
         </EntityType>
         <EntityType Name="Suppiers">
           <Key>
@@ -244,6 +245,7 @@
           <Property Name="Quantity" Type="Int32" />
           <NavigationProperty Name="CartDetail" Relationship="StockManagement_557Model.FK__CartDetai__Produ__5165187F" FromRole="Product" ToRole="CartDetail" />
           <NavigationProperty Name="OrderDetail" Relationship="StockManagement_557Model.FK__OrderDeta__Produ__4AB81AF0" FromRole="Product" ToRole="OrderDetail" />
+          <Property Name="IsDelete" Type="Boolean" />
         </EntityType>
         <EntityType Name="Cart">
           <Key>
@@ -390,6 +392,7 @@
           <EntitySetMapping Name="Product">
             <EntityTypeMapping TypeName="StockManagement_557Model.Product">
               <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
                 <ScalarProperty Name="Quantity" ColumnName="Quantity" />
                 <ScalarProperty Name="Price" ColumnName="Price" />
                 <ScalarProperty Name="Type" ColumnName="Type" />

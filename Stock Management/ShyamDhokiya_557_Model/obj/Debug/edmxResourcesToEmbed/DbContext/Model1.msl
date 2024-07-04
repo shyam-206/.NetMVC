@@ -24,6 +24,7 @@
     <EntitySetMapping Name="Product">
       <EntityTypeMapping TypeName="StockManagement_557Model.Product">
         <MappingFragment StoreEntitySet="Product">
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
           <ScalarProperty Name="Quantity" ColumnName="Quantity" />
           <ScalarProperty Name="Price" ColumnName="Price" />
           <ScalarProperty Name="Type" ColumnName="Type" />

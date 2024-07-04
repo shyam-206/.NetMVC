@@ -65,6 +65,7 @@
     <Property Name="Quantity" Type="Int32" />
     <NavigationProperty Name="CartDetail" Relationship="StockManagement_557Model.FK__CartDetai__Produ__5165187F" FromRole="Product" ToRole="CartDetail" />
     <NavigationProperty Name="OrderDetail" Relationship="StockManagement_557Model.FK__OrderDeta__Produ__4AB81AF0" FromRole="Product" ToRole="OrderDetail" />
+    <Property Name="IsDelete" Type="Boolean" />
   </EntityType>
   <EntityType Name="Cart">
     <Key>

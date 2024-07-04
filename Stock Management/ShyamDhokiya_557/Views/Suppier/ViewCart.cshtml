@@ -15,12 +15,13 @@
 }
 
 
-@if (@TempData["ErrorCart"] != null)
+@if (@TempData["RemoveCart"] != null)
 {
     <script>
-        toastr.error('@TempData["ErrorCart"]')
+        toastr.success('@TempData["RemoveCart"]')
     </script>
 }
+
 
 
 

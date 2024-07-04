@@ -46,7 +46,6 @@ namespace ShyamDhokiya_557_API.Controllers
             }
             catch (Exception ex)
             {
-
                 throw ex;
             }
         }
@@ -59,7 +58,7 @@ namespace ShyamDhokiya_557_API.Controllers
             try
             {
                 UserModel userModel = repo.IsAdminExist(loginModel);
-                if(userModel != null)
+                if(userModel != null && userModel.UserId > 0)
                 {
                     userModel.Token = Authencation.GenerateJWTAuthetication(userModel.Email, "SuperAdmin");
                 }
