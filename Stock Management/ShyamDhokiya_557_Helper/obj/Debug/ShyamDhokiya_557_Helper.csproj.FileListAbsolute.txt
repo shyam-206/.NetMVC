@@ -34,3 +34,15 @@ C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557_Helper\o
 C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557_Helper\obj\Debug\ShyamDhokiya_557_Helper.csproj.CopyComplete
 C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557_Helper\obj\Debug\ShyamDhokiya_557_Helper.dll
 C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557_Helper\obj\Debug\ShyamDhokiya_557_Helper.pdb
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\bin\Debug\ShyamDhokiya_557_Helper.dll
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\bin\Debug\ShyamDhokiya_557_Helper.pdb
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\bin\Debug\ShyamDhokiya_557_Model.dll
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\bin\Debug\ShyamDhokiya_557_Model.pdb
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\bin\Debug\ShyamDhokiya_557_Model.dll.config
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\obj\Debug\ShyamDhokiya_557_Helper.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\obj\Debug\ShyamDhokiya_557_Helper.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\obj\Debug\ShyamDhokiya_557_Helper.csproj.CopyComplete
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\obj\Debug\ShyamDhokiya_557_Helper.dll
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Helper\obj\Debug\ShyamDhokiya_557_Helper.pdb

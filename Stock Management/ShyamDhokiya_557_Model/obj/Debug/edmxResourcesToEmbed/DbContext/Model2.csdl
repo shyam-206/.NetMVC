@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StockManagement_557Model1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="AdminStock">
+    <Key>
+      <PropertyRef Name="AdminId" />
+    </Key>
+    <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AdminName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AdminEmail" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="AdminPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Cart">
+    <Key>
+      <PropertyRef Name="CartId" />
+    </Key>
+    <Property Name="CartId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SuppierId" Type="Int32" />
+    <NavigationProperty Name="Suppiers" Relationship="Self.FK__Cart__SuppierId__4D94879B" FromRole="Cart" ToRole="Suppiers" />
+    <NavigationProperty Name="CartDetail" Relationship="Self.FK__CartDetai__CartI__5070F446" FromRole="Cart" ToRole="CartDetail" />
+  </EntityType>
+  <EntityType Name="CartDetail">
+    <Key>
+      <PropertyRef Name="CartDetailId" />
+    </Key>
+    <Property Name="CartDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CartId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="IsAdd" Type="Boolean" />
+    <NavigationProperty Name="Cart" Relationship="Self.FK__CartDetai__CartI__5070F446" FromRole="CartDetail" ToRole="Cart" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__CartDetai__Produ__5165187F" FromRole="CartDetail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="OrderDetail">
+    <Key>
+      <PropertyRef Name="OrderDetailId" />
+    </Key>
+    <Property Name="OrderDetailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="OrderId" Type="Int32" />
+    <Property Name="ProductId" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="Price" Type="Int32" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__OrderDeta__Order__49C3F6B7" FromRole="OrderDetail" ToRole="Orders" />
+    <NavigationProperty Name="Product" Relationship="Self.FK__OrderDeta__Produ__4AB81AF0" FromRole="OrderDetail" ToRole="Product" />
+  </EntityType>
+  <EntityType Name="Orders">
+    <Key>
+      <PropertyRef Name="OrderId" />
+    </Key>
+    <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SuppierId" Type="Int32" />
+    <Property Name="OrderTotal" Type="Int32" />
+    <Property Name="OrderDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Order__49C3F6B7" FromRole="Orders" ToRole="OrderDetail" />
+    <NavigationProperty Name="Suppiers" Relationship="Self.FK__Orders__SuppierI__46E78A0C" FromRole="Orders" ToRole="Suppiers" />
+  </EntityType>
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Descrption" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Price" Type="Int32" />
+    <Property Name="Quantity" Type="Int32" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <NavigationProperty Name="CartDetail" Relationship="Self.FK__CartDetai__Produ__5165187F" FromRole="Product" ToRole="CartDetail" />
+    <NavigationProperty Name="OrderDetail" Relationship="Self.FK__OrderDeta__Produ__4AB81AF0" FromRole="Product" ToRole="OrderDetail" />
+  </EntityType>
+  <EntityType Name="Suppiers">
+    <Key>
+      <PropertyRef Name="SuppierId" />
+    </Key>
+    <Property Name="SuppierId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="30" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="Cart" Relationship="Self.FK__Cart__SuppierId__4D94879B" FromRole="Suppiers" ToRole="Cart" />
+    <NavigationProperty Name="Orders" Relationship="Self.FK__Orders__SuppierI__46E78A0C" FromRole="Suppiers" ToRole="Orders" />
+  </EntityType>
+  <Association Name="FK__Cart__SuppierId__4D94879B">
+    <End Role="Suppiers" Type="Self.Suppiers" Multiplicity="0..1" />
+    <End Role="Cart" Type="Self.Cart" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppiers">
+        <PropertyRef Name="SuppierId" />
+      </Principal>
+      <Dependent Role="Cart">
+        <PropertyRef Name="SuppierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetai__CartI__5070F446">
+    <End Role="Cart" Type="Self.Cart" Multiplicity="0..1" />
+    <End Role="CartDetail" Type="Self.CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cart">
+        <PropertyRef Name="CartId" />
+      </Principal>
+      <Dependent Role="CartDetail">
+        <PropertyRef Name="CartId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__CartDetai__Produ__5165187F">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="CartDetail" Type="Self.CartDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="CartDetail">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Order__49C3F6B7">
+    <End Role="Orders" Type="Self.Orders" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Orders">
+        <PropertyRef Name="OrderId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="OrderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__OrderDeta__Produ__4AB81AF0">
+    <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+    <End Role="OrderDetail" Type="Self.OrderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Product">
+        <PropertyRef Name="ProductId" />
+      </Principal>
+      <Dependent Role="OrderDetail">
+        <PropertyRef Name="ProductId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Orders__SuppierI__46E78A0C">
+    <End Role="Suppiers" Type="Self.Suppiers" Multiplicity="0..1" />
+    <End Role="Orders" Type="Self.Orders" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Suppiers">
+        <PropertyRef Name="SuppierId" />
+      </Principal>
+      <Dependent Role="Orders">
+        <PropertyRef Name="SuppierId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StockManagement_557Entities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="AdminStock" EntityType="Self.AdminStock" />
+    <EntitySet Name="Cart" EntityType="Self.Cart" />
+    <EntitySet Name="CartDetail" EntityType="Self.CartDetail" />
+    <EntitySet Name="OrderDetail" EntityType="Self.OrderDetail" />
+    <EntitySet Name="Orders" EntityType="Self.Orders" />
+    <EntitySet Name="Product" EntityType="Self.Product" />
+    <EntitySet Name="Suppiers" EntityType="Self.Suppiers" />
+    <AssociationSet Name="FK__Cart__SuppierId__4D94879B" Association="Self.FK__Cart__SuppierId__4D94879B">
+      <End Role="Suppiers" EntitySet="Suppiers" />
+      <End Role="Cart" EntitySet="Cart" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetai__CartI__5070F446" Association="Self.FK__CartDetai__CartI__5070F446">
+      <End Role="Cart" EntitySet="Cart" />
+      <End Role="CartDetail" EntitySet="CartDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__CartDetai__Produ__5165187F" Association="Self.FK__CartDetai__Produ__5165187F">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="CartDetail" EntitySet="CartDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Order__49C3F6B7" Association="Self.FK__OrderDeta__Order__49C3F6B7">
+      <End Role="Orders" EntitySet="Orders" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__OrderDeta__Produ__4AB81AF0" Association="Self.FK__OrderDeta__Produ__4AB81AF0">
+      <End Role="Product" EntitySet="Product" />
+      <End Role="OrderDetail" EntitySet="OrderDetail" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Orders__SuppierI__46E78A0C" Association="Self.FK__Orders__SuppierI__46E78A0C">
+      <End Role="Suppiers" EntitySet="Suppiers" />
+      <End Role="Orders" EntitySet="Orders" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

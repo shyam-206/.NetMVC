@@ -34,3 +34,15 @@ C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557_Model\ob
 C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557_Model\obj\Debug\ShyamDhokiya_557_Model.csproj.CopyComplete
 C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557_Model\obj\Debug\ShyamDhokiya_557_Model.dll
 C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557_Model\obj\Debug\ShyamDhokiya_557_Model.pdb
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\bin\Debug\ShyamDhokiya_557_Model.dll.config
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\bin\Debug\ShyamDhokiya_557_Model.dll
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\bin\Debug\ShyamDhokiya_557_Model.pdb
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\bin\Debug\EntityFramework.dll
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\bin\Debug\EntityFramework.xml
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\obj\Debug\ShyamDhokiya_557_Model.csproj.AssemblyReference.cache
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\obj\Debug\ShyamDhokiya_557_Model.csproj.CoreCompileInputs.cache
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\obj\Debug\ShyamDhokiya_557_Model.csproj.CopyComplete
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\obj\Debug\ShyamDhokiya_557_Model.dll
+C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557_Model\obj\Debug\ShyamDhokiya_557_Model.pdb

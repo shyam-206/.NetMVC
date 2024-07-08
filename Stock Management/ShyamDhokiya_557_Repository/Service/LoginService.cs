@@ -12,7 +12,7 @@ namespace ShyamDhokiya_557_Repository.Service
 {
     public class LoginService : LoginRepository
     {
-        private readonly StockManagement_557Entities db = new StockManagement_557Entities();
+        private readonly StockManagement_557Entities1 db = new StockManagement_557Entities1();
 
         public bool AddRegister(UserModel userModel)
         {
@@ -49,7 +49,7 @@ namespace ShyamDhokiya_557_Repository.Service
                 AdminStock adminStock = db.AdminStock.Where(m => m.AdminEmail == loginModel.Email && m.AdminPassword == loginModel.Password).FirstOrDefault();
 
                 if(adminStock != null && adminStock.AdminId > 0)
-                {
+                {                                                 
                     newLogin.UserId = adminStock.AdminId;
                     newLogin.Email = adminStock.AdminEmail;
                     newLogin.Name = adminStock.AdminName;

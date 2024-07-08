@@ -114,11 +114,11 @@ namespace ShyamDhokiya_557_API.Controllers
 
         [Route("api/AdminAPI/OrderList")]
         [HttpGet]
-        public List<OrderModel> OrderList()
+        public List<OrderTableModel> OrderList()
         {
             try
             {
-                List<OrderModel> list = repo.OrderList();
+                List<OrderTableModel> list = repo.OrderList();
                 return list;
             }
             catch (Exception ex)
@@ -128,14 +128,14 @@ namespace ShyamDhokiya_557_API.Controllers
             }
         }
 
-        [Route("api/AdminAPI/SortOrderListByDate")]
         [HttpGet]
-        public List<OrderModel> SortOrderListByDate(DateTime StartDate, DateTime EndDate)
+        [Route("api/AdminAPI/FilterData")]
+        public List<OrderTableModel> FilterData(DateTime StartDate, DateTime EndDate, int ProductName)
         {
             try
             {
-                List<OrderModel> List = repo.SortOrderListByDate(StartDate, EndDate);
-                return List;
+                List<OrderTableModel> list = repo.FilterData(StartDate, EndDate, ProductName);
+                return list;
             }
             catch (Exception ex)
             {

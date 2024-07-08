@@ -13,7 +13,7 @@ namespace ShyamDhokiya_557_Repository.Service
 {
     public class AdminService : AdminRepository
     {
-        private readonly StockManagement_557Entities db = new StockManagement_557Entities();
+        private readonly StockManagement_557Entities1 db = new StockManagement_557Entities1();
 
         public bool Addproduct(ProductModel productModel)
         {
@@ -21,7 +21,7 @@ namespace ShyamDhokiya_557_Repository.Service
             {
                 int save = 0;
                 Product product = new Product();
-                if(productModel != null)
+                if (productModel != null)
                 {
                     product = AdminHelper.ConvertProductModelToProduct(productModel);
                     db.Product.Add(product);
@@ -75,6 +75,32 @@ namespace ShyamDhokiya_557_Repository.Service
             }
         }
 
+        public List<OrderTableModel> FilterData(DateTime StartDate, DateTime EndDate, int ProductName)
+        {
+            try
+            {
+                List<OrderTableModel> list = db.Database.SqlQuery<OrderTableModel>("exec OrderTableList").ToList();
+                EndDate = EndDate.Date.AddDays(1).AddTicks(-1);
+                if (ProductName != 0)
+                {
+                    List<OrderTableModel> FilterList = list.Where(m => m.OrderDate >= StartDate && m.OrderDate <= EndDate && m.ProductId == ProductName).ToList();
+                    return FilterList;
+                }
+                else
+                {
+                    List<OrderTableModel> FilterList = list.Where(m => m.OrderDate >= StartDate && m.OrderDate <= EndDate).ToList();
+                    return FilterList;
+                }
+
+
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+        }
+
         public ProductModel GetProductById(int ProductId)
         {
             try
@@ -82,7 +108,7 @@ namespace ShyamDhokiya_557_Repository.Service
                 Product product = new Product();
                 ProductModel productModel = new ProductModel();
                 product = db.Product.FirstOrDefault(m => m.ProductId == ProductId);
-                if(product != null)
+                if (product != null)
                 {
                     productModel = AdminHelper.ConvertProductToProductModel(product);
                 }
@@ -102,7 +128,7 @@ namespace ShyamDhokiya_557_Repository.Service
             {
                 List<ProductModel> productModelList = new List<ProductModel>();
                 List<Product> products = db.Product.Where(m => m.IsDelete != true).ToList();
-                if(products != null)
+                if (products != null)
                 {
                     productModelList = AdminHelper.ConvertProductListToList(products);
                 }
@@ -122,7 +148,7 @@ namespace ShyamDhokiya_557_Repository.Service
             {
                 List<UserModel> userModelList = new List<UserModel>();
                 List<Suppiers> suppiers = db.Suppiers.ToList();
-                if(suppiers != null)
+                if (suppiers != null)
                 {
                     userModelList = AdminHelper.ConvertUsersToList(suppiers);
                 }
@@ -136,13 +162,13 @@ namespace ShyamDhokiya_557_Repository.Service
             }
         }
 
-        public List<OrderModel> OrderList()
+        public List<OrderTableModel> OrderList()
         {
             try
             {
-                List<Orders> orders = db.Orders.ToList();
-                List<OrderModel> OrderList = OrderHelper.ConvertOrderListToList(orders);
-                return OrderList;
+                List<OrderTableModel> orderList = new List<OrderTableModel>();
+                orderList = db.Database.SqlQuery<OrderTableModel>("exec OrderTableList").ToList();
+                return orderList;
             }
             catch (Exception ex)
             {
@@ -151,23 +177,5 @@ namespace ShyamDhokiya_557_Repository.Service
             }
         }
 
-        public List<OrderModel> SortOrderListByDate(DateTime StartDate, DateTime EndDate)
-        {
-            try
-            {
-                List<Orders> orders = db.Orders
-                                  .Where(m => DbFunctions.TruncateTime(m.OrderDate) >= DbFunctions.TruncateTime(StartDate) &&
-                                              DbFunctions.TruncateTime(m.OrderDate) <= DbFunctions.TruncateTime(EndDate))
-                                  .ToList();
-
-                List<OrderModel> OrderList = OrderHelper.ConvertOrderListToList(orders);
-                return OrderList;
-            }
-            catch (Exception ex)
-            {
-
-                throw ex;
-            }
-        }
     }
 }

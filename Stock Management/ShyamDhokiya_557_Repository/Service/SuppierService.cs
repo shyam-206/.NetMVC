@@ -12,7 +12,7 @@ namespace ShyamDhokiya_557_Repository.Service
 {
     public class SuppierService : SuppierRepository
     {
-        private readonly StockManagement_557Entities db = new StockManagement_557Entities();
+        private readonly StockManagement_557Entities1 db = new StockManagement_557Entities1();
 
         public bool AddCart(int ProductId, int SuppierId)
         {

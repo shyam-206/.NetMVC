@@ -15,7 +15,7 @@ namespace ShyamDhokiya_557_Repository.Repository
         List<UserModel> GetSuppierList();
         List<ProductModel> GetProductList();
         bool DeleteProduct(int ProductId);
-        List<OrderModel> OrderList();
-        List<OrderModel> SortOrderListByDate(DateTime StartDate, DateTime EndDate);
+        List<OrderTableModel> OrderList();
+        List<OrderTableModel> FilterData(DateTime StartDate, DateTime EndDate, int ProductName);
     }
 }

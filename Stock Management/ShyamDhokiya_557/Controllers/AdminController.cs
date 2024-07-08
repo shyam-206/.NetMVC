@@ -4,6 +4,7 @@ using ShyamDhokiya_557.CustomFilter;
 using ShyamDhokiya_557_Model.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
@@ -27,7 +28,7 @@ namespace ShyamDhokiya_557.Controllers
             {
                 string url = "api/AdminAPI/GetProductList";
                 string res = await WebHelper.HttpRequestResponse(url);
-                List<ProductModel> list = JsonConvert.DeserializeObject < List<ProductModel>>(res);
+                List<ProductModel> list = JsonConvert.DeserializeObject<List<ProductModel>>(res);
                 return View(list);
 
             }
@@ -161,7 +162,7 @@ namespace ShyamDhokiya_557.Controllers
             catch (Exception ex)
             {
 
-                throw ex; 
+                throw ex;
             }
         }
 
@@ -172,27 +173,44 @@ namespace ShyamDhokiya_557.Controllers
             {
                 string url = "api/AdminAPI/OrderList";
                 string res = await WebHelper.HttpRequestResponse(url);
-                List<OrderModel> orderList = JsonConvert.DeserializeObject<List<OrderModel>>(res);
+                List<OrderTableModel> orderList = JsonConvert.DeserializeObject<List<OrderTableModel>>(res);
+
+                string url1 = "api/AdminAPI/GetProductList";
+                string res1 = await WebHelper.HttpRequestResponse(url1);
+                ViewBag.Product = JsonConvert.DeserializeObject<List<ProductModel>>(res1);
                 return View(orderList);
             }
             catch (Exception ex)
             {
 
                 throw ex;
-            } 
+            }
         }
-
+         
         [HttpPost]
-        public async Task<ActionResult> OrderList(DateTime StartDate,DateTime EndDate)
+        public async Task<ActionResult> OrderList(DateTime StartDate, DateTime EndDate, int ProductName)
         {
             try
             {
-                string url = $"api/AdminAPI/SortOrderListByDate?StartDate={StartDate}&EndDate={EndDate}";
-                string res = await WebHelper.HttpRequestResponse(url);
-                List<OrderModel> list = JsonConvert.DeserializeObject<List<OrderModel>>(res);
-                ViewBag.StartDate = StartDate.ToString("yyyy-MM-dd");
-                ViewBag.EndDate = EndDate.ToString("yyyy-MM-dd");
-                return View(list);
+                if (StartDate > EndDate)
+                {
+                    TempData["Error"] = "StartDate can not be greater than EndDate";
+                    return View();
+                }
+                else
+                {
+                    string url = $"api/AdminAPI/FilterData?StartDate={StartDate}&EndDate={EndDate}&ProductName={ProductName}";
+                    string res = await WebHelper.HttpRequestResponse(url);
+                    List<OrderTableModel> list = JsonConvert.DeserializeObject<List<OrderTableModel>>(res);
+                    string url1 = "api/AdminAPI/GetProductList";
+                    string res1 = await WebHelper.HttpRequestResponse(url1);
+                    ViewBag.Product = JsonConvert.DeserializeObject<List<ProductModel>>(res1);
+
+                    ViewBag.StartDate = StartDate.ToString("yyyy-MM-dd");
+                    ViewBag.EndDate = EndDate.ToString("yyyy-MM-dd");
+                    ViewBag.SelectedProduct = ProductName;
+                    return View(list);
+                }
             }
             catch (Exception ex)
             {
