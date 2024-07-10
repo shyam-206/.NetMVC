@@ -12,7 +12,7 @@ namespace ShyamDhokiya_557.CustomFilter
     {
         protected override bool AuthorizeCore(HttpContextBase httpContext)
         {
-            if (SessionHelper.UserId != 0 || SessionHelper.UserEmail != "" | SessionHelper.Role == "Suppier")
+            if (SessionHelper.UserId != 0 || SessionHelper.UserEmail != "" || SessionHelper.Role == "Suppier")
             {
                 return true;
             }

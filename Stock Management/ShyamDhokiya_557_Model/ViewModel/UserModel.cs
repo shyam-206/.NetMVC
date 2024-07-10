@@ -11,7 +11,6 @@ namespace ShyamDhokiya_557_Model.ViewModel
     {
         public int UserId { get; set; }
         [Required(ErrorMessage = "Please Enter name")]
-        
         public string Name { get; set; }
         [Required(ErrorMessage = "Please Enter email")]
         [EmailAddress]

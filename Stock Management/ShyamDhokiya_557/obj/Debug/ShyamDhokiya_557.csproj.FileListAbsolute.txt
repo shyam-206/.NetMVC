@@ -394,3 +394,7 @@ C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557\
 C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557\obj\Debug\ShyamDhokiya_557.csproj.CopyComplete
 C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557\obj\Debug\ShyamDhokiya_557.dll
 C:\Users\admin\Desktop\Shaligram Code\.NetMVC\Stock Management\ShyamDhokiya_557\obj\Debug\ShyamDhokiya_557.pdb
+C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557\bin\BouncyCastle.Cryptography.dll
+C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557\bin\itextsharp.dll
+C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557\bin\BouncyCastle.Cryptography.xml
+C:\Shyam Dhokiya\DotNet Training Task\Stock Management\ShyamDhokiya_557\bin\itextsharp.xml
