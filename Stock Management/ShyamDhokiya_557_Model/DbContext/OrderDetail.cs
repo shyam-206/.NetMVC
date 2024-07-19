@@ -18,7 +18,7 @@ namespace ShyamDhokiya_557_Model.DbContext
         public Nullable<int> OrderId { get; set; }
         public Nullable<int> ProductId { get; set; }
         public Nullable<int> Quantity { get; set; }
-        public Nullable<int> Price { get; set; }
+        public Nullable<decimal> Price { get; set; }
     
         public virtual Orders Orders { get; set; }
         public virtual Product Product { get; set; }

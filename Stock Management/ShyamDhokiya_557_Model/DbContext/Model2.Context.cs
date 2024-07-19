@@ -9,9 +9,7 @@
 
 namespace ShyamDhokiya_557_Model.DbContext
 {
-    using ShyamDhokiya_557_Model.ViewModel;
     using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
