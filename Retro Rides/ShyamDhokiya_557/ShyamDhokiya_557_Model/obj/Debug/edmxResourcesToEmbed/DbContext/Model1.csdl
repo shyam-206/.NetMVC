@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ShyamDhokiya_557Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="City">
+    <Key>
+      <PropertyRef Name="CityId" />
+    </Key>
+    <Property Name="CityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="StateId" Type="Int32" />
+    <NavigationProperty Name="State" Relationship="Self.FK__City__StateId__3C69FB99" FromRole="City" ToRole="State" />
+    <NavigationProperty Name="Users" Relationship="ShyamDhokiya_557Model.FK__Users__CityId__5FB337D6" FromRole="City" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="Country">
+    <Key>
+      <PropertyRef Name="CountryId" />
+    </Key>
+    <Property Name="CountryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="State" Relationship="Self.FK__State__CountryId__398D8EEE" FromRole="Country" ToRole="State" />
+    <NavigationProperty Name="Users" Relationship="ShyamDhokiya_557Model.FK__Users__CountryId__5DCAEF64" FromRole="Country" ToRole="Users" />
+  </EntityType>
+  <EntityType Name="State">
+    <Key>
+      <PropertyRef Name="StateId" />
+    </Key>
+    <Property Name="StateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="StateName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int32" />
+    <NavigationProperty Name="City" Relationship="Self.FK__City__StateId__3C69FB99" FromRole="State" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="Self.FK__State__CountryId__398D8EEE" FromRole="State" ToRole="Country" />
+    <NavigationProperty Name="Users" Relationship="ShyamDhokiya_557Model.FK__Users__StateId__5EBF139D" FromRole="State" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__City__StateId__3C69FB99">
+    <End Role="State" Type="Self.State" Multiplicity="0..1" />
+    <End Role="City" Type="Self.City" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="City">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__State__CountryId__398D8EEE">
+    <End Role="Country" Type="Self.Country" Multiplicity="0..1" />
+    <End Role="State" Type="Self.State" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="State">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ShyamDhokiya_557Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="City" EntityType="Self.City" />
+    <EntitySet Name="Country" EntityType="Self.Country" />
+    <EntitySet Name="State" EntityType="Self.State" />
+    <AssociationSet Name="FK__City__StateId__3C69FB99" Association="Self.FK__City__StateId__3C69FB99">
+      <End Role="State" EntitySet="State" />
+      <End Role="City" EntitySet="City" />
+    </AssociationSet>
+    <AssociationSet Name="FK__State__CountryId__398D8EEE" Association="Self.FK__State__CountryId__398D8EEE">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="State" EntitySet="State" />
+    </AssociationSet>
+    <EntitySet Name="Admin" EntityType="ShyamDhokiya_557Model.Admin" />
+    <EntitySet Name="Seller" EntityType="ShyamDhokiya_557Model.Seller" />
+    <EntitySet Name="Bike" EntityType="ShyamDhokiya_557Model.Bike" />
+    <AssociationSet Name="FK__Bike__SellerId__5812160E" Association="ShyamDhokiya_557Model.FK__Bike__SellerId__5812160E">
+      <End Role="Seller" EntitySet="Seller" />
+      <End Role="Bike" EntitySet="Bike" />
+    </AssociationSet>
+    <EntitySet Name="Favourites" EntityType="ShyamDhokiya_557Model.Favourites" />
+    <AssociationSet Name="FK__Favourite__BikeI__68487DD7" Association="ShyamDhokiya_557Model.FK__Favourite__BikeI__68487DD7">
+      <End Role="Bike" EntitySet="Bike" />
+      <End Role="Favourites" EntitySet="Favourites" />
+    </AssociationSet>
+    <EntitySet Name="Users" EntityType="ShyamDhokiya_557Model.Users" />
+    <AssociationSet Name="FK__Users__CityId__5FB337D6" Association="ShyamDhokiya_557Model.FK__Users__CityId__5FB337D6">
+      <End Role="City" EntitySet="City" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__CountryId__5DCAEF64" Association="ShyamDhokiya_557Model.FK__Users__CountryId__5DCAEF64">
+      <End Role="Country" EntitySet="Country" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Favourite__UserI__6754599E" Association="ShyamDhokiya_557Model.FK__Favourite__UserI__6754599E">
+      <End Role="Users" EntitySet="Users" />
+      <End Role="Favourites" EntitySet="Favourites" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Users__StateId__5EBF139D" Association="ShyamDhokiya_557Model.FK__Users__StateId__5EBF139D">
+      <End Role="State" EntitySet="State" />
+      <End Role="Users" EntitySet="Users" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Admin">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Seller">
+    <Key>
+      <PropertyRef Name="SellerId" />
+    </Key>
+    <Property Name="SellerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" Nullable="false" MaxLength="40" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="10" FixedLength="true" Unicode="false" />
+    <NavigationProperty Name="Bike" Relationship="ShyamDhokiya_557Model.FK__Bike__SellerId__5812160E" FromRole="Seller" ToRole="Bike" />
+  </EntityType>
+  <EntityType Name="Bike">
+    <Key>
+      <PropertyRef Name="BikeId" />
+    </Key>
+    <Property Name="BikeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SellerId" Type="Int32" Nullable="false" />
+    <Property Name="Brand" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Models" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+    <Property Name="Years" Type="Int32" Nullable="false" />
+    <Property Name="kilometresDriven" Type="Int32" Nullable="false" />
+    <Property Name="Price" Type="Decimal" Nullable="false" Precision="9" Scale="2" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Seller" Relationship="ShyamDhokiya_557Model.FK__Bike__SellerId__5812160E" FromRole="Bike" ToRole="Seller" />
+    <Property Name="IsDelete" Type="Boolean" />
+    <NavigationProperty Name="Favourites" Relationship="ShyamDhokiya_557Model.FK__Favourite__BikeI__68487DD7" FromRole="Bike" ToRole="Favourites" />
+  </EntityType>
+  <Association Name="FK__Bike__SellerId__5812160E">
+    <End Type="ShyamDhokiya_557Model.Seller" Role="Seller" Multiplicity="1" />
+    <End Type="ShyamDhokiya_557Model.Bike" Role="Bike" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Seller">
+        <PropertyRef Name="SellerId" />
+      </Principal>
+      <Dependent Role="Bike">
+        <PropertyRef Name="SellerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Favourites">
+    <Key>
+      <PropertyRef Name="FavoriteId" />
+    </Key>
+    <Property Name="FavoriteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="BikeId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Bike" Relationship="ShyamDhokiya_557Model.FK__Favourite__BikeI__68487DD7" FromRole="Favourites" ToRole="Bike" />
+    <NavigationProperty Name="Users" Relationship="ShyamDhokiya_557Model.FK__Favourite__UserI__6754599E" FromRole="Favourites" ToRole="Users" />
+  </EntityType>
+  <Association Name="FK__Favourite__BikeI__68487DD7">
+    <End Type="ShyamDhokiya_557Model.Bike" Role="Bike" Multiplicity="1" />
+    <End Type="ShyamDhokiya_557Model.Favourites" Role="Favourites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Bike">
+        <PropertyRef Name="BikeId" />
+      </Principal>
+      <Dependent Role="Favourites">
+        <PropertyRef Name="BikeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserId" />
+    </Key>
+    <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="MobileNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DOB" Type="DateTime" Precision="3" />
+    <Property Name="Address1" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Address2" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="CountryId" Type="Int32" />
+    <Property Name="StateId" Type="Int32" />
+    <Property Name="CityId" Type="Int32" />
+    <Property Name="ZipCode" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="Image" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="City" Relationship="ShyamDhokiya_557Model.FK__Users__CityId__5FB337D6" FromRole="Users" ToRole="City" />
+    <NavigationProperty Name="Country" Relationship="ShyamDhokiya_557Model.FK__Users__CountryId__5DCAEF64" FromRole="Users" ToRole="Country" />
+    <NavigationProperty Name="Favourites" Relationship="ShyamDhokiya_557Model.FK__Favourite__UserI__6754599E" FromRole="Users" ToRole="Favourites" />
+    <NavigationProperty Name="State" Relationship="ShyamDhokiya_557Model.FK__Users__StateId__5EBF139D" FromRole="Users" ToRole="State" />
+  </EntityType>
+  <Association Name="FK__Users__CityId__5FB337D6">
+    <End Type="ShyamDhokiya_557Model.City" Role="City" Multiplicity="0..1" />
+    <End Type="ShyamDhokiya_557Model.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="City">
+        <PropertyRef Name="CityId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__CountryId__5DCAEF64">
+    <End Type="ShyamDhokiya_557Model.Country" Role="Country" Multiplicity="0..1" />
+    <End Type="ShyamDhokiya_557Model.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Country">
+        <PropertyRef Name="CountryId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="CountryId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Favourite__UserI__6754599E">
+    <End Type="ShyamDhokiya_557Model.Users" Role="Users" Multiplicity="1" />
+    <End Type="ShyamDhokiya_557Model.Favourites" Role="Favourites" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Users">
+        <PropertyRef Name="UserId" />
+      </Principal>
+      <Dependent Role="Favourites">
+        <PropertyRef Name="UserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Users__StateId__5EBF139D">
+    <End Type="ShyamDhokiya_557Model.State" Role="State" Multiplicity="0..1" />
+    <End Type="ShyamDhokiya_557Model.Users" Role="Users" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="State">
+        <PropertyRef Name="StateId" />
+      </Principal>
+      <Dependent Role="Users">
+        <PropertyRef Name="StateId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

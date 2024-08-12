@@ -1,0 +1,15 @@
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.dll.config
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.dll
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Repository.pdb
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.dll
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.SqlServer.dll
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.dll
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.pdb
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\ShyamDhokiya_557_Model.dll.config
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.xml
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\bin\Debug\EntityFramework.SqlServer.xml
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.AssemblyReference.cache
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.CoreCompileInputs.cache
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.csproj.CopyComplete
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.dll
+C:\Shyam Dhokiya\Retro Rides\ShyamDhokiya_557\ShyamDhokiya_557_Repository\obj\Debug\ShyamDhokiya_557_Repository.pdb

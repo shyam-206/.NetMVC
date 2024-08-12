@@ -1,0 +1,147 @@
+﻿@model IEnumerable<ShyamDhokiya_557_Model.ViewModel.BikeModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage1.cshtml";
+}
+
+<style>
+
+
+    .hero {
+        position: relative;
+    }
+
+    .ImageContainer {
+        display: flex;
+        justify-content: start;
+        position: relative;
+    }
+
+    .FavBtnContainer {
+        position: absolute;
+        right: 0.5rem;
+        top: 0.5rem;
+    }
+</style>
+<div class="container-fluid">
+    <div class="row mt-5">
+        @if (Model != null)
+        {
+            <div class="w-75 row">
+                @foreach (var item in Model)
+                {
+                    <div class="p-1 col-4">
+                        <div class="border border-1 border-dark rounded-2 gap-2">
+                            <div class="hero">
+                                <div>
+                                    <div class="ImageContainer ">
+                                        <img src="~/Content/BikeImage/@item.BikeImages[0]" height="180" class="w-75 object-fit-contain" />
+                                    </div>
+                                    <div class="FavBtnContainer">
+                                        @if (item.IsFavourite == true)
+                                        {
+                                            <i class="fa-regular fa-heart border p-2 rounded-5 fs-5 fav-btn bg-danger text-white" data-bike-id="@item.BikeId"></i>
+                                        }
+                                        else
+                                        {
+                                            <i class="fa-regular fa-heart border p-2 rounded-5 fs-5 fav-btn" data-bike-id="@item.BikeId"></i>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="d-flex justify-content-between">
+                                    <div class="m-1">
+                                        <p class="fw-bold fs-4 m-0 ps-2 text-primary">₹ @item.Price </p>
+                                        <p class="fs-6 fw-medium text-secondary ps-2 m-0">@item.Years - @item.kilometresDriven Km</p>
+                                        <p class="fs-6 fw-bold text-secondary ps-2"> @item.Models</p>
+                                    </div>
+                                    <div class="d-flex align-items-end">
+                                        <div class="my-4 mx-2">
+                                            <a class="btn btn-primary btn-sm " href="~/User/GetBike?BikeId=@item.BikeId">Details</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+            <div class="filterDataDiv w-25 px-5 ">
+                <form action="Index" method="post">
+                    <div class="brandName">
+                        <p class="fs-6 fw-bold">Filter Data :</p>
+                        <select class="form-select form-control" name="BrandName">
+                            <option value=" " selected> Select Brand Name </option>
+                            @if (ViewBag.BikeBrandList != null)
+                            {
+                                foreach (var i in ViewBag.BikeBrandList)
+                                {
+                                    <option value="@i">@i</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="price">
+                        <div class="input-group mt-3">
+                            <span class="input-group-text" id="basic-addon1">Lowest KMDriven</span>
+                            <input type="number" class="form-control" name="LowestKMDriven" id="LowestKMDriven" value="@(ViewBag.LowestKMDriven)">
+                        </div>
+                        <div class="input-group mt-3">
+                            <span class="input-group-text" id="basic-addon1">Highest KMDriven</span>
+                            <input type="number" class="form-control" min="0" max="20000" name="HighestKMDriven" id="HighestKMDriven" value="@(ViewBag.HighestKMDriven != null ? ViewBag.HighestKMDriven : "")">
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </div>
+                </form>
+            </div>
+        }
+        else
+        {
+            <div class="container d-flex justify-content-center align-content-center">
+                <div class="card w-50">
+                    <div class="card-body">
+                        <div class="m-3 p-5">
+                            <p class="fw-bold fs-2 text-primary">No Record Found ...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+       @* $("#HighestKMDriven").change(function () {
+            var HighestKMDriven = $("#HighestKMDriven").val()
+            var LowestKMDriven = $("#LowestKMDriven").val()
+            debugger
+            if (HighestKMDriven < 0 || HighestKMDriven > LowestKMDriven) {
+                toastr.error("value can't be negative or value can't more than lowest KM")
+            }
+
+        })
+*@
+        $("#LowestKMDriven").change(function (e) {
+            $("#LowestKMDriven").val(e.target.value)
+        })
+        $(".fav-btn").click(function () {
+            var favBtn = $(this)
+            var BikeId = $(this).data("bike-id")
+            $.ajax({
+                type: "POST",
+                url: "/User/ToggleFavourite?BikeId=" + BikeId,
+                success: function (response) {
+                    if (response.success) {
+                        favBtn.toggleClass("bg-danger text-white");
+                    } else {
+                        alert("Failed to update favorite status.");
+                    }
+                }
+            })
+        })
+    })
+</script>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="fd248105f2474a34a5743883e7dfa541" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="ShyamDhokiya_557Model.City" Width="1.5" PointX="5.25" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShyamDhokiya_557Model.Country" Width="1.5" PointX="0.75" PointY="2.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="ShyamDhokiya_557Model.State" Width="1.5" PointX="3" PointY="2.125" IsExpanded="true" />
+        <AssociationConnector Association="ShyamDhokiya_557Model.FK__City__StateId__3C69FB99" ManuallyRouted="false" />
+        <AssociationConnector Association="ShyamDhokiya_557Model.FK__State__CountryId__398D8EEE" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="ShyamDhokiya_557Model.Admin" Width="1.5" PointX="0.75" PointY="5.75" />
+        <EntityTypeShape EntityType="ShyamDhokiya_557Model.Seller" Width="1.5" PointX="3.375" PointY="7.375" />
+        <EntityTypeShape EntityType="ShyamDhokiya_557Model.Bike" Width="1.5" PointX="5.625" PointY="7" />
+        <AssociationConnector Association="ShyamDhokiya_557Model.FK__Bike__SellerId__5812160E" />
+        <EntityTypeShape EntityType="ShyamDhokiya_557Model.Favourites" Width="1.5" PointX="9.75" PointY="4.75" />
+        <AssociationConnector Association="ShyamDhokiya_557Model.FK__Favourite__BikeI__68487DD7" />
+        <EntityTypeShape EntityType="ShyamDhokiya_557Model.Users" Width="1.5" PointX="7.5" PointY="0.875" />
+        <AssociationConnector Association="ShyamDhokiya_557Model.FK__Users__CityId__5FB337D6" />
+        <AssociationConnector Association="ShyamDhokiya_557Model.FK__Users__CountryId__5DCAEF64" />
+        <AssociationConnector Association="ShyamDhokiya_557Model.FK__Favourite__UserI__6754599E" />
+        <AssociationConnector Association="ShyamDhokiya_557Model.FK__Users__StateId__5EBF139D" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

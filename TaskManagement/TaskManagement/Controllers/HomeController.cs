@@ -113,7 +113,7 @@ namespace TaskManagement.Controllers
                             return RedirectToAction("Login");
                         }
                     }
-                    if (registerModel.Role == UserRole.Teacher)
+                    else if (registerModel.Role == UserRole.Teacher)
                     {
                         bool isCheckingSaveOrNot = teacherRepository.AddTeacher(registerModel);
                         if (isCheckingSaveOrNot)
@@ -122,7 +122,7 @@ namespace TaskManagement.Controllers
                             TempData["TeacherRegister"] = "Teacher Register Successfully";
                             return RedirectToAction("Login");
                         }
-                     }
+                    }
 
                     ModelState.AddModelError("Email", "Email is already exist");
                     ViewBag.States = stateRepository.stateModelList();
