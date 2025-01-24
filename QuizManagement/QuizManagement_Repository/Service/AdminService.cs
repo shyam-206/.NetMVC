@@ -25,8 +25,8 @@ namespace QuizManagement_Repository.Service
                 int CheckAnswerAddOrNot = 0;
                 int score = 0;
                 Result result = new Result();
-                
-                foreach(var item in answerModelList)
+
+                foreach (var item in answerModelList)
                 {
                     Options option = _context.Options.Where(m => m.ques_id == item.ques_id && m.is_correct == true).FirstOrDefault();
                     Answer answer = new Answer
@@ -38,7 +38,7 @@ namespace QuizManagement_Repository.Service
                         created_at = DateTime.Now
                     };
 
-                    if(item.selected_option_id == option.option_id)
+                    if (item.selected_option_id == option.option_id)
                     {
                         score += 1;
                     }
@@ -48,7 +48,7 @@ namespace QuizManagement_Repository.Service
 
                     _context.Answer.Add(answer);
                     CheckAnswerAddOrNot = _context.SaveChanges();
-                    
+
                 }
 
                 result.score = score;
@@ -159,7 +159,7 @@ namespace QuizManagement_Repository.Service
                         optionList.Add(option);
                     }
                     _context.Options.RemoveRange(optionList);
-                    
+
                     questionList.Add(question);
                 }
                 _context.Question.RemoveRange(questionList);
@@ -170,7 +170,7 @@ namespace QuizManagement_Repository.Service
             catch (Exception ex)
             {
 
-                    throw ex;
+                throw ex;
             }
         }
         public AdminModel GetAdminProfile(int adminId)
@@ -193,7 +193,7 @@ namespace QuizManagement_Repository.Service
             {
                 List<QuizModel> quizModelList = new List<QuizModel>();
                 List<Quiz> quizes = _context.Quiz.ToList();
-                quizModelList = AdminHelper.ConvertQuizListToQuizModelList(quizes,userId);
+                quizModelList = AdminHelper.ConvertQuizListToQuizModelList(quizes, userId);
                 return quizModelList != null ? quizModelList : null;
 
             }
@@ -248,7 +248,7 @@ namespace QuizManagement_Repository.Service
             {
                 Result result = _context.Result.Where(m => m.quiz_id == quiz_id && m.user_id == user_id).FirstOrDefault();
                 int QuizScore = 0;
-                if(result != null)
+                if (result != null)
                 {
                     QuizScore = (int)result.score;
                 }
@@ -289,13 +289,13 @@ namespace QuizManagement_Repository.Service
             try
             {
                 int checkQuizUpdateOrNot = 0;
-                
+
                 Quiz quiz = _context.Quiz.Where(m => m.quiz_id == quizModel.quiz_id).FirstOrDefault();
                 quiz.title = quizModel.title;
                 quiz.description = quizModel.description;
                 quiz.updated_at = DateTime.Now;
                 _context.Entry(quiz).State = EntityState.Modified;
-                checkQuizUpdateOrNot = _context.SaveChanges(); 
+                checkQuizUpdateOrNot = _context.SaveChanges();
 
                 for (var i = 0; i < quizModel.QuestionModelList.Count(); i++)
                 {
@@ -308,7 +308,7 @@ namespace QuizManagement_Repository.Service
                     _context.Entry(question).State = EntityState.Modified;
                     _context.SaveChanges();
 
-                    foreach(var item in quizModel.QuestionModelList[i].OptionList)
+                    foreach (var item in quizModel.QuestionModelList[i].OptionList)
                     {
                         Options option = question.Options.Where(m => m.option_id == item.option_id).FirstOrDefault();
 
@@ -320,7 +320,7 @@ namespace QuizManagement_Repository.Service
 
                     }
                 }
-                return checkQuizUpdateOrNot > 0 ? true  : false;
+                return checkQuizUpdateOrNot > 0 ? true : false;
             }
             catch (Exception ex)
             {
@@ -351,7 +351,7 @@ namespace QuizManagement_Repository.Service
             }
         }
 
-        public List<ResultAnswerModel> AllAnswerList(int quiz_id,int user_id)
+        public List<ResultAnswerModel> AllAnswerList(int quiz_id, int user_id)
         {
             try
             {
@@ -366,7 +366,7 @@ namespace QuizManagement_Repository.Service
                     List<Options> optionList = question.Options.Where(m => m.ques_id == item.ques_id).ToList();
                     List<OptionModel> optionModelList = new List<OptionModel>();
 
-                    foreach(var i in optionList)
+                    foreach (var i in optionList)
                     {
                         OptionModel option = new OptionModel
                         {
